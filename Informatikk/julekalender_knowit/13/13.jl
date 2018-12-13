@@ -19,8 +19,7 @@ end
 a = [1, 3]
 primes = [3]
 function find_seq(k = 1)
-    println(a)
-    if length(primes) == 10
+    if length(primes) == 100
         return sum(primes)
     end
 
@@ -48,4 +47,3 @@ function find_seq(k = 1)
 end
 
 println(find_seq())
-println("Hei")
