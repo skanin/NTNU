@@ -1,6 +1,8 @@
-file = open("input-crisscross.txt", "r").read()
+#file = open("input-crisscross.txt", "r").read()
+import requests
 
-
+file = requests.get('https://s3-eu-west-1.amazonaws.com/knowit-julekalender-2018/input-bounding-crisscross.txt').text
+#file = "2H2F2H1B3V"
 h, f, b, v = 0, 0, 0, 0
 
 for i in range(1, len(file), 2):
