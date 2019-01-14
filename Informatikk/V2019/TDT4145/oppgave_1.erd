@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram height="600" made_with_version="1.6" name="Default" width="780">
+<entity id="0" is_weak="false" name="Foto" x="39" y="55">
+<attributes>
+<attribute is_hidden="false" is_key="true" name="ID" type=""/>
+<attribute is_hidden="false" is_key="false" name="Dato" type=""/>
+<attribute is_hidden="false" is_key="false" name="Tittel" type=""/>
+</attributes>
+</entity>
+<entity id="2" is_weak="false" name="Fotograf" x="309" y="61">
+<attributes>
+<attribute is_hidden="false" is_key="true" name="ID" type=""/>
+<attribute is_hidden="false" is_key="false" name="Nasjonalitet" type=""/>
+<attribute is_hidden="false" is_key="false" name="Navn" type=""/>
+</attributes>
+</entity>
+<entity id="5" is_weak="false" name="Motiv" x="157" y="174">
+<attributes>
+<attribute is_hidden="false" is_key="true" name="ID" type=""/>
+<attribute is_hidden="false" is_key="false" name="Beskrivelse" type=""/>
+</attributes>
+</entity>
+<diamond id="1" is_weak="false" name="TattAv" x="174" y="73">
+<attributes/>
+</diamond>
+<diamond id="6" is_weak="false" name="Innhold" x="41" y="192">
+<attributes/>
+</diamond>
+<line cardinality_string="(0,1)" has_u="false" id="3" is_weak="false" role="" style="0" turned="false">
+<connection connection_side="2" direction="0" object_id="0" relation_point_x="80" relation_point_y="91"/>
+<connection connection_side="0" direction="0" object_id="1" relation_point_x="174" relation_point_y="89"/>
+</line>
+<line cardinality_string="(0,n)" has_u="false" id="4" is_weak="false" role="" style="0" turned="false">
+<connection connection_side="0" direction="0" object_id="2" relation_point_x="309" relation_point_y="97"/>
+<connection connection_side="2" direction="0" object_id="1" relation_point_x="206" relation_point_y="89"/>
+</line>
+<line cardinality_string="(0,n)" has_u="false" id="7" is_weak="false" role="" style="0" turned="false">
+<connection connection_side="3" direction="1" object_id="0" relation_point_x="60" relation_point_y="127"/>
+<connection connection_side="3" direction="1" object_id="6" relation_point_x="57" relation_point_y="224"/>
+</line>
+<line cardinality_string="(0,n)" has_u="false" id="8" is_weak="false" role="" style="0" turned="false">
+<connection connection_side="0" direction="0" object_id="5" relation_point_x="157" relation_point_y="203"/>
+<connection connection_side="2" direction="0" object_id="6" relation_point_x="73" relation_point_y="208"/>
+</line>
+</diagram>
