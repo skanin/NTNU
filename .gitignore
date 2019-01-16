@@ -9,3 +9,18 @@ Informatikk/julekalender_knowit/.idea/
 Informatikk/julekalender_knowit/venv/
 
 V2019/TDT4140/bok.pdf
+
+#############################
+#       LaTex ignores       #
+#############################
+**/*.aux
+
+**/*.log
+
+**/*.out
+
+**/*.gz
+
+**/*.syntex.gz
+
+**/*.png
