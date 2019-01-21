@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram height="564" made_with_version="1.6" name="Default" width="818">
+<entity id="0" is_weak="false" name="Person" x="55" y="44">
+<attributes>
+<attribute is_hidden="false" is_key="true" name="Personnummer" type=""/>
+<attribute is_hidden="false" is_key="false" name="[Type]" type=""/>
+<attribute is_hidden="false" is_key="false" name="Navn" type=""/>
+<attribute is_hidden="false" is_key="false" name="Telefon" type=""/>
+<attribute is_hidden="false" is_key="false" name="E-post" type=""/>
+</attributes>
+</entity>
+<entity id="1" is_weak="false" name="Bygg" x="262" y="51">
+<attributes>
+<attribute is_hidden="false" is_key="true" name="Gårdsnummer" type=""/>
+<attribute is_hidden="false" is_key="false" name="Gateadresse" type=""/>
+<attribute is_hidden="false" is_key="false" name="Byggeår" type=""/>
+</attributes>
+</entity>
+<entity id="2" is_weak="false" name="Leilighet" x="448" y="65">
+<attributes>
+<attribute is_hidden="false" is_key="true" name="ID" type=""/>
+<attribute is_hidden="false" is_key="false" name="Leilighetsnummer" type=""/>
+<attribute is_hidden="false" is_key="false" name="Kvadratmeter" type=""/>
+</attributes>
+</entity>
+</diagram>
