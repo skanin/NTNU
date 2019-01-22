@@ -184,12 +184,27 @@ Skriv ned eventuelle antagelser du finner det nødvendig å gjøre.
 				
 				\begin{figure}[ht!]
 					\centering
-					\includegraphics[width=10cm]{oppgave_3_e.png}
+					\includegraphics[width=15cm]{oppgave_3_e.png}
 					\caption{Utvided ER-modell oppgave 3d}				
 					\label{fig:oppgave_3_e}
 				\end{figure}
 				
 			\newpage
 			\section{Oppave 4}
+			\begin{figure}[ht!]
+				\centering
+				\includegraphics[width=15cm]{oppgave_4.png}
+				\caption{Oppgave 4 - Fra miniverden til ER-modell}
+				\label{fig:oppgave_4}
+			\end{figure}
 			
-\end{document}
+			Jeg har laget en ER-modell av miniverdenen. Jeg har satt ''Bod'' som en svak klasse, da jeg tenker den ikke kan eksistere uten en leilighet og id'en skal være unik innenfor hver leilighet (selvom bod med ID 1 kan finnes i både leilighet 1, 2, 3 osv\dots). Når det kommer til strømuttak i boden, satt jeg en ''boolean'' attributt, da denne kan være true eller false.
+			
+			 For eierskap av leilighet satt jeg en attributt i relasjonen ''EiesAv'' for antall eierprosent. Leiligheten kan eies av 0 eller mange \textit{personer}. Ser at denne kan være litt far fetched, men leiligheten \textit{kan} være eid av kommunen/staten (hva vet jeg) og det er ingen person.
+			 
+			  En person trenger heller ikke eie en leilighet, så det blir en (0, n) restriksjon her, da en person også kan eie så mange leilgheter han vil. Jeg tenkte også at en person ikke kan bo i mer enn en leilighet samtidig, derfor satt jeg en restriksjon på (0, 1) i ''BorI'' relasjonen, da en person ikke \textit{trenger} å bo i en leilighet, men kan bo i max 1. En leilighet kan ha (i følge oppgaveteksten, veldig urealistisk) uendelig mange beboere, men trenger ikke ha noen, derfor en (0, n) der. 
+			  
+			  En person skulle også kunne ha en ''type'', jeg satt denne som en fler-verdi attributt, da det kan være mange forskjellige typer. Samme gjelder ''Styremedlemmer'' for styret. 
+			  
+			  Saker skulle kunne være knyttet til bygg, person og/eller leilighet og skulle behandles av styret. Jeg tenkte styret kunne behandle flere saker samtidig, så satt en (0, n) restriksjon der. En sak \textit{må} bli behandlet av styret og det er kun et styre, så (1, 1). Ellers satt jeg relasjoner mellom sak og bygg, sak og person og sak og leilighet, for å gjøre det mulig for en sak å være tilknyttet de forskjellige. 
+\end{document} 
