@@ -1,0 +1,67 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{tabularx}
+\usepackage{mainpackage}
+\usepackage{enumerate}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\begin{document}
+
+\begin{titlepage}
+    \centering
+    \vspace*{\fill}
+
+    \vspace*{0.5cm}
+
+    \huge
+    TDT4145 - Øving 2
+
+    \vspace*{0.5cm}
+
+    \large Sander Lindberg
+
+    \vspace*{\fill}
+    \end{titlepage}
+
+	\newpage
+	
+	\section{Oppgave 1}
+	\subsection{A}
+		Total spesialisering vil si at en instans av klassen \textit{må} mappe til minst en subklasse, mens disjunkte subklasser vil si at instanser mapper til en og bare en.
+		
+	\subsection{B}
+		\begin{enumerate}[i]
+			\item Student $\rightarrow$ Master-student, Bachelor-student, Årsstudium
+			\item Person $\rightarrow$ Mann, Kvinne (kan velge å være ingen kjønn om vi er politisk korrekte)
+			\item Pasient $\rightarrow$ Akutt pasient, Liste pasient
+			\item Person $\rightarrow$ Fotgjenger, Syklist, Bilist
+		\end{enumerate}
+		
+	\subsection{C}
+		Figur 4 er feil. Den mangler en superklasse. 
+		
+	\section{Oppgave 2}
+	Jeg tenker at hver dyrehage må ha en ID for å identifiseres og et navn. En dyrehage har mange avdelinger, tolker dette som at den må ha minst en, altså en (1, n) relasjon, med (1, 1) fra avdeling til dyrehage, da en avdeling kun er i en dyrehage. Når en avdeling har ID \textit{internt} i dyrehagen, tenker jeg det passer med en svak klasse. Tenker også at dyr kan være en svak klasse, da disse ikke kan eksistere uten en avdeling, samtidig skal de bli tildelt et unikt nummer, men tenker det er best om de identifiseres med både avdelingsIDen pluss dette nummeret. En avdeling \textit{kan} ha mange forskjellige dyr, så jeg lar muligheten for å ha ingen ligge åpen med en (0, n) relasjon. Fra dyr til avdeling setter jeg en (1, 1), da et dyr er avhengig av en avdeling, og ikke kan ha mer enn en avdeling. Setter også notis som en svak klasse, da denne ikke har noen naturlig nøkkel. Notiset kan kobles til flere dyr, så her blir det en (n, m) relasjon, mens en (0, n) andre veien. 
+	
+	\section{Oppgave 4}
+	\subsection{A}
+		\textbf{Eksamenslokale}(\underline{RomNr}, Navn, Kapasitet)\\
+		\textbf{Bord}(\underline{BordNr}, Type, \underline{RomNr}) $\rightarrow$ ''RomNr'' er fremmednøkkel mot eksamenslokale\\
+		\textbf{Stol}(\underline{StolNr}, Type, \underline{RomNr}) $\rightarrow$  ''RomNr'' er fremmednøkkel mot eksamenslokale\\
+		\textbf{Eksamen}(\underline{EksamenNr}, Fagkode, Hjelpemiddelkode)\\
+		\textbf{Student}(\underline{StudentNr}, Navn)
+		
+	\subsection{B}
+			\begin{multline}
+				\Pi_{HotellNr, navn}(\sigma(Hotell))
+			\end{multline}
+			\begin{multline}
+				\Pi_{HotellNr, navn}(\sigma_{Omraade = ''Barcelona''}(Hotell))
+			\end{multline}
+			(LaTex klager på ''Å'', så bruker aa)		
+			\begin{multline}
+				\Pi_{Hotellrom.RomNr, Hotell.navn}(Hotell \\ 
+				\Join_{(Hotell.HotellNr = Hotellrom.HotellNr) \cap (Hotell.Kvadratmeterstorrelse > 100)} Hotellrom)
+			\end{multline}
+
+\end{document} 

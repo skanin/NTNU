@@ -16,7 +16,7 @@ serverSocket = socket(AF_INET, SOCK_STREAM)
 serverPort = 12000
 
 # Bind the socket to server address and server port
-serverSocket.bind(('127.0.0.1',serverPort))
+serverSocket.bind(('10.22.14.30',serverPort))
 
 
 # Listen to at most 1 connection at a time (max. number of threads in the connection queue)
