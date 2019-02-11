@@ -83,7 +83,9 @@
 				\Join_{Hotell.Hotellnr = rom.Hotellnr} Hotell \Join_{best.Kundenr = Kunde.Kundenr AND Hotell.Omraade = 'Madrid'} Kunde)
 			\end{multline}
 			\begin{multline}
-				\Pi_{Rombestilling.Varighet, Kunde.Fornavn, Kunde.Etternavn}(\sigma_{Kunde.Fornavn = ''Ole'' AND Kunde.Etternavn = ''Hansen''}(Kunde \Join_{Kunde.Kundenr = Rombestilling.Kundenr} Rombestilling) ORDER ASC)
+				\Pi_{Rombestilling.Varighet, Kunde.Fornavn, Kunde.Etternavn}\\
+				(\sigma_{Kunde.Fornavn = ''Ole'' AND Kunde.Etternavn = ''Hansen''}\\
+				(Kunde \Join_{Kunde.Kundenr = Rombestilling.Kundenr} Rombestilling) ORDER ASC)
 			\end{multline}
 
 \end{document} 
