@@ -1,4 +1,4 @@
-﻿Generelt/
+Generelt/
 
 Realfagskjellern/
 
@@ -58,4 +58,8 @@ V2019/TDT4140/bok.pdf
 
 
 **/*.pde
+
+**/__pycache__/
+**__pycache__
+__pycache__
 
