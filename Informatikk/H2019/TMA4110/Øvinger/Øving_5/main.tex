@@ -1,0 +1,304 @@
+\documentclass[11pt, a4paper, norsk]{NTNUoving}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\ovingnr{5}    % Nummer på innlevering
+\semester{Høsten 2019}
+\fag{TMA 4110}
+\institutt{Institutt for matematiske fag}
+
+\begin{document}
+    \begin{oppgave}
+        Finn egenverdier og tilhørende egenvektorer til følgende matriser.
+        
+        For hver av deloppgavene kommer jeg til å løse likningen $det(A - \lambda ˆ_{n}) = 0$ for å finne egenverdier og $(A-\lambda I_{n})\underline{v} = 0$ for å finne egenvektorer (der $\lambda$ er de forskjellige egenverdiene jeg fant først.)
+
+        \begin{punkt}
+            $\begin{bmatrix}
+                1 & 2 \\
+                2 & 1
+            \end{bmatrix}$
+
+            Egenverdier:
+            \begin{align*}
+                A - \lambda I_{2} &= \begin{bmatrix}
+                    1 - \lambda & 2 \\
+                    2 & 1 - \lambda
+                \end{bmatrix}
+                \\
+                    det(A - \lambda I_{2}) &= (1- \lambda)(1 - \lambda) - 2 \cdot 2
+                    \\
+                                           &= 1^2 - 2\lambda + \lambda^2 - 4
+                                           \\
+                                           &= \lambda^2 - 2\lambda - 3
+                                           \\
+                                           &\implies \lambda = \left[ -1, \  3\right] 
+            \end{align*}
+            Jeg har nå at egenverdiene til matrisen $A$ er $\lambda_{1} = -1$ og $\lambda_2 = 3$. Bruker dette til å finne egenvektorene:
+            \begin{align*}
+                (A + I_{2}) = \begin{bmatrix}
+                    2 & 2 \\
+                    2 & 2
+                \end{bmatrix} &\sim \begin{bmatrix}
+                1 & 1 \\
+                1 & 1 
+                \end{bmatrix}
+                \\
+                &\sim \begin{bmatrix}
+                    1 & 1 \\
+                    0 & 0
+                \end{bmatrix}
+                \\
+                &\implies \underline{v_1} = \begin{bmatrix}
+                    -1 \\
+                    1
+                \end{bmatrix}
+                \\
+                \text{Egenvektor for } \lambda = -1 \text{ er } \begin{bmatrix}
+                    -1 \\
+                    1
+                \end{bmatrix}
+                \\
+                \\
+                (A - 3I_2) = \begin{bmatrix}
+                    -2 & 2 \\
+                    2 & -2
+                \end{bmatrix} &\sim \begin{bmatrix}
+                1 & -1 \\
+                0 & 0
+                \end{bmatrix}
+                \\
+                &\implies \underline{v_2} = \begin{bmatrix}
+                    1 \\
+                    1
+                \end{bmatrix}
+                \\
+                 \text{Egenvektor for } \lambda = 3 \text{ er } \begin{bmatrix}
+                    1 \\
+                    1
+                \end{bmatrix}
+            \end{align*}
+        \end{punkt}
+        \begin{punkt}
+            $\begin{bmatrix}
+                1 & 2 & 0 \\
+                2 & 1 & 0 \\
+                0 & 0 & 0
+            \end{bmatrix}$
+
+            Finner egenverdier:
+            \begin{align*}
+                A - \lambda I_{3} &= \begin{bmatrix}
+                    1 - \lambda & 2 & 0 \\
+                    2 & 1 - \lambda & 0 \\
+                    0 & 0 & -\lambda
+                \end{bmatrix}
+                \\
+                    det(A - \lambda I_{3}) &= (1-\lambda)((1-\lambda) \cdot -\lambda- 0 \cdot 0) - 2(2 \cdot -\lambda - 0 \cdot 0) + 0 \\
+                                          &= -\lambda^3 + 2\lambda^2 + 3\lambda
+                                          \\
+                                          &\implies \lambda = \left[ -1, \  0, \  3\right]
+            \end{align*}
+            Jeg har nå at egenverdiene til matrisen $A$ er $\lambda_1 = -1$, $\lambda_2 = 0$ og $\lambda_3 = 3$. Bruker dette til å finne egenvektorene:
+            
+            \begin{align*}
+                A - 0I_3 = \begin{bmatrix}
+                    1 & 2 & 0 \\
+                    2 & 1 & 0 \\
+                    0 & 0 & 0
+                \end{bmatrix} &\sim \begin{bmatrix}
+                1 & 1 & 0 \\
+                2 & 1 & 0 \\
+                0 & 0 & 0
+                \end{bmatrix}
+                \\
+                &\sim \begin{bmatrix}
+                    1 6 1 & 0 \\
+                    0 & 1 & 0 \\
+                    0 & 0 & 0 
+                \end{bmatrix}
+                \\
+                &\sim \begin{bmatrix}
+                    1 & 0 & 0 \\
+                    0 & 1 & 0 \\
+                    0 & 0 & 0
+                \end{bmatrix}
+                \\
+                &\implies \underline{v_1} = \begin{bmatrix}
+                    0 \\
+                    0 \\
+                    1
+                \end{bmatrix}
+                \\
+                \text{Egenvektor for } \lambda = 0 = \begin{bmatrix}
+                    0 \\
+                    0 \\
+                    1
+                \end{bmatrix}
+            \end{align*}
+            \begin{align*}
+                A + I_{3} = \begin{bmatrix}
+                    2 & 2 & 0 \\
+                    2 & 2 & 0 \\
+                    0 & 0 & 2
+                \end{bmatrix} &\sim \begin{bmatrix}
+                2 & 2 & 0 \\
+                2 & 2 & 0 \\
+                0 & 0 & 1
+                \end{bmatrix}
+                \\
+                &\sim \begin{bmatrix}
+                    1 & 1 & 0 \\
+                    0 & 1 & 0 \\
+                    0 & 0 & 1
+                \end{bmatrix}
+                \\
+                &\implies \underline{v_2} = \begin{bmatrix}
+                    -1 \\
+                    1 \\
+                    0
+                \end{bmatrix}
+                \\
+                \text{Egenvektor for } \lambda = -1 = \begin{bmatrix}
+                    -1 \\
+                    1 \\
+                    0
+                \end{bmatrix}
+            \end{align*}
+            \begin{align*}
+                A - 3I_3 = \begin{bmatrix}
+                    -2 & 2 & 0 \\
+                    2 & -2 & 0 \\
+                    0 & 0 & 3
+                \end{bmatrix} &\sim \begin{bmatrix}
+                -1 & 1 & 0 \\
+                1 & -1 & 0 \\
+                0 & 0 & 1
+                \end{bmatrix}
+                \\
+                &\sim \begin{bmatrix}
+                    1 & -1 & 0 \\
+                    0 & 0 & 0 \\
+                    0 & 0 & 1
+                \end{bmatrix}
+                \\
+                &\implies \underline{v_3} = \begin{bmatrix}
+                    1 \\
+                    1 \\
+                    0
+                \end{bmatrix}
+                \\
+                \text{Egenvektor for } \lambda = 3 = \begin{bmatrix}
+                    1 \\
+                    1 \\
+                    0
+                \end{bmatrix}
+            \end{align*}
+        \end{punkt}
+        \begin{punkt}
+            $\begin{bmatrix}
+                0 & 1 \\
+                0 & 0
+            \end{bmatrix}$
+            \begin{align*}
+                det(A - \lambda I_{2}) = (-\lambda \cdot -\lambda) &= \lambda^2
+                \\
+                                                                   &\implies \lambda = 0
+            \end{align*}
+            Har at egenverdiene $\lambda_1 $ og $\lambda_2 = 0$, finner egenvektoren(e)
+            \begin{align*}
+                A - 0I_2 = A &= \begin{bmatrix}
+                    0 & 1 \\
+                    0 & 0
+                \end{bmatrix}
+                \\
+                &\implies \underline{v} = \begin{bmatrix}
+                    1 \\
+                    0
+                \end{bmatrix}
+                \text{Egenvektor for } \lambda = 0 = \begin{bmatrix}
+                    1 \\
+                    0
+                \end{bmatrix}
+            \end{align*}
+        \end{punkt}
+        \begin{punkt}
+            $\begin{bmatrix}
+                4 & 2 & 3 \\
+                -1 & 1 & -3 \\
+                2 & 4 & 9
+            \end{bmatrix}$
+            
+            Finner egenverdiene:
+            \begin{align*}
+                det(A - \lambda I_{3}) &= det\left(\begin{bmatrix}
+                        4-\lambda & 2 & 3 \\
+                        -1 & 1 - \lambda & -3 \\
+                        2 & 4 & 9 - \lambda
+                \end{bmatrix}\right)
+                \\
+                                       &= (4- \lambda)((1-\lambda)(9-\lambda) - (-2)\cdot 4) - 2 (-1(9-\lambda) - (-3) \cdot 2) + 3(-1\cdot 4 - (1 - \lambda)\cdot 2)
+                                       \\
+                                       &= (4-\lambda)(9 - \lambda - 9\lambda + \lambda^2 +12) -2(-9 + \lambda + 6) + 3(-4-2+2\lambda)
+                                       \\
+                                       &= 4\lambda^2 - 40\lambda + 84 -\lambda^3 +10\lambda^2 - 21\lambda - 2\lambda + 6 + 6\lambda - 18
+                                       \\
+                                       &= -\lambda^3 + 14\lambda^2 - 57\lambda + 72
+            \end{align*}
+            Prøvde meg frem (som hintet sa) med $\lambda = 0$, $\lambda = 1$, $\lambda = 2$ og $\lambda = 3$. Fant at $\lambda = 3$ gir 0, som vil si $\lambda = 3$ er en egenverdi. Deretter polynomdividerte jeg $\frac{-\lambda^3 + 14\lambda^2 - 57\lambda + 72}{\lambda - 3}$ og fikk at dette er lik $-\lambda^2 + 11\lambda - 24$. Løser jeg denne ligningen får jeg $\lambda = \left[ 3, \  8\right]$. Egenverdiene for $A$ er dermed $\lambda_1 = \lambda_2 = 3$ og $\lambda_3 = 8$.
+
+            Finner egenvektorene:
+            
+            Starter med å finne egenvektorer for $\lambda = 3$
+            \begin{align*}
+                A - 3\lambda = \begin{bmatrix}
+                    1 & 2 & 3 \\
+                    -1 & -2 & -3 \\
+                    2 & 4 & 6
+                \end{bmatrix} &\sim \begin{bmatrix}
+                1 & 2 & 3 \\
+                0 & 0 & 0 \\
+                1 & 2 & 3
+                \end{bmatrix}
+                \\
+                &\sim \begin{bmatrix}
+                    1 & 2 & 3 \\
+                    0 & 0 & 0 \\
+                    0 & 0 & 0
+                \end{bmatrix}
+                \\
+                &\implies \underline{v_1} = \begin{bmatrix}
+                    -2 \\
+                    1 \\
+                    0
+                \end{bmatrix}, \quad \underline{v_2} = \begin{bmatrix}
+                    -3 \\
+                    0 \\
+                    1
+                \end{bmatrix}
+            \end{align*}
+            Finner nå egenvektor for $\lambda = 8$
+            \begin{align*}
+                A - 8\lambda = \begin{bmatrix}
+                    -4 & 2 & 3 \\
+                    -1 & -7 & -3 \\
+                    2 & 4 & 1
+                \end{bmatrix} &\sim \begin{bmatrix}
+                1 & 0 & -\frac{1}{2} \\
+                0 & 1 & \frac{1}{2} \\
+                0 & 0 & 0
+                \end{bmatrix}
+                \\
+                &\implies \underline{v_3} = \begin{bmatrix}
+                    \frac{1}{2}\\
+                    -\frac{1}{2}\\
+                    1
+                \end{bmatrix} = \frac{1}{2} \begin{bmatrix}
+                    1 \\
+                    -1 \\
+                    2
+                \end{bmatrix}
+            \end{align*}
+        \end{punkt}
+    \end{oppgave}
+\end{document}

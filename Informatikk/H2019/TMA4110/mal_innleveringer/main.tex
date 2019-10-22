@@ -1,0 +1,69 @@
+\documentclass[11pt, a4paper, norsk]{NTNUoving}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\ovingnr{1}    % Nummer på innlevering
+\semester{Høsten 2019}
+\fag{TMA 4110}
+\institutt{Institutt for matematiske fag}
+
+\begin{document}
+
+% Kommentar
+
+% Et felt starter ofte med \begin{<sett in kommando>}, da er det viktig å avslutte med \end{<sett in kommando>}. Det er mange eksempler på dette nedenfor!
+
+% Du må alltid bruke $<sett inn matematikk>$, $$<sett inn matematikk>$$ eller \[<sett inn matematikk>\] for å bruke mattekommandoer.
+
+\begin{oppgave} % oppgave
+  Matriser er gøy.
+  \begin{punkt} % deloppgave
+    Sånn her skriver man en ligning av matriser på egen linje:
+    \[ % start ligning
+    \begin{bmatrix} % matrise
+    1 & 2\\
+    3 & 4
+    \end{bmatrix}
+    \begin{bmatrix}
+    x\\y
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+    5\\
+    6
+    \end{bmatrix}
+    \] % avslutt ligning
+  
+  \end{punkt}
+  \begin{punkt}
+    Man kan også skrive matematikk som del av en setning: Alle vet at $2+2=5$.
+  \end{punkt}
+\end{oppgave}
+
+\begin{oppgave}
+  Flere oppgaver. Gauss-eliminasjon er gøy. Vi kan radredusere på en fin måte med kommandoen align:
+  \begin{align*} %align for å få ligninger på linje
+  \begin{bmatrix}
+  1 & 2 & 5\\
+  3 & 4 & 6
+  \end{bmatrix}
+  &\sim % & bestemmer hvordan ligningene skal ligge på linje. \sim gir krølltegnet for radekvivalent
+  \begin{bmatrix}
+  1 & 2 & 5\\
+  0 & -2 & -4
+  \end{bmatrix}
+  \\ &\sim % \\ gir linjeskift
+  \begin{bmatrix}
+  1 & 2 & 5\\
+  0 & 1 & 2
+  \end{bmatrix}
+  \\ &\sim
+  \begin{bmatrix}
+  1 & 0 & 1\\
+  0 & 1 & 2
+  \end{bmatrix}
+  \end{align*}
+
+\end{oppgave}
+
+\end{document}

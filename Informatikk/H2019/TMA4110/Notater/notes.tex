@@ -1,0 +1,1564 @@
+\documentclass[11pt, a4paper, norsk]{article}
+\usepackage{math}
+\begin{document}
+	\begin{titlepage}
+	    \centering
+	    \vspace*{\fill}
+
+	    \vspace*{0.5cm}
+
+	    \huge
+	    TMA4110 - Notater 2019
+
+	    \vspace*{0.5cm}
+
+	    \large Sander Lindberg
+
+	    \vspace*{\fill}
+	\end{titlepage}
+    \tableofcontents
+
+	\newpage
+
+	\section{Komplekse tall}
+	$Z = a + bi \quad Z \in \mathbb{C}$ 
+
+	Skal bli kvitt at $x^2 + 1 = 0$ ikke har noen løsning.
+
+	Vi kan nå skrive $x = \pm \sqrt{-1}$
+
+	Finner opp et nytt tall: $i=\sqrt{-1} \implies i^{2} = -1$
+
+	i kalles den \textit{imaginære enheten}
+    
+
+	\begin{Example}{}{}
+	  Løs $x^{2} + 2x + 2 = 0$
+
+	  \begin{align*}
+	    a = 1 \\
+	    b, c = 2 \\
+	    \\
+        x &= \frac{-2 \pm \sqrt{- 2*1*2}}{2} \\
+	      &= \frac{-2 \pm \sqrt{4 - 8}}{2} \\
+	      &= \frac{-2 \pm \sqrt{-4}}{2} = \frac{-1 \pm 2i}{2} = -1 \pm i \\
+	  \end{align*} 
+     \end{Example} 
+     \begin{Formel}{}{}
+         \begin{enumerate}
+             \item $R = |z| = \sqrt{a^2 + b^2}$ kalles ''lengden'', ''modulus'' eller ''absolut verdi''.
+             \item $arg(z) = \theta = \arcsin{\frac{b}{|z|}} = \arccos{\frac{a}{|z|}} = \begin{cases}
+            \arctan{\frac{b}{a}}, a>0 \\
+            \arctan{\frac{b}{a}} + \pi, a < 0 \\
+            \frac{\pi}{2}, a=0, b>0 \\
+            \frac{3\pi}{2}, a = 0, b < 0
+    \end{cases} $
+         \end{enumerate} Kalles ''argumentet'' til $z$.
+     \end{Formel}
+     \begin{Example}{}{}
+         Gitt $z = -1 + i$ og $w = 1 + \sqrt{3}i$, finn $|z|$, $|w|$, $arg(z)$ og $arg(w)$:
+         \\
+         $|z| = \sqrt{1+1} = \sqrt{2}$ \\
+         $|w| = \sqrt{4} = \sqrt{2}$ \\
+         $arg(z) = \frac{3\pi}{2}$ ($\arctan{\frac{1}{-1}} + \pi$) \\
+         $arg(w) = \frac{\pi}{3}$ ($\arctan{\sqrt{3}}$)
+     \end{Example}
+     \subsection{Polar form}%
+     \label{sub:polar_form}
+        Starter med å se på noen geometriske rekker:
+        \begin{align*}
+            e^{x} = 1 + x + \frac{x^2}{2} + \frac{x^{3}}{3} \dots \frac{x^{n}}{n}
+            \\
+            \\
+            \cos{x} = 1 - \frac{x^2}{2!} + \frac{x^{4}}{4!} \dots
+            \\
+            \\
+            \sin{x} = x - \frac{x^{3}}{3!} + \frac{x^{5}}{5!} \dots
+        \end{align*}
+
+        Disse kan settes sammen til Eulers formel:
+        \begin{Definition}{Eulers Formel}{}
+            $e^{ix} = 1 + ix + \frac{(ix)^{2}}{2!} + \frac{(ix)^{3}}{3!} \dots$
+        \end{Definition}
+
+        Vi kan nå skrive $z$ på polarform:
+
+        \begin{align*}
+            z &= a + bi \\
+              &= r(\cos{\theta} + i\sin{\theta}) \\
+              &= re^{i\theta}
+        \end{align*}
+        
+        \subsection{Hvorfor komplekse tall?}%
+        \label{sub:hvorfor_komplekse_tall_}
+        
+        \begin{Theorem}{Analysens fundamentalteorem}{}
+        Polynomet $P(z) = z^{n} + a_{n-1}z^{n-1} + a_{n-2}z^{n-2} \dots a_1z+a_0$ kan allid faktoriseres $P(z) = \prod_{1}^{n} (z-z_{i})$ der $z_{i}$ er løsninger av likningen $P(z) = 0$
+        \end{Theorem}
+
+        \begin{Example}{}{}
+            Faktoriser $z^2 + z + 1$ \\
+            $z = \frac{-1 \pm \sqrt{1-4}}{2} = -\frac{1}{2} \pm \frac{\sqrt{3}}{2}i$
+        \end{Example}
+        En polynomlikning har alltid $n$ løsninger
+        \begin{Example}{}{}
+            $z^{3} -3z^2 + 3z -1 = (z-1)^{3}$ \\
+            Sier at $z = 1$ er en rot med multiplisitet 3.
+        \end{Example}
+
+        Spesialtilfelle: 
+
+        \begin{Example}{}{}
+            Finn alle $z$ som tilfredsstiller $z^{n} = -1$ \\
+            Komplekse n-te røtter: \\
+            Skal løse $z^{n} = w$. $w$ er kjent, skal finne $z$. \\
+            \begin{align*}
+                z^{n} &= w = re^{i\theta} = re^{o(\theta + 2k\pi)} \\
+                      &\implies z = \sqrt[n]{r} \cdot \sqrt[n]{e^{i(\theta + 2k\pi)}} \\
+                      &= \sqrt[n]{r} \cdot \sqrt[n]{e^{i(\frac{\theta}{n} + \frac{2k\pi}{n})}}, \quad 0 \leq k \leq n-1
+            \end{align*}
+        \end{Example}
+        \newpage
+        \section{Lineære systemer og gausseliminasjon}
+        \begin{Theorem}{}{}
+            Et lineært likningsystem har enten
+            \begin{enumerate}
+                \item Entydig løsning
+                \item Ingen løsning 
+                \item Uendelig mange løsninger
+            \end{enumerate}
+        \end{Theorem}
+
+        \begin{Example}{Linkingssystem med uendelig mange løsninger}{}
+           \begin{align*}
+               \begin{bmatrix}[ccc|c]
+                    2 & 3 & 4 & 4 \\
+                    3 & 4 & 5 & 5 \\
+                    4 & 5 & 6 & 6
+                    \end{bmatrix} &\sim \begin{bmatrix}[ccc|c]
+                                        2 & 3 & 4 & 4 \\
+                                        0 & 1 & 2 & 2 \\
+                                        0 & 1 & 2 & 2
+                                    \end{bmatrix}
+                                    \\
+                                    &\sim \begin{bmatrix}[ccc|c]
+                                        2 & 3 & 4 & 4 \\
+                                        0 & 1 & 2 & 2 \\
+                                        0 & 0 & 0 & 0
+                                    \end{bmatrix}
+           \end{align*}
+           Dette ser ut som tre likninger, men det er egt bare 2:
+           \begin{align*}
+            2x + 3y + 4z = 4 \\
+            y + 2z = 2               
+           \end{align*}
+
+           Vi har to likninger med tre ukjente, som ikke går an å løse. Vi setter derfor inn frie variabler. (finne en parametisering)
+           \begin{enumerate}
+               \item Velg $z = s$
+               \item Skriv de andre ved hjelp av $s$ ($x$ og $y$)
+               \item Skriv likningene på vektorform
+           \end{enumerate}
+           Velger $z=s$, da får vi $y = 2-2s$ og $x = -2+s$. På vektorform blir dette:
+           \begin{align*}
+               \begin{bmatrix}
+                   x \\
+                   y \\
+                   z
+                   \end{bmatrix} \begin{bmatrix}
+                                    -2 + s \\
+                                    2 - 2s \\
+                                    s
+                                    \end{bmatrix} = \begin{bmatrix}
+                                                        -2 \\
+                                                        2 \\
+                                                        0
+                                                        \end{bmatrix} + \begin{bmatrix}
+                                                        1 \\
+                                                        -2 \\
+                                                        1
+                                                    \end{bmatrix}\cdot s
+           \end{align*}
+        \end{Example}
+        \subsection{Vektorer}%
+        \label{sub:vektorer}
+        
+        En vektor $\underline{x}$ skrives på formen $\underline{x} = \begin{bmatrix}
+            x_1 \\
+            x_2 \\
+            x_3 \\
+            . \\
+            x_{n}
+        \end{bmatrix} \in \mathbb{R}$
+
+        \begin{Formel}{To operasjoner på vektorer}{}
+            \textbf{Addisjon}:
+
+            $\underline{x} + \underline{y} = \begin{bmatrix}
+                x_1 \\
+                x_2 \\
+                x_3
+            \end{bmatrix} + \begin{bmatrix}
+                y_1 \\
+                y_2 \\
+                y_3
+            \end{bmatrix} = \begin{bmatrix}
+                x_1 + y_1 \\
+                x_2 + y_2 \\
+                x_3 + y_3
+            \end{bmatrix}$
+
+            \textbf{Skalarmultiplikasjon}:
+            
+            $k\cdot \underline{x} = k \cdot \begin{bmatrix}
+                x_1 \\
+                x_2 \\
+                x_3
+            \end{bmatrix} = \begin{bmatrix}
+                kx_1 \\
+                kx_2 \\
+                kx_3
+            \end{bmatrix}$
+        \end{Formel}
+        
+        \begin{Formel}{Skalarprodukt og vektorprodukt}{}
+            \textbf{Skalarprodukt}:
+
+            $\underline{x} \cdot \underline{y} = x_1y_1 + x_2y_2 + x_3y_3 \dots$
+
+            \textbf{Vektorprodukt}:
+
+            $\underline{x} \times \underline{y} = \begin{bmatrix}
+                x_2y_2 - x_3y_2 \\
+                x_3y_1 - x_1y_3 \\
+                x_2y_1 - x_1y_2
+            \end{bmatrix}$
+        \end{Formel}
+
+        \subsubsection{Lineærkombinasjon}
+        
+        En lineærkombinasjon av vektorer skrives på formen:
+        $\underline{x_1}k_1 + \underline{x_2}k_2 + \dots + \underline{x_n}k_{n}$
+
+        Det er altså en vektor du får ved å legge sammen to vektorer multiplisert med en skalar. 
+        
+        \newpage
+       \section{Vektorlikninger}
+        
+       Litt repitisjon:
+
+       Søylevektor: $\underline{x} = \begin{bmatrix}
+           x_1 \\
+           x_2 \\
+           x_3
+       \end{bmatrix}$
+
+       $\underline{x} + \underline{y} = \begin{bmatrix}
+           x_1 \\
+           x_2 \\
+           x_3
+       \end{bmatrix} + \begin{bmatrix}
+           y_1 \\
+           y_2 \\
+           y_3
+       \end{bmatrix} = \begin{bmatrix}
+           x_1 + y_1 \\
+           x_2 + y_2 \\
+           x_3 + y_3
+       \end{bmatrix}$
+
+       $c \cdot \begin{bmatrix}
+           x_1 \\
+           x_2 \\
+           x_3
+       \end{bmatrix} = \begin{bmatrix}
+           cx_1 \\
+           cx_2 \\
+           cx_3
+       \end{bmatrix}$ 
+
+        Lineærkombinasjon av $\underline{x}$ og $\underline{y}$: $a\underline{x} + b\underline{y}$.  
+    
+        $\underline{x}$ og $\underline{y}$ er vektorer i $\mathbb{R}^{n}$ ($\mathbb{C}^{n}$)
+    \subsection{Linære spenn}%
+    \label{sub:linaere_spenn}
+    
+        \begin{Definition}{Lineært spenn}{}
+            $Sp\left\{\underline{x}, \underline{y}\right\}$ kalles det \textit{lineære spennet}.
+            $Sp\left\{\underline{x}, \underline{y}\right\} = \left\{a\underline{x} + b\underline{y} \mid a, b \in \mathbb{R} \right\}$
+            
+            Det lineæret spennet er altså mengden av alle linærkombinasjoner til $\underline{x}$ og $\underline{y}$. 
+        \end{Definition}
+
+        \begin{Example}{}{}
+            Hva er $Sp\left\{\begin{bmatrix}
+                                1 \\
+                                0
+                            \end{bmatrix}\right\}$?
+
+                            Vet at $Sp\left\{\underline{x}\right\} = Sp\left\{a\underline{x}\right\}$ som i mitt tilfelle er $Sp\left\{a \begin{bmatrix}
+                                            1 \\
+                                            0
+                                        \end{bmatrix}\right\} = \left\{\begin{bmatrix}
+                                                                            a \\
+                                                                            0
+                                                                        \end{bmatrix}\right\}$
+
+            Som tilsvarer x-aksen.
+            Hva er $Sp\left\{\begin{bmatrix}
+                1 \\
+                0 \\
+                0
+            \end{bmatrix}, \begin{bmatrix}
+                0 \\
+                1 \\
+                0
+            \end{bmatrix}\right\}$?
+
+            Bruker samme metode som sist:
+            $Sp\left\{a \begin{bmatrix}
+                1 \\
+                0 \\
+                0
+            \end{bmatrix} + b \begin{bmatrix}
+                0 \\
+                1 \\
+                0
+            \end{bmatrix}\right\} = \left\{\begin{bmatrix}
+                a \\
+                b \\
+                0
+            \end{bmatrix}\right\}$
+            Som er xy-planet.
+        \end{Example}
+
+        \subsection{Linkningssett}%
+        \label{sub:linkningssett}
+        
+        Vi er nå interessert i å løse likningsett, f.eks:
+        
+        \begin{align*}
+            \begin{cases}
+                x + 2y - 2z = -5 \\
+                x + 5y + 9z = 33 \\
+                2x + 5y -z = 0
+            \end{cases} \quad = x \cdot \begin{bmatrix}
+                1 \\
+                1 \\
+                2
+            \end{bmatrix} + y \cdot \begin{bmatrix}
+                2 \\
+                5 \\
+                5
+            \end{bmatrix} + z \cdot \begin{bmatrix}
+                -2 \\
+                9 \\
+                -1
+            \end{bmatrix} = \begin{bmatrix}
+                -5 \\
+                33 \\
+                0
+            \end{bmatrix}
+        \end{align*}
+            
+        Setter opp som en matrise og gausseliminerer for å finne løsning:
+        \begin{align*}
+            \begin{bmatrix}[ccc|c]
+                1 & 2 & -2 & -5 \\
+                1 & 5 & 9 & 33 \\
+                2 & 5 & -1 & 0
+            \end{bmatrix} &\sim \begin{bmatrix}[ccc|c]
+            1 & 2 & -2 & -5 \\
+            1 & 5 & 9 & 33 \\
+            0 & 1 & 3 & 10
+            \end{bmatrix}
+            \\
+            &\sim \begin{bmatrix}[ccc|c]
+                1 & 2 & -2 & -5 \\
+                0 & 3 & 11 & 38 \\
+                0 & 1 & 3 & 10
+            \end{bmatrix}
+            \\
+            &\sim \begin{bmatrix}[ccc|c]
+                1 & 2 & -2 & -5 \\
+                0 & 1 & \frac{11}{3} & \frac{38}{7} \\
+                0 & 0 & 1 & 4
+            \end{bmatrix}
+            \\
+            &\sim \begin{bmatrix}[ccc|c]
+                1 & 2 & -2 & -5 \\
+                0 & 1 & 0 & -2 \\
+                0 & 0 & 1 & 4
+            \end{bmatrix}
+            \\
+            &\sim \begin{bmatrix}[ccc|c]
+                1 & 0 & 0 & 7 \\
+                0 & 1 & 0 & -2 \\
+                0 & 0 & 1 & 4
+            \end{bmatrix}
+        \end{align*}
+        Ser at $x = 7$, $y = -2$ og $z = 4$. Setter inn i det originale utrykket for å sjekke:
+        \begin{align*}
+            7 + 2 \cdot -2 - 2\cdot 4 &= -5 \\
+            7 + 5 \cdot -2 + 9 \cdot 4 &= 33 \\
+            2 \cdot 7 + 5 \cdot -2 - 4 &= 0
+        \end{align*}
+        Jeg har funnet riktige verdier for $x$, $y$ og $z$.
+
+        
+        \begin{Definition}{Matriser}{}
+            En $m$x$n$ matrise skrives på formen:
+            \begin{align}
+                \begin{bmatrix}
+                    a_{11} & a_{12} & a_{1n} \\
+                    a_{21} & a_{22} & a_{2n} \\
+                    a_{mn} & a_{m2} & a_{mn}
+                \end{bmatrix}
+            \end{align}
+            Denne matrisen har altså $m$ rader og $n$ kolonner.
+        \end{Definition}
+
+        \begin{Definition}{Søylevektorer og radvektorer}{}
+            Hvis $\underline{v}$ er en søylevektor, kan den skrives på formen:
+            $\underline{v} = \begin{bmatrix}
+                v_1 \\
+                v_2 \\
+                v_{n}
+            \end{bmatrix}$
+
+            En radvektor er basically bare en liggende søylevektor:
+            $\underline{w} = \begin{bmatrix}
+                w_1 & w_2 & w_3
+            \end{bmatrix}$
+        \end{Definition}
+
+
+        \begin{Formel}{Fremgangsmåte for vektorlikniger}{}
+            Dette er vel egt ikke en formel, men det går fint. Her kommer en oppskrift på hvordan løse vektorlikninger:
+            \begin{enumerate}
+                \item Sett opp de forskjellige søylevektorene som kolonner i en matrise.
+                \item Gausseliminer.
+            \end{enumerate}
+            Ikke så veldig mye verre enn det egt.
+        \end{Formel}
+
+
+        \begin{Formel}{Gange matrise med vektor}{}
+            Igjen, ikke formel, men vet ikke hva jeg skal putte det under. 
+
+            (Har hatt et par glass vin når jeg skriver dette, så ikke hat meg om noe er feil <3 )
+            \\
+            \\
+            Gitt $A=\begin{bmatrix}
+                \underline{v_1} & \underline{v_2} & \underline{v_3} & \dots & \underline{v_{n}}
+            \end{bmatrix}$, hvor $A$ er en $m$x$n$ matrise og $\underline{x} = \begin{bmatrix}
+                x_1 \\
+                x_2 \\
+                x_3 \\
+                \dots \\
+                x_{n}
+            \end{bmatrix}$
+
+            Så er $A \cdot \underline{x} = \begin{bmatrix}
+                v_1 & v_2 & \dots & v_{n}
+            \end{bmatrix} \cdot \begin{bmatrix}
+                x_1 \\
+                x_2 \\
+                \dots \\
+                x_{n}
+            \end{bmatrix} = x_1v_1 + x_2v_2 + x_3v_3 + \dots + x_{n}v_{n} \in \mathbb{R}^m$ 
+        \end{Formel}
+
+        \begin{Example}{Matrise ganger vektor}{}
+            Gitt $A = \begin{bmatrix}
+                5 & 0 & -2 \\
+                3 & 1 & 4
+            \end{bmatrix}$ og $\underline{x} = \begin{bmatrix}
+                2 \\
+                -1 \\
+                3
+            \end{bmatrix}$ finn $A \cdot \underline{x}$
+
+            Setter opp og ganger:
+            \begin{align*}
+                \begin{bmatrix}
+                    5 & 0 & -2 \\
+                    3 & 1 & 4
+                \end{bmatrix} \cdot \begin{bmatrix}
+                    2 \\
+                    -1 \\
+                    3
+                \end{bmatrix} &= 2 \cdot \begin{bmatrix}
+                    5 \\
+                    3
+                \end{bmatrix} + (-1) \cdot \begin{bmatrix}
+                0 \\
+                1
+                \end{bmatrix} + 3 \cdot \begin{bmatrix}
+                    -2 \\
+                    4
+                \end{bmatrix}
+                \\
+                &= \begin{bmatrix}
+                    4 \\
+                    17
+                \end{bmatrix}
+            \end{align*}
+        \end{Example}
+        
+        \begin{Theorem}{}{}
+            $A(\underline{v} + \underline{w}) = A\underline{v} + A\underline{w}$
+
+            $A(c\underline{v}) = c(A\underline{v})$
+        \end{Theorem}
+        
+        \subsection{Enhetsvektorer}%
+        \label{sub:enhetsvektorer}
+        
+        Enhetsvektorer er vektorer som har én 1er og resten 0. De finnes i alle $\mathbb{R}^n$.
+       
+        Enhetsvektorer i $\mathbb{R}^2$:
+        $\underline{e_1} = \begin{bmatrix}
+            1 \\
+            0
+        \end{bmatrix}, \quad \underline{e_2} = \begin{bmatrix}
+            0 \\
+            1
+        \end{bmatrix}$
+
+        Enhetsvektorer i $\mathbb{R}^3$:
+        $\underline{e_1} = \begin{bmatrix}
+            1 \\
+            0 \\ 
+            0
+        \end{bmatrix}, \quad \underline{e_2} = \begin{bmatrix}
+            0 \\
+            1 \\ 
+            0
+        \end{bmatrix}, \quad \underline{e_3} = \begin{bmatrix}
+            0 \\
+            0 \\
+            1
+        \end{bmatrix}$
+
+        Samme mønster for $\mathbb{R}^n$
+
+        \subsection{Vektorlikninger}%
+        \label{sub:vektorlikninger}
+        
+        \begin{Definition}{En vektorlikgning}{}
+            En vektorlikning er på formen:
+            \begin{align*}
+                \begin{bmatrix}
+                    a_{11} \\
+                    a_{21} \\
+                    a_{m1}
+                \end{bmatrix} \cdot x_1 + \dots + \begin{bmatrix}
+                    a_{1n} \\
+                    a_{2n} \\
+                    a_{mn} \\
+                    \end{bmatrix} \cdot x_{n} = \begin{bmatrix}
+                        b_1 \\
+                        b_2 \\
+                        b_{n}
+                    \end{bmatrix}
+            \end{align*}
+            Vi skriver den som regel om til en matrise:
+            \begin{align*}
+                \begin{bmatrix}
+                    a_{11} & a_{12} & \dots & a_{1n} \\
+                    a_{21} & a_{22} & & a_{2n} \\
+                    \dots & & & \\
+                    a_{m1} & a_{m2} & \dots & a_{mn}
+                \end{bmatrix} \cdot \begin{bmatrix}
+                    x_1 \\
+                    x_2 \\
+                    \dots \\
+                    x_{n}
+                \end{bmatrix} = \begin{bmatrix}
+                    b_1 \\
+                    b_2 \\
+                    \dots \\
+                    b_{n}
+                \end{bmatrix}
+            \end{align*}
+            
+        \end{Definition}
+        
+        
+        \section{Forelesning 16.10.19}
+        I dag:
+
+        \begin{itemize}
+            \item Oppsummere projeksjon
+            \item ''Anvendelse av projeksjon''
+            \item Kapittel 10.
+        \end{itemize}
+                
+        \begin{Formel}{}{}
+            \begin{align*}
+                P_{\underline{v}} &= \frac{<\underline{v}, \underline{w}>}{<\underline{v}, \underline{v}>} \cdot \underline{v}
+                \\
+                \underline{\mathbb{R}^n}&: <\underline{v}, \underline{w}> = \underline{v}^{T}\underline{w} \\      
+                \underline{\mathbb{C}^n}&: <\underline{v}, \underline{w}> = \underline{v}^{*}\underline{w} \\
+                \underline{C([a,b])}&: <f, g> = \frac{1}{b-a}\int_{a}^{b}f(x)g(x)dx
+            \end{align*}
+        \end{Formel}
+
+        \subsection{Fourier-analyse(Anvendelse)}%
+        \label{sub:fourier_analyse}
+        
+        $\left\{1, \cos{x}, \sin{x}, \cos{2x}, \sin{2x} \dots \right\}$ er en ortiginal basis. Tenker at vi har en funksjon som går som et signal (ujevne bølger opp og ned, radiobølger f.eks). Har lyst til å finne ut av hvordan bølgene oppfører seg. Og det var det? Han ville visst bare nevne det.
+
+        \section{Egenverdier og egenvektorer}
+        
+        Det vi har jobbet med til nå er linærtransformasjoner, alle lineærtrans kan representeres som martriser. F.eks $f_{A}(\underline{v})= A\underline{v}$.
+
+        Hva om $f_{A}(\underline{v}) = \lambda\underline{v}$, for $\lambda \in \mathbb{R}$? Alstå, vi får bare et tall ganget med en vektor? Kaller $\lambda$ for egenverdi og $\underline{v}$ for egenvektor. 
+        \begin{Example}{}{}
+                        \begin{align*}
+                A = \begin{bmatrix}
+                    1 & 3 \\
+                    4 & -3
+                \end{bmatrix}, e_{1}, e_{2}, \underline{u} = \begin{bmatrix}
+                    -1 \\
+                    -2 \\
+                \end{bmatrix}, \underline{v} = \begin{bmatrix}
+                    3 \\
+                    2
+                \end{bmatrix}
+                \\
+                A\underline{e_1} &= \begin{bmatrix}
+                    1 \\
+                    4
+                \end{bmatrix}
+                \\
+                A\underline{e_2} &= \begin{bmatrix}
+                    3 \\
+                    -3
+                \end{bmatrix}
+                \\
+                A\underline{u} &= \begin{bmatrix}
+                    -7 \\
+                    2
+                \end{bmatrix}
+                \\
+                A\underline{v} &= \begin{bmatrix}
+                    9 \\
+                    6
+                \end{bmatrix} = 3\underline{v}
+            \end{align*}
+            Ser at det er kun en av vektorene ($\underline{v}$) som gir en skalering. Vi har lyst til å finne akkurat de tallene som gir skalering og de vektorene detgjelder.
+        \end{Example}
+
+        \begin{Definition}{}{}
+            La $A$ være en $n$x$n$ matrise, $\underline{v}$ være en $n$x$1$ vektor og $\lambda$ være en skalar.
+
+            Dersom $A\underline{v} = \lambda \underline{v}$, sp kalles $\lambda$ en egenverdi av $A$ og $\underline{v}$ en egenvektor av $A$, tilhørende $\lambda$
+        \end{Definition}
+
+        Hva om $\underline{w} = c\underline{v}$?
+
+        Da er $A\underline{w} = A(c\underline{v}) = cA\underline{v} = c\lambda\underline{v} = \lambda c\underline{v} = \underline{w}$.
+
+        Det følger at $\underline{w}$ også er en egenvektor til $A$ med hensyn til $\lambda$. 
+
+
+        Hva om $\lambda = 0$? Det betyr at $A\underline{v} = \underline{0}$ Som vil si at kolonnene i $A$ \textit{ikke} er lineært uavhengige. Som videre vil si at $A$ ikke har noen invers. Determinanten er også $0$.
+
+        \begin{Theorem}{}{}
+            $\lambda = 0$ er en egenverdi til $A$ $\iff$ $A$ ikke er invertibel. 
+        \end{Theorem}
+
+        \begin{Theorem}{}{}
+            La $T:V\rightarrow V$ (vi har en kvadratisk matrise) være en lineærtransformasjon. (Som også betyr at $V$ er et vektorrom), og la $\lambda_{1} \neq \lambda_{2} \neq \dots \neq \lambda_{n}$ være egenverdier til $T$. Da er de tilhørende egenvektorene $\underline{v_{1}}, \underline{v_2}, \dots ,\underline{v_{t}}$ lineært uavhengige.
+        \end{Theorem}
+
+        \begin{Theorem}{}{}
+            La $T:V\rightarrow V$ være en lineærtransformasjon representert ved $n$x$n$ matrise $A$. La $A$ ha $n$ distinkte egenverdier. 
+
+            Da utgjør de tihlørende egenvektorene $\underline{v_1}, \underline{v_2} \dots ,\underline{v_{n}}$ en basis for $V$. 
+        \end{Theorem}
+
+        \begin{Example}{}{}
+            \begin{align*}
+                A &= \begin{bmatrix}
+                    0 & 1 \\
+                    1 & 0
+                \end{bmatrix}
+                \\
+                A\underline{v} &= \begin{bmatrix}
+                    v_2 \\
+                    v_1
+                \end{bmatrix}
+            \end{align*}
+            Anta en linje gjennom origo ($y = x$) da er denne matrisemultiplikasjonen en speiling over denne linjen. 
+
+            Si vi har en vektor $\underline{v_1} = \begin{bmatrix}
+                1 \\
+                1
+            \end{bmatrix}$. Ganger vi denne med $A$ får vi den samme vektoren ut igjen, med egenverdi $1$. ($A\underline{v_1} = 1\underline{v}$)
+
+            Har vi linjen $y = -x$ og vektoren $\underline{v_3} = \begin{bmatrix}
+                1 \\
+                -1
+            \end{bmatrix}$ får vi $A\underline{v_3} = \begin{bmatrix}
+                -1 \\
+                1
+            \end{bmatrix} = (-1)\underline{v_3}$ (Egenvedien er $-1$)
+        \end{Example}
+    
+        \begin{Definition}{}{}
+            La $\lambda$ være en egenverdi til $A$ med tilhørende egenvektor $\underline{v}$, da kalles mengden $Sp\left\{\underline{v}\right\}$ egenrommet til $\lambda$. Nullvektoren er i egenrommet, selvom nullvektoren ikke er en egenvektor. (super forvirrende :p)
+        \end{Definition}
+
+        \subsection{Metode for å finne egenverdi og egenvektor}%
+        \label{sub:metode_for_a_finne_egenverider_og_egenvektorer}
+        
+        $A\underline{v} = \lambda \underline{v} \implies A\underline{v} - \lambda\underline{v} = 0$.
+
+        Vet at $AI_{n} = A$ og $\underline{v}I_{n} = \underline{v}$ 
+
+        Ved hjelp av dette kan vi finne $A\underline{v} - \lambda \underline{v} = 0 \implies A\underline{v} - \lambda I_{n}\underline{v} = 0 \implies (A-\lambda I_{n}) \underline{v} = \underline{0} \implies A - \lambda I_{n}$ ikke er invertibel.
+
+        Dette impliserer også et $det(A - \lambda I_{n}) = 0$
+        Videre, $\underline{v}$ ligger i nullrommet til $A$ fordi vi ganget med et matrise og fikk $\underline{0}$
+
+        \begin{Theorem}{}{}
+            La $A$ være en $m$x$n$ matrise. 
+
+            Da:
+            \begin{itemize}
+                \item Egenverdiene til A er løsningene $\lambda$ til $det(A - \lambda I_{n}) = 0$
+            \item $\lambda$ egenverdi til $A$, så er egenvektorene $\underline{v}$ til $\lambda$ løsningene til $(A - \lambda I_{n})\underline{v} = 0$ 
+            \end{itemize}
+            God, skjønner ingenting av dette her :p
+        \end{Theorem}
+
+        \begin{Definition}{}{}
+            Dimensjonen til egenrommet til $\lambda$ kalles den geometriske multiplisiteten til $\lambda$. 
+        \end{Definition}
+
+        \begin{Example}{}{}
+            \begin{align*}
+                A = \begin{bmatrix}
+                    1 & 3 \\
+                    4 & -3
+                \end{bmatrix}
+            \end{align*}
+            Vil finne egenverdiene.
+            \begin{align*}
+                A - \lambda I_{2} &= \begin{bmatrix}
+                    1 & 3 \\
+                    4 & -3
+                \end{bmatrix}- \begin{bmatrix}
+                    \lambda & 0 \\
+                    0 & \lambda
+                \end{bmatrix} = \begin{bmatrix}
+                    1-\lambda & 3 \\
+                    4 & -3-\lambda
+                \end{bmatrix}
+                \\
+                \\
+                    det(A-\lambda I_{2}) &= (1-\lambda)(-3-\lambda) - 12
+                    \\
+                                         &= -3 - \lambda + 3\lambda + \lambda^2 - 12
+                                         \\
+                                         &= \lambda^2 + 2\lambda - 15 = 0
+                                         \\
+                                         &\implies \lambda = \frac{-2 \pm \sqrt{2^2 - 4(-15)}}{2}
+                                         \\
+                                         &\implies \lambda = -1 \pm 4
+                                         \\
+                                         \lambda_{1} = 3, \quad \lambda_{2} = -5
+            \end{align*}
+            Vi kan nå finne egenvektorene til $A$. 
+
+            \begin{align*}
+                A - 3I_{2} = \begin{bmatrix}
+                    -3 & 3 \\
+                    4 & -6
+                \end{bmatrix} &\sim \begin{bmatrix}
+                -2 & 3 \\
+                0 & 0
+                \end{bmatrix}
+                \\
+                &\implies \underline{v_1} = \begin{bmatrix}
+                    3 \\
+                    2
+                \end{bmatrix}
+                \\
+                \\
+                A + 5I_{2} = \begin{bmatrix}
+                    6 & 3 \\
+                    4 & 2
+                \end{bmatrix} &\sim \begin{bmatrix}
+                2 & 1 \\
+                0 & 0
+                \end{bmatrix}
+                \\
+                &\implies \underline{v_{2}} = \begin{bmatrix}
+                    -1 \\
+                    2
+            \end{bmatrix}
+            \end{align*}
+            $\underline{v_1}$ er løsningen på $A\underline{v_1} = 0$ og  $\underline{v_2}$ er løsningen på $A\underline{v_2} = 0$ 
+            
+            Egenrommet:
+            $\lambda = 3$ er $Sp\left\{\begin{bmatrix}
+                3 \\
+                2
+            \end{bmatrix}\right\}$ og til $\lambda = -5$ er $Sp\left\{\begin{bmatrix}
+                -1 \\
+                2
+            \end{bmatrix}\right\}$
+        \end{Example}
+
+        \begin{Example}{}{}
+            \begin{align*}
+                A &= \begin{bmatrix}
+                    -8 & 0 & 6 \\
+                    12 & 4 & -6 \\
+                    -20 & 0 & 14
+                \end{bmatrix}
+                \\
+                    A - \lambda I_{3} &= \begin{bmatrix}
+                    -8 - \lambda & 0 & 6 \\
+                    12 & 4 - \lambda & -6 \\
+                    -20 & 0 & 12 - \lambda
+                \end{bmatrix}
+                \\
+                \\
+                    det(A - \lambda I_3) &= (-8 - \lambda)(4-\lambda)(14-\lambda) + (4-\lambda)\cdot 20\cdot 6 = 0
+                    \\
+                                         &= (4-\lambda)((-8-\lambda)(14-\lambda) + 120) \\
+                                         &= (4-\lambda)(\lambda^2-6\lambda+8) = 0
+                                         \\
+                                         &\implies \lambda_{1} = 4, \quad \lambda = \frac{6 \pm \sqrt{36-32}}{2} 
+                                         \\
+                                         &\implies \lambda_{2} = 3+1 = 4, \quad \lambda_{3} = 3-1 = 2
+            \end{align*}            
+            Har lyst til å vinne egenvektorer:
+            \begin{align*}
+                A - 4I_{3} = \begin{bmatrix}
+                    -12 & 0 & 6 \\
+                    12 & 0 & -6 \\
+                    -20 & 0 & 10
+                \end{bmatrix} &\sim \begin{bmatrix}
+                -2 & 0 & 1 \\
+                0 & 0 & 0 \\
+                0 & 0 & 0
+                \end{bmatrix}
+                \\
+                &\implies \underline{v_1} = \begin{bmatrix}
+                    0 \\
+                    1 \\
+                    0
+                \end{bmatrix}, \quad \underline{v_2} = \begin{bmatrix}
+                    1 \\
+                    0 \\
+                    2
+                \end{bmatrix}
+                \\
+                \\
+                A - 2I_{3} = \begin{bmatrix}
+                    -10 & 0 & 6 \\
+                    12 & 2 & -6 \\
+                    -20 & 0 & 12
+                \end{bmatrix} &\sim \begin{bmatrix}
+                -5 & 0 & 3 \\
+                6 & 1 & -3 \\
+                0 & 0 & 0
+                \end{bmatrix}
+                \\
+                &\sim \begin{bmatrix}
+                    -5 & 0 & 3 \\
+                    1 & 1 & 0 \\
+                    0 & 0 & 0
+                \end{bmatrix}
+                \\
+                &\implies \underline{v_3} = \begin{bmatrix}
+                    1 \\
+                    -1 \\
+                    \frac{5}{3}
+                \end{bmatrix}
+            \end{align*}
+            Kan også bruke metoder fra tidligere (frie variabler) for å finne nullrommet (som er egenvektorene) (tror jeg).
+
+            Egenrommet til $\lambda = 4$ har dimensjon $2$ og til $\lambda = 2$ har dimensjon $1$. 
+        \end{Example}
+
+        \section{Forelesning 17.10.19}
+
+        \subsection{Egenverdier og egenvektorer}%
+        \label{sub:egenverdier_og_egenvektorer}
+        
+        $A\underline{v} = \lambda \underline{v}$, der $A$ er en $m$x$n$ matrise. 
+
+        Finne $\lambda$: Løs $det(A - \lambda I_{n}) = 0$.
+
+        Finne $\underline{v}$: Gitt $\lambda, \underline{v} \in Null(A-\lambda I_{n})$ 
+
+        Geometrisk multiplisitet til $\lambda$ er dimensjonen til egenrommet til $\lambda$. 
+
+        \begin{Example}{}{}
+            \begin{align*}
+                A &= \begin{bmatrix}
+                    -8 & 0 & 6 \\
+                    12 & 4 & -6 \\
+                    -20 & 0 & 14
+                \end{bmatrix}, \lambda_{1} = \lambda_{2} = 4, \lambda_{3} = 2
+                \\
+                \\
+                \text{Da er:}
+                \\
+                    \underline{v_1} &= \begin{bmatrix}
+                    0 \\
+                    1 \\
+                    0
+                \end{bmatrix}
+                \\
+                        \underline{v_2} &= \begin{bmatrix}
+                    1 \\
+                    0 \\
+                    2
+                \end{bmatrix}
+                \\
+                            \underline{v_3} &= \begin{bmatrix}
+                    3 \\
+                    -3 \\
+                    5
+                \end{bmatrix}
+            \end{align*}
+        \end{Example}
+       
+        \section{Eksistens av egenverdier og egenvektorer}
+        
+        Lurer på:
+        \begin{itemize}
+            \item Hvor mange egenverdier kan en matrise ha?
+            \item Finnes det alltid egenvektorer ($\underline{v}$) og evgenverdier ($\lambda$)?
+            \item  Hva er dimensjonene til egenrommene? (Generelt, kan alltid regne det ut.)
+            \item Kan vi finne en basis for $\mathbb{R}^{n}$ eller $\mathbb{C}^{n}$
+bestående av egenvektorer?
+        \end{itemize}
+        
+        \begin{Example}{Generell egenverdi 2*2 matrise}{}
+            \begin{align*}
+                A &= \begin{bmatrix}
+                    a & b \\
+                    c & d
+                \end{bmatrix}
+                \\
+                  &\implies det(A - \lambda I_{n})
+                  \\
+                  &= (a-\lambda)(d-\lambda) - bc
+                  \\
+                  &= \lambda^2 - a\lambda - d\lambda + ad - bc
+            \end{align*}
+        \end{Example}
+
+        Hvor mange løsninger har et generelt polynom?
+        
+        \begin{Theorem}{Algebraens fundamentalteorem}{}
+            Dersom vi har en ligning $a_{n} x^n + a_{n-1}x^{n-1} + \dots + a_{1}x + a_{0}$ kan den skrives som $a_{n}\prod_{i=1}^{n}(x-x_{i})$ hvor $x_{i}$ er løsninger av $f(x) = 0$
+
+            $\implies \forall a_{i} \in \mathbb{R}$ eller $\forall a_{i} \in \mathbb{C}$, finnes det $n$ (ikke nødvendigvis unike) komplekse løsninger $x_{i}$ av $f(x) = 0$.
+
+            Dersom faktoren $(x-x_{i})$, for en gitt $i$ forekommer $m$ ganger, sier vi at $x_{i}$ har multiplisitet $m$.
+        \end{Theorem}
+
+        \begin{Theorem}{}{}
+            En kompleks $n$x$n$ matrise $A$ har alltid $n$ egenverdier, når vi teller med multiplisiteten. (Hvis en egenverdi oppstår to ganger, teller vi dette som 2).
+        \end{Theorem}
+        
+        \begin{Definition}{Algebraisk multiplisitet}{}
+            Dersom $\lambda$ er en rot av $det(A - \lambda I_{n}) = 0$ og har multiplisitet $m$, så kaller vi $m$ den algebraiske multiplisiteten til $\lambda$. 
+        \end{Definition}
+
+        \begin{Theorem}{}{}
+            En reell matrise $A$ ($n$x$n$) trenger ikke nødvendigvis ha noen reelle røtter (egenverdier). Dersom $n$ er et oddetall, vil vi \textit{alltid} ha minst én reell egenverdi.
+        \end{Theorem}
+
+        \begin{Theorem}{}{}
+            La $\lambda$ være en kompleks egenverdi av $A$. 
+            \\ \\
+            Da er også $\bar{\lambda}$ en egenverdi. Hvis $\underline{v}$ egenvektor til $\lambda$, så er $\bar{\underline{v}}$ egenvektor til $\bar{\lambda}$
+        \end{Theorem}
+
+        \begin{Example}{}{}
+            La $A = \begin{bmatrix}
+                0 & -1 \\
+                1 & 0
+            \end{bmatrix}$ Hva er egenverdien(e) og egenvektor(ene)?
+
+            Egenverdiene er gitt ved $det(A - \lambda I_{n}) = 0$:
+
+            \begin{align*}
+                det(A - \lambda I_{n}) &= det \left(\begin{bmatrix}
+                    0 & -1 \\
+                    1 & 0
+                \end{bmatrix} - \begin{bmatrix}
+                    \lambda & 0 \\
+                    0 & \lambda
+            \end{bmatrix} \right) = 0
+            \\
+                                       &= det\left(\begin{bmatrix}
+                                               -\lambda & -1 \\
+                                               1 & -\lambda
+                                       \end{bmatrix} \right)= 0
+                                       \\
+                                       &= -\lambda \cdot -\lambda - -1 \cdot 1 = 0
+                                       \\
+                                       &= \lambda^2 + 1 = 0
+                                       \\
+                                       &\implies \lambda_{1} = i, \quad \lambda_{2} = -i
+            \end{align*}
+
+            Egenvektorer:
+            \begin{align*}
+                A - iI_{2} = \begin{bmatrix}
+                    -i & -1 \\
+                    1 & -i
+                \end{bmatrix} &\sim \begin{bmatrix}
+                -i & -1 \\
+                -i & -1
+                \end{bmatrix}
+                \\
+                &\sim \begin{bmatrix}
+                    -i & -1 \\
+                    0 & 0
+                \end{bmatrix}
+                \\
+                \\
+                &\implies \underline{v_1} = \begin{bmatrix}
+                    1 \\
+                    -i
+                \end{bmatrix}
+                \\
+                \\
+                A + iI_{2} = \begin{bmatrix}
+                    i & -1 \\
+                    1 & i
+                \end{bmatrix} &\sim \begin{bmatrix}
+                i & -1 \\
+                0 & 0
+                \end{bmatrix}
+                \\
+                \\
+                &\implies \underline{v_2} = \begin{bmatrix}
+                    1 \\
+                    i
+                \end{bmatrix}
+            \end{align*}
+            Vi ser at $\lambda_{1} = \bar{\lambda_2}$ og $\underline{v_1} = \bar{\underline{v_2}}$
+        \end{Example}
+        
+        \begin{Example}{}{}
+            Vi har $A = \begin{bmatrix}
+                3 & 0 & 0 \\
+                0 & 1 & -1 \\
+                0 & 1 & 1
+            \end{bmatrix}$. Har lyst til å finne egenvektorer og egenverdier.
+            \begin{align*}
+                A - \lambda I_{3} &= \begin{bmatrix}
+                    3 & 0 & 0 \\
+                    0 & 1 & -1 \\
+                    0 & 1 & 1
+                \end{bmatrix} - \begin{bmatrix}
+                    \lambda & 0 & 0 \\
+                    0 & \lambda & 0 \\
+                    0 & 0 & \lambda
+                \end{bmatrix}
+                \\
+                                  &= \begin{bmatrix}
+                                      3 - \lambda & 0 & 0 \\
+                                      0 & 1 - \lambda & -1 \\
+                                      0 & 1 & 1-\lambda
+                                  \end{bmatrix}
+                                  \\
+                                  &\implies det(A - \lambda I_3) = (3-\lambda)(1 - \lambda)(1 - \lambda) + (3-\lambda)
+                                  \\
+                                  &= (3-\lambda)((1-\lambda)^2 + 1) = (3-\lambda)(\lambda^2-2\lambda+2) = 0 \\
+                                  &\implies \lambda_1 = 3
+                                  \\
+                                  \\
+                    \lambda &= \frac{2 \pm \sqrt{4-8}}{2} 
+                    \\
+                            &= \frac{2 \pm 2i}{2} = 1 \pm i
+                            \\
+                            &\implies \lambda_2 = 1+i \quad \lambda_3 = 1-i
+            \end{align*}
+            La oss nå finne egenvediene:
+            \begin{align*}
+                A - 3I_3 = \begin{bmatrix}
+                    0 & 0 & 0 \\
+                    0 & -2 & -1 \\
+                    0 & 1 & -2
+                \end{bmatrix} &\sim \begin{bmatrix}
+                0 & 0 & 0 \\
+                0 & 0 & -5 \\
+                0 & 1 & -2
+                \end{bmatrix}
+                \\
+                &\sim \begin{bmatrix}
+                    0 & 0 & 0 \\
+                    0 & 0 & 1 \\
+                    0 & 1 & 0
+                \end{bmatrix}
+            \end{align*}
+            Vi har to pivotkolonner, aka 1 fri variabel. Vi får $\underline{v_1} = \begin{bmatrix}
+                1 \\
+                0 \\
+                0
+            \end{bmatrix}$
+            Videre:
+            \begin{align*}
+                A - (1+i)I_3 = \begin{bmatrix}
+                    2 - i & 0 & 0 \\
+                    0 & -i & -1 \\
+                    0 & 1 & -i
+                \end{bmatrix} &\sim \begin{bmatrix}
+                2-i & 0 & 0 \\
+                0 & 0 & 0 \\
+                0 & 1 & -i
+                \end{bmatrix}
+                \\
+                &\implies \underline{v_2} = \begin{bmatrix}
+                    0 \\
+                    i \\
+                    1
+                \end{bmatrix} \implies \underline{v_3} = \begin{bmatrix}
+                    0 \\
+                    -i \\
+                    1
+                \end{bmatrix}
+            \end{align*}
+        \end{Example}
+
+        \begin{Example}{}{}
+            Vi har $A = \begin{bmatrix}
+                1 & 1 & 0 \\
+                0 & 1 & 0 \\
+                0 & 0 & 2
+            \end{bmatrix}$
+            \begin{align*}
+                A - \lambda I_3 &= \begin{bmatrix}
+                    1 - \lambda & 1 & 0 \\
+                    0 & 1 - \lambda & 0 \\
+                    0 & 0 & 2 - \lambda 
+                \end{bmatrix}
+                \\
+                                &\implies det(A - \lambda I_3) = (2-\lambda)(1-\lambda)^2 
+                                \\
+                                &\implies \lambda_1 = 2, \quad \lambda_2 = \lambda_3 = 1
+                                \\
+                                \\
+                    A - I_3 &= \begin{bmatrix}
+                        0 & 1 & 0 \\
+                        0 & 0 & 0 \\
+                        0 & 0 & 1
+                    \end{bmatrix} \implies \underline{v_1} = \begin{bmatrix}
+                        1 \\
+                        0 \\
+                        0
+                    \end{bmatrix}
+            \end{align*}
+            Dimensjonen til egenrommet til $\lambda = 1 = 1$
+        \end{Example}
+        
+        \begin{Theorem}{}{}
+            Egenrommet til $\lambda$ har dimensjon $\ge$ 1 og geometrisk multiplisitet $\le$ algrebraisk multiplsitet
+        \end{Theorem}
+
+        \begin{Theorem}{}{}
+            Egenverdiene til $A$ utgjør en basis hvis og bare hvis algebraisk multiplisitet $=$ geometrisk multiplisitet for alle egenverdier.
+        \end{Theorem}
+
+
+        \section{Forelesning 21.10.19}
+        \subsection{Oppsummering kap 10}%
+        \label{sub:oppsummering_kap_10}
+        
+        $A$ $n$x$n$ matrise, $\underline{v} \neq 0$ slik at $A\underline{v} = \lambda\underline{v}$; Egenverdi: $\lambda$ og egenvektor $\underline{v}$
+
+        Finner $\lambda$ ved å løse $det(A - \lambda I_{n}) = 0$
+
+        Finner $\underline{v}$ til $\lambda$ ved å finne $\underline{v} \in Null(A - \lambda I-n)$ 
+
+        Egenrommet til $\lambda$ er $Null(A - \lambda I_{n})$
+
+        Finnes alltid $n$ egenverdier til $\lambda$
+
+        Finnes minst en $\underline{v}$ per $\lambda$
+
+        Dersom algebraisk multiplisitet = geometrisk multiplisitet, for alle $\lambda \implies \underline{v_1}, \underline{v_2}, \dots ,\underline{v_{n}}$ basis. 
+
+        \subsection{Diagonalisering}%
+        \label{sub:diagonalisering}
+        
+        \begin{Definition}{}{}
+            $A$ $n$x$n$ matrise er diagonaliserbar dersom det finnes en diagonal matrise $D$ ig invertibel matrise $P$ slik at $A = PDP^{-1}$ 
+        \end{Definition}
+
+        \section{Diagonalisering}
+        Vi har $D = \begin{bmatrix}
+            3 & 0 \\
+            0 & -5
+        \end{bmatrix}$. Hva er $D^5$?
+
+        $D^5 = D \cdot D \cdot D \cdot D \cdot D$. 
+
+        $D^2 = \begin{bmatrix}
+            3^2 & 0 \\
+            0 & (-5)^2
+        \end{bmatrix} \implies D^5 = \begin{bmatrix}
+            3^5 & 0 \\
+            0 & (-5)^5
+        \end{bmatrix} = \begin{bmatrix}
+            243 & 0 \\
+            0 & -3125
+        \end{bmatrix}$
+        
+        
+        Hva om vi har $A = \begin{bmatrix}
+            1 & 3 \\
+            4 & -3
+        \end{bmatrix}$, hva blir $A^5$? Det er vanskelig. Vi vil skrive $A = PDP^{-1}$. $A^2 = (PDP^{-1})(PDP^{-1}) = PD^2P^{-1}$ som vil si vi kan skrive $A^5 = PD^5P^{-1}$. 
+
+        Fra tidligere eksempel (tydeligvis) har vi:
+        $\lambda_1 = 3, \quad \lambda_2 = -5, \quad \underline{v_1} = \begin{bmatrix}
+            3 \\
+            2
+        \end{bmatrix}, \quad \underline{v_2} = \begin{bmatrix}
+            1 \\
+            -2
+        \end{bmatrix}$.
+
+        Vi hadde også systemene: $A\underline{v_1} = \lambda\underline{v_1}, \quad A\underline{v_2} = \lambda\underline{v_2}$. Vil skrive disse som et system.
+
+        $P = \begin{bmatrix}
+            \underline{v_1} & \underline{v_2}
+        \end{bmatrix} = \begin{bmatrix}
+            3 & 1 \\
+            2 & -2
+        \end{bmatrix} \implies P^{-1} = \frac{1}{8} \begin{bmatrix}
+            2 & 1 \\
+            2 & -3
+        \end{bmatrix}$
+
+        Kan skrive $A\underline{v_1} = \lambda_1\underline{v_1} + 0\underline{v_2}, \quad A\underline{v_2} = \lambda\underline{v_2}+0\underline{v_1}$
+
+        $D = \begin{bmatrix}
+            3 & 0 \\
+            0 & -5
+        \end{bmatrix}$
+        
+        \begin{Definition}{}{}
+            En $n$x$n$ matrise $A$ er diagonaliserbar dersom det eksisterer en invertibel $P$ og diagonal $D$ slik at $A = PDP^{-1}$
+        \end{Definition}
+        
+        \begin{Example}{}{}
+            $A = \begin{bmatrix}
+                1 & 3 \\
+                4 & -3
+            \end{bmatrix}$, $\lambda_1 = 3$, $\lambda_2 = -5$, $\underline{v_1} = \begin{bmatrix}
+                3 \\
+                3
+            \end{bmatrix}$, $\underline{v_2} = \begin{bmatrix}
+                1 \\
+                -2
+            \end{bmatrix}$.
+
+            $A\underline{v_1} = \lambda_1\underline{v_1} + 0\cdot \underline{v_2}$
+
+            $A\underline{v_2} = 0\cdot \underline{v_2} 0 \lambda_2 \underline{v_2}$
+            \\
+
+            Dette vil si:
+            \\
+            \\
+            $A[\underline{v_1} \underline{v_2}] = \begin{bmatrix}
+                \underline{v_1} & \underline{v_2}
+            \end{bmatrix}\begin{bmatrix}
+                \lambda_1 & 0 \\
+                0 & \lambda_2
+            \end{bmatrix}$
+
+            $\implies A = PDP^{-1}$
+        \end{Example}
+
+        \begin{Theorem}{}{}
+            $n$x$n$ matrise $A$ er diagonaliserbar $\iff$ $A$ har $n$ linerært uavhengige egenvektorer.
+        \end{Theorem}
+
+        \begin{Proof}{Theorem 9.1}{}
+            Anta $A$ har $n$ lineært uavhengige egenvektorer $\underline{v_1}, \dots ,\underline{v_{n}}$. Da vet vi at vi har $n$ egenverdier (trenger ikke være unike) slik at $A\underline{v_{i}} = \lambda_{i}\underline{v_{i}} \forall i$
+
+            Da følger det at $\begin{bmatrix}
+                A\underline{v_1} & A\underline{v_2} & A\underline{v_{n}}
+            \end{bmatrix} = \begin{bmatrix}
+                \lambda\underline{v_1} & \lambda\underline{v_2} & \lambda\underline{v_{n}}
+            \end{bmatrix}$ som er det samme som $A\begin{bmatrix}
+                \underline{v_1} & \underline{v_2} & \underline{v_{n}}\end{bmatrix} = \begin{bmatrix}
+                    \underline{v_1} & \underline{v_2} & \underline{v_{n}}
+                \end{bmatrix}\begin{bmatrix}
+                    \lambda_1 & 0 & \dots & 0 \\
+                    0 & \lambda_2 & \dots & 0 \\
+                    0 & 0 & \dots & \lambda_{n}
+                \end{bmatrix}$
+
+                $\implies A = PDP^{-1} \implies A$ er diagonaliserbar.
+
+                \\
+                \\
+                Anta nå $A$ er diagonaliserbar. Det vil si det finnes $D$ og $P$ slik at $A = PDP^{-1}$. Da kan vi gange med $P$ på begge sider: $AP = PD$
+                \\
+                $\implies \begin{bmatrix}
+                    A\underline{k_1} & A\underline{k_2} & \dots & \underline{kn}
+                \end{bmatrix} = \begin{bmatrix}
+                    a_1\underline{k_1} & a_2\underline{k_2} & \dots & a_{n}\underline{kn}
+                \end{bmatrix}$
+                \\
+                \\
+                $\implies A\underline{k_{i}} = a_{i}\underline{k_{i}} \forall i \implies a_{i}$ egenverdi for $\underline{k_{i}}$ som er egenvektor for $A$. 
+                \\
+                \\
+                $P$ invertibel $\implies \underline{k_1}, \underline{k_2}, \dots ,\underline{k_{n}}$ er lineært uavhengige $\implies \underline{k_1}, \dots ,\underline{k_{n}}$ lineært uavhengige egenvektorer til $A$. 
+        \end{Proof}
+
+        \begin{Theorem}{}{}
+            Dersom $n$x$n$ matrisen $A$ har $n$ distinkte egenverdier, så er $A$ diagonaliserbar. 
+        \end{Theorem}
+
+        \begin{Theorem}{}{}
+            $A$ $n$x$n$ matrise. Da er $A$ diagonaliserbar hvis og bare hvis algebraisk multiplisitet = geometrisk multiplisitet for alle $\lambda$
+        \end{Theorem}
+
+        Merk: Reell matrise $A$ kan ha kompleks $P$ og $D$ slik at $A = PDP^{-1}$
+
+        \begin{Example}{}{}
+            $A = \begin{bmatrix}
+                -8 & 0 & 6 \\
+                12 & 4 & -6 \\
+                -20 & 0 & 14
+            \end{bmatrix}$
+
+            $A$ har egenverdier $\lambda_1 = 2$, $\lambda_2 = 4$ og $\lambda_3 = 4$, med egenvetorer $\underline{v_1} = \begin{bmatrix}
+                3 \\
+                -3 \\
+                5
+            \end{bmatrix}$, til $\lambda = 2$, $\underline{v_2} = \begin{bmatrix}
+                0 \\
+                1 \\
+                0
+            \end{bmatrix}$ og $\underline{v_3} = \begin{bmatrix}
+                1 \\
+                0 \\
+                2
+            \end{bmatrix}$ til $\lambda = 4$.
+
+            Kan sette opp 
+            \\
+            $D = \begin{bmatrix}
+                2 & 0 & 0 \\
+                0 & 4 & 0 \\
+                0 & 0 & 4
+            \end{bmatrix}$ hvor tallene som ikke er $0$ er egenverdiene.
+            \\
+            \\
+            \\
+            $P = \begin{bmatrix}
+                3 & 0 & 1 \\
+                -3 & 1 & 0 \\
+                5 & 0 & 2
+            \end{bmatrix}$ hvor kolonnene er egenvektorene.
+            \\
+            \\
+            \\
+            Da er $A = PDP^{-1}$. 
+        \end{Example}
+        
+        \begin{Example}{}{}
+            $A = \begin{bmatrix}
+                0 & -1 \\
+                1 & 0
+            \end{bmatrix}$. Har komplekse egenverdier $\lambda_1 = i$, $\lambda_2 = -1$. Egenvektorer: $\underline{v_1} = \begin{bmatrix}
+                1 \\
+                -i
+            \end{bmatrix}$ og $\underline{v_2} = \begin{bmatrix}
+                1 \\
+                i
+            \end{bmatrix}$. 
+
+            \\
+            \\
+            \\
+            Egenverdiene gir oss en diagonalmatrise $D = \begin{bmatrix}
+                i & 0 \\
+                0 & -1
+            \end{bmatrix}$ og egevektorene gir oss $P = \begin{bmatrix}
+                1 & 1 \\
+                -i & i
+            \end{bmatrix} \implies P^{-1} = \frac{1}{2i} \begin{bmatrix}
+                i & -1 \\
+                i & 1
+            \end{bmatrix} = \frac{-2i}{4} = \frac{1}{2} \begin{bmatrix}
+                1 & i \\
+                1 & -i
+            \end{bmatrix}$ 
+            \\
+            \\
+            \\
+            \begin{align*}
+                \begin{bmatrix}
+                    1 & 1 \\
+                    -i & i
+                \end{bmatrix} \cdot \begin{bmatrix}
+                    i & 0 \\
+                    0 & -i
+                \end{bmatrix} &= \begin{bmatrix}
+                i & -i \\
+                1 & 1
+                \end{bmatrix}
+                \\
+                \\
+               \frac{1}{2} \begin{bmatrix}
+                   i & -i \\
+                   1 & 1
+               \end{bmatrix} \cdot \begin{bmatrix}
+                   1 & i \\
+                   1 & -i
+               \end{bmatrix} &= \frac{1}{2} \begin{bmatrix}
+               0 & -2 \\
+               2 & 0
+               \end{bmatrix} = \begin{bmatrix}
+               0 & -1 \\
+               1 & 0
+               \end{bmatrix} = A
+            \end{align*}
+        \end{Example}
+
+        \begin{Example}{}{}
+            $A = \begin{bmatrix}
+                1 & 1 \\
+                0 & 1
+            \end{bmatrix}$
+
+            Finner egenverdier og egenvektorer:
+            \begin{align*}
+                A - \lambda I_{2} &= \begin{bmatrix}
+                    1 - \lambda & 1 \\
+                    0 & 1 - \lambda
+                \end{bmatrix}
+                \\
+                                  &\implies det(A - \lambda I_1) = (1-\lambda)^2 = 0
+                                  \\
+                                  &\implies \lambda_1 = 1, \quad \lambda_2 = 1
+                                  \\
+                                  \\
+                    A - I_2 &= \begin{bmatrix}
+                        0 & 1 \\
+                        0 & 0
+                    \end{bmatrix} \implies \underline{v} = \begin{bmatrix}
+                        1 \\
+                        0
+                    \end{bmatrix}
+            \end{align*}
+            Algebraisk multiplisitet er 2, mens geometisk er 1. $A$ er ikke diagonaliserbar.
+        \end{Example}
+
+
+        Har en matrise $A = \begin{bmatrix}
+            a & -b \\
+            b & a
+        \end{bmatrix}$ hvor $a, b \in \mathbb{R}$ og $b \neq 0$.
+
+        $det(A - \lambda I_{2}) = (a-\lambda)^2 + b^2 = 0 \implies \lambda_1 = a+ib$, $\lambda_2 = a - ib$.
+
+        Ser på $A - (a+ib)I_{2} = \begin{bmatrix}
+            -ib & -b \\
+            b & -ib
+        \end{bmatrix} \sim \begin{bmatrix}
+            -ib & -b \\
+            0 & 0
+        \end{bmatrix} \implies \underline{v_1} = \begin{bmatrix}
+            1 \\
+            -i
+        \end{bmatrix} \implies \underline{v_2} = \begin{bmatrix}
+            1 \\
+            i
+        \end{bmatrix}$.
+
+        $r = |\lambda| = \sqrt{a^2 + b^2}$
+
+        $A = \begin{bmatrix}
+            r & 0 \\
+            0 & r
+        \end{bmatrix} \begin{bmatrix}
+            \cos{\theta} & -\sin{\theta} \\
+            \sin{\theta} & \cos{\theta}
+        \end{bmatrix}$
+
+        \begin{Theorem}{}{}
+            $A$ reell $2$x$2$ matrise med kompleks egenverdi $\lambda = a-ib$ (eller $\lambda = a+ib$) hvor $b>0 \in \mathbb{R}$. 
+            
+            La $\underline{v} \in \mathbb{C}^2$ være egenvektor til $\lambda$ da kan vi skrive $A = PCP^{-1}$, hvor $P = \begin{bmatrix}
+                Re\underline{v} & Im\underline{v}
+            \end{bmatrix}$ og $C = \begin{bmatrix}
+                a & -b \\
+                b & a
+            \end{bmatrix}$ 
+        \end{Theorem}
+        
+        \begin{Example}{}{}
+            \begin{align*}
+                A &= \begin{bmatrix}
+                    1 & -2 \\
+                    1 & 3
+                \end{bmatrix}
+                \\
+                    det(A - \lambda I_{2}) &= (1-\lambda)(3-\lambda) + 2
+                    \\
+                                           &= \lambda^2 - 4\lambda + 5 = 0
+                                           \\
+                                           &\implies \lambda = \left[ 2 - i, \  2 + i\right]
+                                           \\
+                                           \\
+                    A - (2-i)I_2 &= \begin{bmatrix}
+                        -i+i & -2 \\
+                        1 & 1+i
+                    \end{bmatrix}
+                    \\
+                                 &\sim \begin{bmatrix}
+                                     1-i & 2 \\
+                                     0 & 0
+                                 \end{bmatrix}
+                                 \\
+                                 &\sim \begin{bmatrix}
+                                     0 & 0 \\
+                                     1 & 1+i
+                                 \end{bmatrix}
+                                 \\
+                                 &\implies \underline{v} = \begin{bmatrix}
+                                     1 + i \\
+                                     -1
+                                 \end{bmatrix}, \quad Re(\underline{v}) = \begin{bmatrix}
+                                     1 \\
+                                     -1
+                                 \end{bmatrix}, quad Im(\underline{v}) = \begin{bmatrix}
+                                     1 \\
+                                     0
+                                 \end{bmatrix}
+                                 \\
+                                 &\implies P = \begin{bmatrix}
+                                     1 & 1 \\
+                                     -1 & 0
+                                 \end{bmatrix}, \quad C = \begin{bmatrix}
+                                     2 & -1 \\
+                                     1 & 2
+                                 \end{bmatrix}
+            \end{align*}
+        \end{Example}
+
+\end{document}

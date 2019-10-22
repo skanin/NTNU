@@ -1,0 +1,17 @@
+[0m[[0m[31merror[0m] [0m[0m/Users/sanderlindberg/Dropbox/NTNU/Informatikk/H2019/TDT4165/Ovinger/Scala/scala_project/delivery/tasks/task2.scala:4:21: not enough arguments for method apply: (v1: Int, v2: Int)Int in trait Function2.[0m
+[0m[[0m[31merror[0m] [0m[0mUnspecified value parameters v1, v2.[0m
+[0m[[0m[31merror[0m] [0m[0m            callback()[0m
+[0m[[0m[31merror[0m] [0m[0m                    ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/sanderlindberg/Dropbox/NTNU/Informatikk/H2019/TDT4165/Ovinger/Scala/scala_project/delivery/tasks/task2.scala:9:50: not found: value a[0m
+[0m[[0m[31merror[0m] [0m[0m        val test = function_that_returns_thread((a: Int, b: Int) -> a*b)[0m
+[0m[[0m[31merror[0m] [0m[0m                                                 ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/sanderlindberg/Dropbox/NTNU/Informatikk/H2019/TDT4165/Ovinger/Scala/scala_project/delivery/tasks/task2.scala:9:58: not found: value b[0m
+[0m[[0m[31merror[0m] [0m[0m        val test = function_that_returns_thread((a: Int, b: Int) -> a*b)[0m
+[0m[[0m[31merror[0m] [0m[0m                                                         ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/sanderlindberg/Dropbox/NTNU/Informatikk/H2019/TDT4165/Ovinger/Scala/scala_project/delivery/tasks/task2.scala:9:69: not found: value a[0m
+[0m[[0m[31merror[0m] [0m[0m        val test = function_that_returns_thread((a: Int, b: Int) -> a*b)[0m
+[0m[[0m[31merror[0m] [0m[0m                                                                    ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/sanderlindberg/Dropbox/NTNU/Informatikk/H2019/TDT4165/Ovinger/Scala/scala_project/delivery/tasks/task2.scala:9:71: not found: value b[0m
+[0m[[0m[31merror[0m] [0m[0m        val test = function_that_returns_thread((a: Int, b: Int) -> a*b)[0m
+[0m[[0m[31merror[0m] [0m[0m                                                                      ^[0m
+[0m[[0m[31merror[0m] [0m[0m5 errors found[0m
