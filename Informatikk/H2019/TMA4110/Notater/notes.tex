@@ -1309,7 +1309,6 @@ bestående av egenvektorer?
                 \end{bmatrix}$
 
                 $\implies A = PDP^{-1} \implies A$ er diagonaliserbar.
-
                 \\
                 \\
                 Anta nå $A$ er diagonaliserbar. Det vil si det finnes $D$ og $P$ slik at $A = PDP^{-1}$. Da kan vi gange med $P$ på begge sider: $AP = PD$
@@ -1390,7 +1389,6 @@ bestående av egenvektorer?
                 1 \\
                 i
             \end{bmatrix}$. 
-
             \\
             \\
             \\
@@ -1546,7 +1544,7 @@ bestående av egenvektorer?
                                  \end{bmatrix}, \quad Re(\underline{v}) = \begin{bmatrix}
                                      1 \\
                                      -1
-                                 \end{bmatrix}, quad Im(\underline{v}) = \begin{bmatrix}
+                                 \end{bmatrix}, \quad Im(\underline{v}) = \begin{bmatrix}
                                      1 \\
                                      0
                                  \end{bmatrix}
@@ -1560,5 +1558,1117 @@ bestående av egenvektorer?
                                  \end{bmatrix}
             \end{align*}
         \end{Example}
+        
+        \section{Forelesning 24.10.19}
+        
+        $T_{\theta} = \begin{bmatrix}
+            \cos{\theta} & -\sin{\theta} \\
+            \sin{\theta} & \cos{\theta}
+        \end{bmatrix}$ \\
+        \\
+        $T_{\theta} \cdot T_{\theta} = T_{2\theta}$
 
+        \begin{Example}{}{}
+            Lol, dette var samme eksempel som det forrige, jaja, skirver det opp på nytt. :)
+            $$
+                A = \begin{bmatrix}
+                    1 & -2 \\
+                    1 & 3
+                \end{bmatrix}
+            $$
+
+            Skriv $A$ som $PCP^-1$
+            
+            Strategi:
+            \begin{enumerate}
+                \item Finn egenverdiene $\lambda$
+                \item Finn egenvektorene $\underline{v}$
+                \item finn $r$ og $\theta$
+                \item Sett opp $A = PCP^-1$
+            \end{enumerate}
+
+            \begin{align*}
+                det(A - \lambda I_{2}) &= (1-\lambda)(3-\lambda)+2 \\
+                                       &= \lambda^2 - 4\lambda + 5 \\
+                                       &\implies \lambda = \left[ 2 - i, \  2 + i\right]
+            \end{align*}
+            Vi har nå $a=2$ og $b=1$
+            
+            Finner egenvekorer:
+            \begin{align*}
+                A - (2-i)I_{2} &= \begin{bmatrix}
+                    1 & -2 \\
+                    1 & 3
+                \end{bmatrix} - \begin{bmatrix}
+                    (2-i) & 0 \\
+                    0 & (2-i)
+                \end{bmatrix} \\
+                               &= \begin{bmatrix}
+                                   -1 + i & -2 \\
+                                   1 & 1 + i
+                               \end{bmatrix}
+                               \\
+                               &\sim \begin{bmatrix}
+                                   0 & 0 \\
+                                   1 & 1+i
+                               \end{bmatrix}
+                               \\
+                               &\implies \underline{v} = \begin{bmatrix}
+                                   1 + i \\
+                                   -1
+                               \end{bmatrix}
+                               \\
+                               \\
+                               &\implies Re\underline{v} = \begin{bmatrix}
+                                   1 \\
+                                   -1
+                               \end{bmatrix}, \quad Im\underline{v} = \begin{bmatrix}
+                                   1 \\
+                                   0
+                               \end{bmatrix}
+            \end{align*}
+
+            Finner $r$ og $\theta$
+            \begin{align*}
+                r &= \sqrt{2^2 + 1^2} = \sqrt{5}
+                \\
+                \theta &= \arccos\left(\frac{2}{\sqrt{5}}\right) = 26.5\text{grader}
+                \\
+                (\cos{\theta} = \frac{2}{\sqrt{5}}, \sin{\theta} = \frac{1}{\sqrt{5}})
+            \end{align*}
+            
+            Finner nå $A$?
+
+            \begin{align*}
+                A &= \begin{bmatrix}
+                    1 & 1 \\
+                    -1 & 0
+                \end{bmatrix}\begin{bmatrix}
+                    2 & -1 \\
+                    1 & 2
+                \end{bmatrix}\begin{bmatrix}
+                    0 & -1 \\
+                    1 & 1
+                \end{bmatrix}
+                \\
+                \\
+                C = \begin{bmatrix}
+                    \sqrt{5} & 0 \\
+                    0 & \sqrt{5}
+                \end{bmatrix}\begin{bmatrix}
+                    \frac{2}{\sqrt{5}} & -\frac{1}{\sqrt{5}} \\
+                    \frac{1}{\sqrt{5}} & \frac{2}{\sqrt{5}}
+                \end{bmatrix}
+            \end{align*}
+        \end{Example}
+
+        $A\underline{v} = PCP^-1\underline{v} = PC\underline{u} = PDT_{\theta}\underline{u} = PD\underline{u}_{\theta} = P\underline{u}_{\theta} = A\underline{v}$
+
+        \section{Symmertiske matriser}
+        
+        \begin{Definition}{}{}
+            En $n$x$n$ matrise $A$ er symmetrisk dersom $A = A^T$
+        \end{Definition}
+
+        \begin{Example}{Symmetrisk $3x3$}{}
+            $$
+                A = \begin{bmatrix}
+                    1 & -5 & 7 \\
+                    -5 & 2 & -13 \\
+                    7 & -13 & 3
+                \end{bmatrix} = A^T
+            $$
+            Er symmetrisk. Hvis vi speiler elementene om diagonalen, får vi samme matrise. 
+        \end{Example}
+        
+        \begin{Example}{Symmetrisk $2x2$}{}
+            $$
+                A = \begin{bmatrix}
+                    a & b \\
+                    b & c
+                \end{bmatrix}
+            $$
+
+            \begin{align*}
+                A - \lambda I_2 &= \begin{bmatrix}
+                    a-\lambda & b \\
+                    b & c-\lambda
+                \end{bmatrix} \\
+                    det(A - \lambda I_2) &= (a-\lambda)(c-\lambda) - b^2 = 0 \\
+                                         &= \lambda^2 -(a+c)\lambda - ac-b^2 \\
+                    \implies \lambda = \frac{a+c \pm \sqrt{(a+c)^2 - 4(ac-b^2)}}{2}
+                \end{align*}
+
+                Er utrykket under roten større enn 0?
+                \begin{align*}
+                    (a+c)^2 -4ac + 4b^2 &= a^2 +2ac + c^2 - 4ac + 4b^2 \\
+                                        &= (a-c)^2 + 4b_4 \; \underline{>} \; 0
+                \end{align*}
+                
+                Dersom $(a-c)^2 + 4b^2 = 0$ får vi en dobbelrot. 
+
+                Dersom $(a-c)^2 + 4b^2 > 0$ for vi to unike egenverdier. 
+                
+
+                Hvis vi har dobbelrot får vi:
+                \begin{align*}
+                    A = P\begin{bmatrix}
+                        \lambda & 0 \\
+                        0 & \lambda
+                    \end{bmatrix}P^-1 = \lambda PI_2P^-1 \implies A = \begin{bmatrix}
+                        \lambda & 0 \\
+                        0 & \lambda
+                    \end{bmatrix}
+                \end{align*}
+                
+        \end{Example}
+        \begin{Theorem}{}{}
+            $A$ symmetrisk $n$x$n$ matrise. Da har $A$ $n$ reelle egenverdier og $A$ er diagonaliserbar.
+        \end{Theorem}
+
+        \begin{Example}{}{}
+            La
+
+            $$
+                A = \begin{bmatrix}
+                    1 & 2 & 2 \\
+                    2 & 6 & 2 \\
+                    2 & 2 & 6
+                \end{bmatrix}
+            $$
+            være en symmetrisk matrise, vet ikke helt hva oppgaven egt er, men skriver ned det han gjør.
+            \begin{align*}
+                det(A - \lambda I_3) &= (1-\lambda)(6-\lambda)^2+16 - (4(6-\lambda(6-\lambda))) + (1-\lambda) \\
+                                     &= \lambda^3 - 13\lambda^2 + 36\lambda \\
+                                     &\implies \lambda = \left[ 0, \  4, \  9\right]\\
+                                     &\underline{v_1} = \begin{bmatrix}
+                                         -4 \\
+                                         1 \\
+                                         1
+                                     \end{bmatrix}, \quad \underline{v_2} = \begin{bmatrix}
+                                         1 \\
+                                         2 \\
+                                         2
+                                     \end{bmatrix} \quad \underline{v_3} = \begin{bmatrix}
+                                         0 \\
+                                         1 \\
+                                         -1
+                                     \end{bmatrix} 
+            \end{align*}
+            Vi kan nå skrive $A = PDP^-1$ der \begin{align*}
+            D &= \begin{bmatrix}
+                    0 & 0 & 0 \\
+                    0 & 4 & 0 \\
+                    0 & 0 & 9
+                \end{bmatrix} \\
+                P &= \begin{bmatrix}
+                    -4 & 0 & 1 \\
+                    1 & 1 & 2 \\
+                    1 & -1 & 2
+                \end{bmatrix}    
+            \end{align*}
+
+Egenvektorene er også ortogonale! Dette er sant for alle symmetriske matriser (der vi har distinkte egenvektorer)
+        \end{Example}
+        
+        \begin{Theorem}{}{}
+            $A$ symmetrisk $n$x$n$ matrise. Da er egenvektorene tilhørende forskjellige egenverdier ortogonale. 
+        \end{Theorem}
+
+        \begin{Definition}{}{}
+            En $n$x$n$ matrise $A$ kalles \textit{hermitsk} dersom $A = A^*$ (kompleks konjugert og transponert)
+        \end{Definition}
+
+        \section{Markov kjeder}
+        
+        \begin{Example}{}{}
+            Anta barna i barnehagen holder emd enten Manchester United, Liverpool eller Arsenal. Barna er såpass små at de ikke har lært seg at det ikke er lov til å bytte favorittklubb. 
+
+            Sannsynligheten for at et barn fortsatt heier på MU etter et år er $50\%$. Sannsynligheten for at de bytter til Liverpool er $30\%$, $20\%$ til Liverpool.
+            Hvis de heier på Liverpool et år, er sannsynligheten $20\%$ for at de bytter til MU, $80\%$ for at de fortsetter med Liverpool og $0\%$ for at de bytter til Arsenal.
+
+            Hvis de heier på Arsenal et år er det $30\%$ for at de bytter til MU, $30\%$ til L og $40\%$ til L. Kan sette opp som en tabell:
+
+            \begin{tabular}{c|c|c|c|c}
+                \hline
+                fra  & MU & L & A & Til 
+                \\
+                \hline
+                     & 50 & 20 & 30 & MU \\
+                     \hline
+                     & 30 & 80 & 30 & L \\
+                     \hline
+                     & 20 & 0 & 40 & A
+            \end{tabular}
+
+            Kan også sette opp som matrise:
+            \begin{align*}
+                M = \begin{bmatrix}
+                    0.5 & 0.2 & 0.3 \\
+                    0.3 & 0.8 & 0.3 \\
+                    0.2 & 0 & 0.4
+                \end{bmatrix}
+            \end{align*}
+                    
+            Får en startvektor $\begin{bmatrix}
+                0.5 \\
+                0.3 \\
+                0.2
+            \end{bmatrix}$
+
+            
+            Hva er fordelingen etter $1$ år? Det blir startvektor ganger matrisen $M$ = $\begin{bmatrix}
+                0.37 \\
+                0.45 \\
+                0.18
+            \end{bmatrix}$
+
+
+            Hva med etter 2 år? Det blir $M^2 \cdot x_0 = \begin{bmatrix}
+                0.329 \\
+                0.525 \\
+                0.146
+            \end{bmatrix}$
+
+
+            Etterhvert vildu kommer til en ''Likevektsstilling'' som ser ut som $q = \begin{bmatrix}
+                0.3 \\
+                0.6 \\
+                0.1
+            \end{bmatrix}$, slik at $Mq = q$. Da er $q$ egenvektor for $M$ med egenverdi $\lambda = 1$
+        \end{Example}
+        
+        \begin{Definition}{}{}
+            En vektor $\underline{x}$ hvor alle koordinatene er positive reelle tall og koordinatene summerer til $1$ (elementene i kolonnene), kalles en sannsynlighetsvektor. 
+        \end{Definition}
+        
+        \begin{Definition}{}{}
+            En matrise $M$ hvor alle kolonnene er en sannsynlihetsvektor, kalles $M$ en stokastisk matrise. 
+        \end{Definition}
+
+        \begin{Definition}{}{}
+            Gitt $M$ og $x_0$, da kalles følgen $x_0, x_1, x_2, \dots$ hvor $x_{i} + 1 = M \cdot x_{i}$ en Markov kjede. 
+        \end{Definition}
+
+        \begin{Theorem}{}{}
+            En stokastisk matrise har alltid egenverdi $\lambda = 1$
+            \begin{Proof}{}{}
+                \begin{align*}
+                    M = \begin{bmatrix}
+                        M_{11} & M_{12} & \dots & M_{1n}
+                        \\
+                        M_{21} & M_{22} & \dots & M_{2n}
+                        \\
+                        M_{31} & M_{32} & \dots & M_{3n}
+                    \end{bmatrix}
+                \end{align*}
+                Hver kolonne kummerer til $1$.
+                \begin{align*}
+                    M^T = \begin{bmatrix}
+                        M_{11} & M_{21} & \dots & M_{31} \\
+                        M_{12} & M_{22} & \dots & M_{32} \\
+                        M_{31} & M_{23} & \dots & M_{33}
+                    \end{bmatrix}
+                \end{align*}
+                $M^T$ har egenverdi $\lambda = 1$ og egenvektor $\begin{bmatrix}
+                    1 \\
+                    1 \\
+                    ... \\
+                    1
+                \end{bmatrix}$
+                Vi får da $M^{T}\underline{v} = a \cdot \begin{bmatrix}
+                    1 \\
+                    1 \\
+                    ... \\
+                    1
+                \end{bmatrix}$
+                
+                \begin{align*}
+                    det(M^{T} - \lambda I_{n}) &= det(M^{T} - \lambda I^{T}_{n})\\
+                                               &= det((M - \lambda I_{n})^T)
+                                               \\
+                                               \text{Generelt: det$A$ =det$A^T$}
+                                               \\
+                                               &= det(M - \lambda I_{n})
+                                               \\
+                    \implies \lambda &= 1 \: \text{egenverdi for } M
+                \end{align*}
+            \end{Proof}
+           \end{Theorem}
+            \begin{Definition}{}{}
+                Dersom $\underline{q}$ er en egenvektor til $\lambda = 1$ for stokastisk matrise $M$, og $\underline{q}$ er sannsynlighetsvektor, så kalles $\underline{q}$ for en \textit{likevektsvektor}
+
+                Merk:
+
+                Gitt vektor $\underline{x} = \begin{bmatrix}
+                    x_1 \\
+                    x_2 \\
+                    ... \\
+                    x_{n}
+                \end{bmatrix}$, så er \begin{align*}
+                    \frac{1}{\sum_{i=1}^{n}x_{i}} \underline{x}
+                \end{align*}
+                en vektor med koordinatsum lik $1$
+            \end{Definition} 
+
+            \begin{Example}{}{}
+                Fortsetter med fotballag-eksemepelt fra over.
+
+                Har \begin{align*}
+                    M = \begin{bmatrix}
+                        0.5 & 0.2 & 0.3 \\
+                        0.3 & 0.8 & 0.3 \\
+                        0.2 & 0 & 0.4
+                    \end{bmatrix}
+                \end{align*}
+                Kan finne \begin{align*}
+                    M - I &= \begin{bmatrix}
+                        0 & 0 & 0 \\
+                        3 & -2 & 3 \\
+                        2 & 0 & - 6
+                    \end{bmatrix} \: \text{Ganget med 10 og gausset.}
+                    \\
+                          &\sim \begin{bmatrix}
+                              0 & 0 & 0 \\
+                              1 & -2 & 9 \\
+                              1 & 0 & -3
+                          \end{bmatrix}
+                          \\
+                          &\sim \begin{bmatrix}
+                              0 & 0 & 0 \\
+                              0 & 1 & -6 \\
+                              1 & 0 & -3
+                          \end{bmatrix}
+                          \\
+                        \implies \underline{v} &= \begin{bmatrix}
+                            3 \\
+                            6 \\
+                            1
+                        \end{bmatrix} \implies q
+                \end{align*}
+            \end{Example}
+
+            \begin{Definition}{}{}
+                En stokastisk matrise $M$ kalles \textit{regulær}, dersom det finnes en $k \geq 1$ slik at alle elementer i $M^k > 0$
+            \end{Definition}
+            \begin{Theorem}{}{}
+                $M$ regulær stokastisk matrise. Da har $M$ unik likevektor $\underline{q}$ og uansett startvektor $x_0$, så vil Markovkjeden konvergere mot $\underline{q}$.
+            \end{Theorem}
+
+            \section{System av differensiallikninger}
+            (Nome er tilbake, ikke sikkert det blir bra notater videre.)
+
+            Først: Litt om vektorfunkjsoner:
+            \subsection{Vektorfunksjoner}%
+            \label{sub:vektorfunksjoner}
+            
+            \begin{align*}
+                \underline{x}(t) &= \begin{bmatrix}
+                    x_1(t) \\
+                    x_2(t) \\
+                    .. \\
+                    x_{n}(t)
+                \end{bmatrix}, \; \mathbb{R} \rightarrow \mathbb{R}^{n} (\mathbb{C}^{n})
+                \\
+                    \underline{x}'(t) &= \begin{bmatrix}
+                        x_1'(t) \\
+                        x_2'(t) \\
+                        ... \\
+                        x_{n}'(t)
+                    \end{bmatrix}
+            \end{align*}
+
+            $\underline{x}'(t)$ gir tangentvektoren til posisjonen til fluen.
+
+            $||\underline{x}'(t)||$ kalles ''banefart''.
+            
+            \begin{Example}{}{}
+                $\underline{x}(t) = e^{it} = \cos{t} + i \sin{t}$
+
+                Her kan vi tenkte på $t$ som tiden en flue bruker på å flytte seg, og output er hvor langt den har bevegd seg. 
+            \end{Example}
+
+            Dersom $\underline{x}(t)$ er deriverbar, og $||\underline{x}'(t) \neq 0||$ er $\underline{x}(t)$ glatt. For eksempel er $\underline{x}'(t) = \begin{bmatrix}
+                t^2 \\
+                t^3
+            \end{bmatrix}$ \textit{ikke} glatt. 
+            
+            $\underline{x}(t), \underline{x_1}(t), \dots ,\underline{x_{n}}(t)$ er lineært uavhengig, dersom de er lineært uavhengige for alle $t$.
+
+            \subsection{Systemer av differensiallikninger}%
+            \label{sub:systemer_av_differensiallikninger}
+            
+            \begin{Example}{}{}
+                $\underline{x}'(t) = 2\underline{x}(t) + \underline{y}(t)$
+                    \\
+                    \\
+                $\underline{y}'(t) = \underline{x}(t) + 2\underline{y}(t)$
+
+                Liker å skrive systemet som:
+                \begin{align*}
+                    \begin{bmatrix}
+                    \underline{x}'(t) \\
+                        \underline{y}'(t)
+                    \end{bmatrix} &= \begin{bmatrix}
+                    2 & 1 \\
+                    1 & 2
+                    \end{bmatrix}
+                \end{align*}
+                Oppgave: Finn en $\underline{y}$
+                \begin{align*}
+                    \underline{y}' &= \begin{bmatrix}
+                        2 & 1 \\
+                        1 & 2
+                    \end{bmatrix}\underline{y}
+                    \\
+                        \implies \underline{y_1} &= 3e^{3t}\begin{bmatrix}
+                                       1 \\
+                                       1
+                                   \end{bmatrix}
+                \end{align*}
+                
+                Fun fact: Derosm $\underline{x}$ er egenvektor til $A$, med egenverdi $\lambda$ løser $\underline{y}(t) = e^{\lambda t}\underline{x}$ systemet $\underline{y}' = A\underline{y}$
+            \end{Example}
+
+            \begin{Theorem}{}{}
+                Dersom $A$ er diagonaliserbar, finnes $n$ lineært uavhengige løsninger. 
+
+                (Dette fordi $A$ diagonaliserbar $\implies n$ uanhengige egenvektorer)
+            \end{Theorem}
+
+            \begin{Theorem}{}{}
+                Dersom $A$ ikke er diagonaliserbar, finnes det $n$ lineært uavhengige løsninger. 
+            \end{Theorem}
+
+            Disse to teoremene sier i praksis at det alltid er $n$ lineært uanvhengige løsninger, men hvis $A$ ikke er diagonaliserbar, er de for vanskelige for oss å finne. Derfor - på eksamen, hvis vi skal finne løsning av et system, kan vi anta $A$ er diagonaliserbar. 
+
+            \begin{Example}{}{}
+                $$\underline{y}'(t) = \begin{bmatrix}
+                    2 & 1 \\
+                    1 & 2
+                \end{bmatrix} \underline{y}(t)$$ 
+
+                Finn ''den andre'' løsningen.
+
+                Egenverdier: $\lambda_1 = 1$, $\lambda_2 = 3$. 
+
+                Egenvektorer: $\begin{bmatrix}
+                    1 \\
+                    -1
+                \end{bmatrix}$ (for $\lambda_{1}$).
+
+                Vi har dermed:
+                \begin{align*}
+                    \underline{y_2}(t) = e^{t}\begin{bmatrix}
+                        1 \\
+                        -1
+                    \end{bmatrix}
+                \end{align*}
+                Denne løsningen pluss den forrige løsningen er også en løsning.
+
+                En generell løsning for systemet er:
+                \begin{align*}
+                    \underline{y}(t) = c_1e^{\lambda_1 t}\underline{x_1} + c_2e^{\lambda_2 t}\underline{x_2} + \dots + c_{n}e^{\lambda_{n} t}\underline{x_{n}}
+                \end{align*}
+            \end{Example}
+
+            \subsection{Initialverdiproblem}%
+            \label{sub:initialverdiproblem}
+            
+            Vi har $\underline{y}' = A\underline{y}$ og en $\underline{y}(t_0)$ ''der kalaset skal starte'' og har en $\underline{y_0}$ som $\underline{y}(t_0)$ skal bli.
+
+            Hvis vi har $\underline{y}' = \begin{bmatrix}
+                2 & 1 \\
+                1 & 2
+            \end{bmatrix}\underline{y}$ og $\underline{y}(0) = \begin{bmatrix}
+                2 \\
+                0
+            \end{bmatrix}$
+
+            Setter inn generell løsning:
+            \begin{align*}
+                \underline{y}(0) &= c_1\begin{bmatrix}
+                    1 \\
+                    1
+                \end{bmatrix} + c_2\begin{bmatrix}
+                    1 \\
+                    -1
+                \end{bmatrix} = \begin{bmatrix}
+                    2 \\
+                    0
+                \end{bmatrix}
+                \\
+                    \implies c_1 &= c_2 = 1
+                    \\
+                    \implies \underline{y}(t) &= e^{3t}\begin{bmatrix}
+                        1 \\
+                        1
+                    \end{bmatrix} + e^{t}\begin{bmatrix}
+                        1 \\
+                        -1
+                    \end{bmatrix}
+            \end{align*}
+
+            \begin{Theorem}{}{}
+                $\underline{y}'$, $\underline{y}(t_0) = \underline{y_0}$ har alltid en entydig løsning.
+            \end{Theorem}
+            \begin{Example}{}{}
+                $$\underline{y}' = \begin{bmatrix}
+                    1 & 2 & 2 \\
+                    2 & 6 & 2 \\
+                    2 & 2 & 6
+                \end{bmatrix}\underline{y}$$
+
+                Finn løsningen på problemet.
+
+                Egenverdiene til matrisen er $0, 4$ og $9$. 
+
+                Egenvektor for $\lambda = 0$: $\begin{bmatrix}
+                    -4 \\
+                    1 \\
+                    1
+                \end{bmatrix}$
+
+                Egenvektor for $\lambda = 4$: $\begin{bmatrix}
+                    0 \\
+                    1 \\
+                    -1
+                \end{bmatrix}$
+
+                Egenvektor for $\lambda = 9$: $\begin{bmatrix}
+                    1 \\
+                    2 \\
+                    2
+                \end{bmatrix}$
+
+                Det vil da si den generelle løsningen er:
+                \begin{align*}
+                    \underline{y}(t) &= c_1e^{0}\begin{bmatrix}
+                       -4 \\
+                       1 \\
+                       1
+                   \end{bmatrix} + c_2e^{4t}\begin{bmatrix}
+                       0 \\
+                       1 \\
+                       -1
+                   \end{bmatrix} + c_2e^{9t}\begin{bmatrix}
+                       1 \\
+                       2 \\
+                       2
+                   \end{bmatrix}
+                \end{align*}
+                Det første leddet kalles en likevektsløsning.
+            \end{Example}
+
+            \subsection{Fasediagram}%
+            \label{sub:fasediagram}
+            
+            (Kun $\mathbb{R}^2$)
+
+
+            Et fasediagram er et koordinatsystem, hvor vi har en scetch av løsningene våre. 
+
+            Har løsningen fra tidligere $\underline{y}(t) = c_1e^{3t}\begin{bmatrix}
+                1 \\
+                1
+            \end{bmatrix} + c_2e^{t}\begin{bmatrix}
+                1 \\
+                -1
+            \end{bmatrix}$
+
+            Steg for å finne fasediagram:
+            \begin{enumerate}
+                \item Tegn egenrommene
+                \item Tegn noen løsningskurver (løs $\underline{y}(0)$ med forskjellige startverdier).
+                \item Indiker retning
+            \end{enumerate}
+
+
+            \section{Forelesning 08.11.19}
+            \subsection{Litt repitisjon}%
+            \label{sub:litt_repitisjon}
+            
+            $\underline{y'} = A\underline{y}$ Sistem av defflikning
+
+            Generell løsning: $\underline{y}(t) = c'e^{\lambda_1t}x_1 + \dots + c_{n}e^{\lambda_{n}t}c_{n}$ Dersom $A$ er diagonaliserbar. 
+
+            \begin{Example}{}{}
+                $y_{1}' = y_2$, $y_{2}' = -y_1 \implies \underline{y}' = \begin{bmatrix}
+                    0 & 1 \\
+                    -1 & 0
+                \end{bmatrix}\underline{y}$
+
+                Step 1: Finn egenverdier og egenvektorer.
+
+                \begin{align*}
+                    det(A - \lambda I_2) &= (-\lambda)\cdot (-\lambda) - 1\cdot -1
+                    \\
+                                         &= \lambda^2 +1
+                                         \\
+                    \implies \lambda &= \left[ - i, \  i\right]
+                \end{align*}
+               Egenvektor for $\lambda = i$: $\begin{bmatrix}
+                   1 \\
+                   i
+               \end{bmatrix}$ 
+
+               Egenvektor for $\lambda = -i$: $\begin{bmatrix}
+                   1 \\
+                   -i
+               \end{bmatrix}$
+               $\implies \underline{y}(t) = c_1e^{it}\begin{bmatrix}
+                   1 \\
+                   i
+               \end{bmatrix} + c_2e^{-it}\begin{bmatrix}
+                   1 \\
+                   -i
+               \end{bmatrix}$
+
+               Kan vi tegne fasediagram av dette? - nei, det er ikke så lett. Vi er nødt til å gjøre noe lurt. 
+
+               Triks 1: $c_1 = c_2 = \frac{1}{2}$. Da får vi $\underline{y_1}(t) = \frac{1}{2}\cdot e^{it}\begin{bmatrix}
+                   1 \\
+                   i
+               \end{bmatrix} + \frac{1}{2} e^{-it}\begin{bmatrix}
+                   1 \\
+                   -i
+               \end{bmatrix} = \frac{1}{2} \begin{bmatrix}
+               e^{it} + e^{-it} \\
+               ie^{it} - ie^{-it}
+               \end{bmatrix} = \begin{bmatrix}
+               \cos{t} \\
+               -\sin{t}
+               \end{bmatrix}$
+
+
+               Triks 2: $c_1 = \frac{1}{2i}$, $c_2 = -\frac{1}{2i}$ som gir $\underline{y_2}(t) = \frac{1}{2i} e^{it} - \frac{1}{2i}e^{-it} = \begin{bmatrix}
+                   \sin{t} \\
+                   \cos{t}
+               \end{bmatrix}$
+
+               Da får vi $\underline{y}(t) = d_1\begin{bmatrix}
+                   \cos{t} \\
+                   -sin{t}
+               \end{bmatrix} + d_2 \begin{bmatrix}
+               \sin{t} \\
+               \cos{t}
+               \end{bmatrix} = \begin{bmatrix}
+               \cos{t} & \sin{t} \\
+                -\sin{t} & \cos{t}
+               \end{bmatrix} \cdot \begin{bmatrix}
+                   d_1 \\
+                   d_2
+               \end{bmatrix}$
+
+               Fasegiagrammet blir da masse rundinger med forskjellige radiuser, med origo som sentrum.
+            \end{Example}
+            
+            \begin{Example}{}{}
+                $\underline{y'} = \begin{bmatrix}
+                        1 & 1 \\
+                        -1 & 1
+                \end{bmatrix}\underline{y}$
+
+                \begin{align*}
+                    det(A - \lambda i_2) &= (1-\lambda)^2 + 1 = \lambda^2 - 2\lambda + 2 = 0
+                    \\
+                    \implies \lambda &= \left[ 1 - i, \  1 + i\right]
+                \end{align*}
+
+                Egenvektor for $\lambda = 1+i: \begin{bmatrix}
+                    1 \\
+                    i
+                \end{bmatrix}$
+
+                Egenvektor for $\lambda = 1-i: \begin{bmatrix}
+                    1 \\
+                    -i
+                \end{bmatrix}$
+
+                Vi får $\underline{y}(t) = c_1 e^{(1+i)t} \begin{bmatrix}
+                    1\\
+                    i
+                \end{bmatrix} + c_2 e^{(1-i)t}\begin{bmatrix}
+                    1 \\
+                    -i
+                \end{bmatrix}$
+                
+                Dette er det samme som $e^{-t} \cdot \left(c_1 e^{it}\begin{bmatrix}
+                    1 \\
+                    i
+                \end{bmatrix} + c_2e^{-ti}\begin{bmatrix}
+                    1 \\
+                    -i
+                \end{bmatrix}\right)$
+                
+                Moralen er: Imaginær $\lambda$ lager ellipser som fasediagram. Hvis $Re(\lambda) > 0 $ fpr vi utadgående spiraler. Motsatt andre veien. 
+
+            \end{Example}
+
+            \subsection{En ny type likning}%
+            \label{sub:en_ny_type_likning}
+            
+            $\underline{y}' = A\underline{y} + \underline{f}$, der $\underline{f}$ er en vektorfunksjon. Denne likningen kalles en inhomogen likning.
+
+            $\underline{y}' = A\underline{y}$ kalles en homogen likning. 
+
+            En løsning av $\underline{y}' = A\underline{y}$ kalles en homogen løsning $\underline{y}_{h}$
+
+            En løsning av $\underline{y}' = A\underline{y} + \underline{f}$ som ikke inneholder homogene løsninger, kalles en partikulær løsning. (evt. inhomogen løsning.). Skrives $\underline{y}_{p}$
+
+            Den generelle løsningen av $\underline{y}' = A\underline{y} + \underline{f}$ er $\underline{y} = \underline{y}_{h} + \underline{y}_{p}$
+
+            \begin{Example}{}{}
+            $\underline{y}' = \begin{bmatrix}
+                2 & 1 \\
+                1 & 2
+            \end{bmatrix} \underline{y} + \begin{bmatrix}
+                1 \\
+                1
+            \end{bmatrix}$ 
+
+            $\underline{y}_{h} = c_1 e^{3t}\begin{bmatrix}
+                1 \\
+                1
+            \end{bmatrix} + c_2e^{t}\begin{bmatrix}
+                1 \\
+                -1
+            \end{bmatrix}$
+
+            $\underline{y}_{p} = \begin{bmatrix}
+                c_1 \\
+                c_2
+            \end{bmatrix}$ Vi putter inn i likningen:
+
+            $\underline{y}' = \begin{bmatrix}
+                2 & 1 \\
+                1 & 2
+            \end{bmatrix}\begin{bmatrix}
+                c_1 \\
+                c_2
+            \end{bmatrix} + \begin{bmatrix}
+                1 \\
+                1
+            \end{bmatrix} \implies \begin{bmatrix}
+                2 & 1 \\
+                1 & 2
+            \end{bmatrix}\begin{bmatrix}
+                c_1 \\
+                c_2
+            \end{bmatrix} = \begin{bmatrix}
+                1 \\
+                1
+            \end{bmatrix} \implies \begin{bmatrix}
+                c_1 \\
+                c_2
+            \end{bmatrix} = \begin{bmatrix}
+                -\frac{1}{3} \\
+                -\frac{1}{3}
+            \end{bmatrix}$
+
+
+            Som vil si $\underline{y}(t) = \underline{y}(t)_{h} + \underline{y}(t)_{p} = c_1e^{3t}\begin{bmatrix}
+                1 \\
+                1
+            \end{bmatrix} + c_2e^{t}\begin{bmatrix}
+                1 \\
+                -1
+            \end{bmatrix} - \frac{1}{3}\begin{bmatrix}
+                1 \\
+                1
+            \end{bmatrix}$
+            \end{Example}
+
+            Teknikk:
+            \subsubsection{Variasjon av parametre}%
+            \label{ssub:variasjon_av_parametre}
+            
+            Dette er en formel basert på følgende idé:
+
+            $\underline{y}_{p} = Y(t) c(t)$, der $Y$ er en matrise $Y(t) = \begin{bmatrix}
+                e^{\lambda_1 t}\underline{x_1} & \dots & e^{\lambda_n t}\underline{x_{n}} 
+            \end{bmatrix}$
+
+            Vi vet at $det(Y(t)) \neq 0$
+
+            $\underline{y}_{p}' = Y'c + Yc'$ 
+
+            Setter inn i $\underline{y}' = A\underline{y} + \underline{f}$ og får $Y'c + Yc' = AYc + \underline{f}$
+
+            Kan skrive $Y'c$ som $AYc$, så vi kan stryke og får $Yc' = \underline{f} \implies c(t) = \int_{0}^{t}Y^{-1}(s)\cdot \underline{f}(s)ds$
+
+            \begin{Example}{}{}
+                $\underline{y}' = \begin{bmatrix}
+                    2 & 1 \\
+                    1 & 2
+                \end{bmatrix} \underline{y} + \begin{bmatrix}
+                    1 \\
+                    1
+                \end{bmatrix}$ 
+
+                Finner $Y(t) = \begin{bmatrix}
+                    e^{3t} & e^{t} \\
+                    e^{3t} & -e^{t}
+                \end{bmatrix}$$
+
+                $det(Y) = -2e^{4t}$
+
+                $Y^{-1}(t) = -\frac{1}{2e^{4t}}\begin{bmatrix}
+                    -e^t & -e^t \\
+                    -e^{3t} & e^{3t}
+                \end{bmatrix}$ 
+
+                $Y^{-1}\underline{f}(t) = -\frac{1}{2e^{4t}}\begin{bmatrix}
+                    -e^t & -e^t \\
+                    -e^{3t} & e^{3t}
+                \end{bmatrix}\begin{bmatrix}
+                    1 \\
+                    1
+                \end{bmatrix} = \begin{bmatrix}
+                e^{-3t} \\
+                0
+                \end{bmatrix}$
+
+                $\int_{0}^{t}Y^{-1}\underline{f} = \begin{bmatrix}
+                    -\frac{1}{3} e^{-3t} \\
+                    0
+                \end{bmatrix} = c(t)$
+
+                $Yc = -\frac{1}{3}\begin{bmatrix}
+                    1 \\
+                    1
+                \end{bmatrix}$ 
+            \end{Example}
+
+            \section{Repitisjon ig?}
+            
+            \subsection{Kont 2019}%
+            \label{sub:kont_2019}
+            
+            \begin{Example}{Oppgave 1}{}
+                a)
+
+
+                Finn alle løsninger av \[ z^5 = i \] i $\mathbb{C}$.
+
+                Setter opp likningen $z^5 = i = e^{i(\frac{\pi}{2} + 2n\pi)} \implies z = e^{\frac{i(\frac{\pi}{2} + 2n\pi)}{5}}$
+
+
+                Deretter er det bare å sette inn verdier for $n$ hvor $0 \leq n \leq 4$
+
+
+                b)
+
+
+                La $z$ og $w$ være komplekse tall. Vis at \[ \bar{\left(\frac{z}{w}\right)} = \bar{z}/\bar{w} \]
+
+                \begin{align*}
+                    z &= a + bi \\
+                    w &= c + di \\
+                    \\
+                    \\
+                    \frac{z}{w} &= \frac{a + bi}{c + di}
+                    \\
+                                &= \frac{a+bi}{c + di} \cdot \frac{c-di}{c-di}
+                                \\
+                                &= \frac{ac + bd + i(bc - ad)}{c^2 + d^2}
+                                \\
+                                \\
+                    \bar{\frac{z}{w}} &= \frac{ac + bd - i(bc - ad)}{c^2 + d^2}
+                    \\
+                    \\
+                    \bar{z}/\bar{2} &= \frac{a-bi}{c - di} \cdot \frac{c+di}{c+di}
+                    \\
+                                    &= \frac{ac + bd -i(bc - ad)}{c^2 + d^2}
+                \end{align*}
+                Ser de er like :)
+            \end{Example}
+
+            \begin{Example}{Oppgave 2}{}
+                a)
+
+                
+                La $A$ være en reell $m$x$n$-matrise. Skriv ned definisjonen på nullrommet til $A$. Vis at nullrommet er et underrom av $\mathbb{R}^{n}$.
+
+                Nullrommet er alle $\underline{x}$ slik at $A\underline{x} = \underline{0}$. (Kjernen $T$ er det samme for lineærtransformasjoner). 
+
+            Er det et vektorrom? Underrom? Et underrom er en delmengde som i seg selv er et vektorrom. 
+
+            \begin{Theorem}{''Sjekketeoremet'' (7.9)}{}
+                \begin{enumerate}
+                    \item Er 0 med?
+                    \item $\underline{x}$ og $\underline{y}$ er i delmengden, skal også $\underline{x} + \underline{y}$ være i delmengden
+                    \item Dersom $\underline{x}$ er med, skal også $c\underline{x}$ være med.
+                \end{enumerate}
+            \end{Theorem}
+                \begin{enumerate}
+                    \item Sjekker om 0 er med. Ja, ganger vi $A$ med $0$ får vi $0$.
+                    \item $A\underline{x} = 0$ og $A\underline{y} = 0 \implies A(\underline{x} + \underline{y}) = A\underline{x} + A\underline{y} = 0$. Med andre ord: $\underline{x}$ og $\underline{y}$ i nullrom impliserer at $\underline{x} + \underline{y}$ er i nullrommet.
+                    \item $A\underline{x} = 0 \implies A(c\underline{x}) = 0 \implies c(A\underline{x}) = 0$
+                \end{enumerate}
+
+                 b)
+                 
+                Vi studerer matrisen \[ A = \begin{bmatrix}
+                    2 & 4 & 0 \\
+                    -5 & -4 & 6 \\
+                    1 & -2 & -4
+                \end{bmatrix} \]
+
+                Ligger \[ \begin{bmatrix}
+                    1 \\
+                    2 \\
+                    -1
+                \end{bmatrix} \; \text{eller} \; \begin{bmatrix}
+                    2 \\
+                    -1 \\
+                    1
+                \end{bmatrix} \] i nullrommet til $A$?
+
+                Finn en basis for $ColA$. Bestem dimensjonene på disse underrommene. 
+
+                Ser med en gang at $\begin{bmatrix}
+                    1 \\
+                    2 \\
+                    -1
+                \end{bmatrix}$ ikke ligger i nullrommet. Ser at $A\cdot \begin{bmatrix}
+                    2 \\
+                    -1 \\
+                    1
+                \end{bmatrix} = 0$. Denne vektoren ligger i nullrommet. 
+
+
+                Basiser:
+                Radreduserer matrisen $A$:
+                \begin{align*}
+                    \begin{bmatrix}
+                        2 & 4 & 0 \\
+                        -5 & -4 & 6 \\
+                        1 & -2 & -4
+                    \end{bmatrix} &\sim \begin{bmatrix}
+                        1 & 2 & 0 \\
+                        0 & 6 & 6 \\
+                        0 & -4 & -4
+                    \end{bmatrix}
+                    \\
+                    &\sim \begin{bmatrix}
+                        1 & 2 & 0 \\
+                        0 & 1 & 1 \\
+                        0 & 0 & 0
+                    \end{bmatrix}
+                    \\
+                    \\
+                    \implies ColA &= sp \left\{\begin{bmatrix}
+                        2 \\
+                        -5 \\
+                        1
+                    \end{bmatrix}, \begin{bmatrix}
+                        4 \\
+                        -4 \\
+                        -2
+                    \end{bmatrix}\right\}
+                    \\
+                    \\
+                            \implies NullA &= sp \left\{\begin{bmatrix}
+                                    2 \\
+                                    -1 \\
+                                    1
+                            \end{bmatrix}\right\}
+                \end{align*}
+               \end{Example}
+               \begin{Example}{Oppgave 2}{}
+                
+                c)
+                Finn en ortogonal basis for $ColA$. Regn ut den ortogonale projeksjonen av $\begin{bmatrix}
+                    3 \\
+                    2 \\
+                    9
+                \end{bmatrix}$ ned på $ColA$.
+                    
+                Har basisen som ikke er ortogonal. Setter $\underline{u_1} = \begin{bmatrix}
+                    2 \\
+                    -5 \\
+                    1
+                \end{bmatrix}$ og bruker Grahmschmidt:
+                \begin{align*}
+                    \underline{u_2} &= \underline{v_2} - \frac{\underline{u_1} \cdot \underline{u_2}}{\underline{u_1} \cdot \underline{u_1}} \cdot \underline{u_1}
+                    \\
+                                    &= \begin{bmatrix}
+                                        4 \\
+                                        -4 \\
+                                        -2
+                                    \end{bmatrix} - \frac{2 \cdot 4 + (-5) \cdot (-4) + 1 \cdot (-2)}{2^2 + 5^2 + 1^2} \cdot \begin{bmatrix}
+                                        2 \\
+                                        -5 \\
+                                        1
+                                    \end{bmatrix}
+                                    \\
+                                    &= \begin{bmatrix}
+                                        4 \\
+                                        -4 \\
+                                        -2
+                                    \end{bmatrix} - \frac{26}{30} \cdot \begin{bmatrix}
+                                        2 \\
+                                        -5 \\
+                                        1
+                                    \end{bmatrix} = \frac{1}{30} \cdot \begin{bmatrix}
+                                        68 \\
+                                        10 \\
+                                        -86
+                                    \end{bmatrix}
+                \end{align*}
+
+                Projeksjon av $\begin{bmatrix}
+                    3 \\
+                    3 \\
+                    9
+                \end{bmatrix}$ ned på $ColA$:
+                \begin{align*}
+                    P\left(\begin{bmatrix}
+                        3 \\
+                        3 \\
+                        9
+                \end{bmatrix}\right) &= \frac{\begin{bmatrix}
+                    3 \\
+                    3 \\
+                    9
+                \end{bmatrix} \cdot \begin{bmatrix}
+                    2 \\
+                    -5 \\
+                    1
+                \end{bmatrix}}{\begin{bmatrix}
+                    2 \\
+                    -5 \\
+                    1
+                \end{bmatrix} \cdot \begin{bmatrix}
+                    2 \\
+                    -5 \\
+                    1
+                \end{bmatrix}} \cdot \begin{bmatrix}
+                    2 \\
+                    -5 \\
+                    1
+                \end{bmatrix} + \frac{\begin{bmatrix}
+                    3 \\
+                    3 \\
+                    1
+                \end{bmatrix} \cdot \begin{bmatrix}
+                    68 \\
+                    10 \\
+                    -86
+                \end{bmatrix}}{\begin{bmatrix}
+                    68 \\
+                    10 \\
+                    -86
+                \end{bmatrix} \cdot \begin{bmatrix}
+                    68 \\
+                    10 \\
+                    -86
+                \end{bmatrix}} \cdot \begin{bmatrix}
+                    68 \\
+                    10 \\
+                    -86
+                \end{bmatrix}
+                \end{align*}
+               \end{Example}
 \end{document}

@@ -28,7 +28,7 @@ t = '000101011100001000101011011011001'
 print(decode(s))
 print(decode(t))
 
-
+'''
 b1 = [2, 4, 5, 5]
 b2 = [4, 1, 8, 3]
 
@@ -37,3 +37,4 @@ for i in range(len(b1)):
     avstand += abs(b2[i]-b1[i])
 
 print(avstand)
+'''

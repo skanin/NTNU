@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1571394675 "main.tex" "main.pdf" "main" 1571394676
+["pdflatex"] 1571394675 "main.tex" "main.pdf" "main" 1572362574
   "/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/jknappen/ec/ecbx1095.tfm" 1136768653 3584 21b378cca2e40816b0e6d74a4dc98f04 ""
@@ -91,11 +91,11 @@
   "/usr/local/texlive/2019/texmf.cnf" 1557341546 577 d150fef99ac436ad1156e86b0892f6ef ""
   "NTNUoving.cls" 1566209580 6906 0558cfcdc57e2d9248c09d2a3e86b2d2 ""
   "main.aux" 1571394676 430 bb9c26381dab1a05551e2f419dc7e433 "pdflatex"
-  "main.tex" 1571394673 45405 205c9544702a530aaddc3a2f2760cb15 ""
+  "main.tex" 1571394802 45405 205c9544702a530aaddc3a2f2760cb15 ""
   "ntnulogoblaa.eps" 1566209580 1297 54ada1b50e9971523e0e29320817f5d1 ""
   "oppgave_5.JPG" 1571337067 1688726 819c3014aa02b5cf21cc1724a825415a ""
   "oppgave_9.png" 1571383174 296926 5ce2ab9983c8b74af7f76e7d6d0fb068 ""
   (generated)
-  "main.aux"
-  "main.pdf"
   "main.log"
+  "main.pdf"
+  "main.aux"

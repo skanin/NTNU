@@ -1,17 +1,19 @@
 \documentclass[11pt, a4paper, norsk]{NTNUoving}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-
+\usepackage{placeins}
 \ovingnr{5}    % Nummer på innlevering
 \semester{Høsten 2019}
 \fag{TMA 4110}
 \institutt{Institutt for matematiske fag}
 
 \begin{document}
+\section*{Oppgaver til kapittel 10}
+    
     \begin{oppgave}
         Finn egenverdier og tilhørende egenvektorer til følgende matriser.
         
-        For hver av deloppgavene kommer jeg til å løse likningen $det(A - \lambda ˆ_{n}) = 0$ for å finne egenverdier og $(A-\lambda I_{n})\underline{v} = 0$ for å finne egenvektorer (der $\lambda$ er de forskjellige egenverdiene jeg fant først.)
+        For hver av deloppgavene kommer jeg til å løse likningen $\text{det}(A - \lambda I_{n}) = 0$ for å finne egenverdier og $(A-\lambda I_{n}) = 0$ for å finne egenvektorer (der $\lambda$ er de forskjellige egenverdiene jeg fant først.)
 
         \begin{punkt}
             $\begin{bmatrix}
@@ -26,8 +28,8 @@
                     2 & 1 - \lambda
                 \end{bmatrix}
                 \\
-                    det(A - \lambda I_{2}) &= (1- \lambda)(1 - \lambda) - 2 \cdot 2
-                    \\
+                \text{det}(A - \lambda I_{2}) &= (1- \lambda)(1 - \lambda) - 2 \cdot 2
+                \\
                                            &= 1^2 - 2\lambda + \lambda^2 - 4
                                            \\
                                            &= \lambda^2 - 2\lambda - 3
@@ -231,7 +233,7 @@
             
             Finner egenverdiene:
             \begin{align*}
-                det(A - \lambda I_{3}) &= det\left(\begin{bmatrix}
+                &det(A - \lambda I_{3}) = det\left(\begin{bmatrix}
                         4-\lambda & 2 & 3 \\
                         -1 & 1 - \lambda & -3 \\
                         2 & 4 & 9 - \lambda
@@ -299,6 +301,1095 @@
                     2
                 \end{bmatrix}
             \end{align*}
+        \end{punkt}
+    \end{oppgave}
+
+    \begin{oppgave}
+        \begin{punkt}
+            Vis at matrisen $$\begin{bmatrix}
+                0 & 1 \\
+                -1 & 0
+            \end{bmatrix}$$ ikke har noen reelle egenverdier.
+
+            Finner igjen egenverdiene med formelen $det(A - \lambda I_{n}) = 0$:
+            \begin{align*}
+                det(A - \lambda I_2) &= (-\lambda)(-\lambda) - (1 \cdot (-1)) \\
+                                     &= \lambda^2 +1
+            \end{align*}
+            Ser at for at $\lambda^2 + 1 = 0$ må $\lambda^2$ være et negativt tall, som ikke er mulig, og jeg får da komplekse verdier. En annen måte å se det er å se at ''det under rottegnet'' i abc-formelen blir negativt ($\sqrt{0^2 - 4 \cdot 1} = \sqrt{-4} = \pm 2i$). 
+        \end{punkt}
+        \begin{punkt}
+            Gi en geometrisk forklaring på del \textbf{a)}
+
+            Denne matrisen er det samme som å rotere vektorer med $-90$ grader. Det er derfor vi ikke får noen reelle egenverdier, for dersom de hadde vært reelle ville ikke vektorene blitt rotert, men skalert. (pga $A\underline{v} = \lambda\underline{v}$). 
+        \end{punkt}
+    \end{oppgave}
+
+    \begin{oppgave}
+        \begin{punkt}
+        Finn vektorene som svarer til at $$\underline{e_1} = \begin{bmatrix}
+            1 \\
+            0
+        \end{bmatrix} \: \text{og} \: \underline{e_2} = \begin{bmatrix}
+            0 \\
+            1
+        \end{bmatrix}$$ blir rotert med $\theta$ radianer.
+        
+        Vektoren $\begin{bmatrix}
+            \cos{\theta} & -\sin{\theta} 
+        \end{bmatrix}$ roterer $\underline{e_1}$ og vektoren $\begin{bmatrix}
+            \sin{\theta} & \cos{\theta}
+        \end{bmatrix}$ roterer $\underline{e_2}$.
+        \end{punkt}
+        \begin{punkt}
+            Utled formelen for $2$x$2$-matrisen $T_{\theta}$ som roterer en vektor $\theta$ radianer mot klokken ved multiplikasjon.
+
+            $$T_{\theta}(\underline{x}) = \begin{bmatrix}
+                \cos{\theta} & -\sin{\theta} \\
+                \sin{\theta} & \cos{\theta}
+            \end{bmatrix} \cdot \underline{x}$$
+
+            Et bilde som illustrerer at dette faktisk er rett:
+            \begin{figure}[!ht]
+                \centering
+                \includegraphics[width=0.8\linewidth]{/Users/sanderlindberg/Dropbox/Skjermbilder/oppgave_3_b.png}
+                \caption{Bilde som illustrerer at matrisen er korrekt}
+                \label{fig:rotationMatrix}
+            \end{figure}
+            \FloatBarrier
+            Her er $m1$ rotasjonsmatrisen, $u$ er en vektor og $v$ er $m1 \cdot u$. $\alpha$ er gitt som en slider, slik at når jeg slider den vil $v$ roteres.
+        \end{punkt}
+        \begin{punkt}
+            For hvilke verdier av $\theta$ har $T_{\theta}$ reelle egenverdier?
+
+            Setter opp en ligning for egenverdiene til rotasjonsmatrisen:
+            \begin{align*}
+                det(A - \lambda I_{2}) &= (\cos{\theta}-\lambda)^2 - (-\sin{\theta}\sin{\theta}) \\
+                                       &= \lambda^2 -2\cos{\theta}\lambda + \sin^{2}{\theta} + \cos^{2}{\theta} \\
+                                       &= \lambda^2 -2\cos{\theta} + 1
+            \end{align*}
+            For at det skal være reelle egenverdier, må ''det under rottegnet'' vvære $\geq 0$, som vil si $(-2\cos{\theta})^2 -4 \geq 0$:
+            \begin{align*}
+                (-2\cos{\theta})^2 - 4 &\geq 0 \\
+                4\cos^{2}{\theta} &\geq 4 \\
+                \cos^{2}{\theta} &\geq 1 \\
+                \text{Som vil si}
+                \\
+                \cos{\theta} \leq -1 \: \text{eller} \cos{\theta} \geq 1
+            \end{align*}
+            Vet at $-1 \leq \cos{\theta} \leq 1$, så $\cos{\theta} = -1$ eller $\cos{\theta} = 1$, som vil si $\theta = \pi \cdot n$, hvor $n \in \mathbb{Z}$
+
+            Den geometriske forklaringen her er litt det samme som forrige oppgave egentlig. Vi får reelle egenverdier når vi roterer med $180$ grader, $360$ grader, $540$ grader osv, fordi dette er det samme som å skalere med $-1$ eller $1$. Alle andre rotasjoner er ikke skaleringer og vi har derfor ikke reelle egenverdier. 
+        \end{punkt}
+    \end{oppgave}
+
+    \begin{oppgave}
+        \begin{punkt}
+          Regn ut egenverdiene til $$A = \begin{bmatrix}
+              1 & 2 & 3 & 4 \\
+              0 & 2 & 3 & 4 \\
+              0 & 0 & -5 & 0 \\
+              0 & 0 & 0 & 77
+          \end{bmatrix}$$ 
+
+          Bruker samme metode som tidligere oppgaver
+          \begin{align*}
+              det(A - \lambda I_{4}) &= (1-\lambda)\left(det\left(\begin{bmatrix}
+                  2-\lambda & 3 & 4 \\
+                  0 & -5-\lambda & 0 \\
+                  0 & 0 & 77-\lambda
+              \end{bmatrix}\right)\right) - 2\left(det\left(\begin{bmatrix}
+                  0 & 3 & 4 \\
+                  0 & -5-\lambda & 0 \\
+                  0 & 0 & 77-\lambda
+              \end{bmatrix}\right)\right) 
+              \\
+                                     &+3\left(det\left(\begin{bmatrix}
+                  0 & 2-\lambda & 4 \\
+                  0 & 0 & 0 \\
+                  0 & 0 & 77-\lambda
+              \end{bmatrix}\right)\right) - 4\left(det\left(\begin{bmatrix}
+                  0 & 2-\lambda & 3 \\
+                  0 & 0 & 5-\lambda \\
+                  0 & 0 & 0
+              \end{bmatrix}\right)\right)
+              \\
+                                     &= (1-\lambda)\left((2-\lambda)det\left(\begin{bmatrix}
+                                                 -5-\lambda & 0 \\
+                                                 0 & 77-\lambda
+                                     \end{bmatrix}\right)\right)
+                                     \\
+                                     &= (1-\lambda)((2-\lambda)((-5-\lambda)(77-\lambda)))
+          \end{align*}
+          Gadd ikke skrive opp alt som ble til $0$ når ganget. Håper det er greit. Ser ihvertfall nå at egenverdiene til $A$ er $1$, $2$, $-5$ og $77$. 
+        \end{punkt}
+        \begin{punkt}
+            Finn egenrommene til de ulike egenverdiene.
+
+            Finner disse ved å sette inn egenverdiene i ligningen $A - \lambda I_{n} = 0$ og finne nullrommet til denne. Finner først for $\lambda = 1$:
+            \begin{align*}
+                \begin{bmatrix}
+                    0 & 2 & 3 & 4 \\
+                    0 & 1 & 3 & 4 \\
+                    0 & 0 & -6 & 0 \\
+                    0 & 0 & 0 & 76
+                \end{bmatrix} &\sim \begin{bmatrix}
+                0 & 1 & 0 & 0 \\
+                0 & 1 & 0 & 0 \\
+                0 & 0 & 1 & 0 \\
+                0 & 0 & 0 & 1
+                \end{bmatrix}
+                \\
+                \\
+                &\implies Null(A - I_{4}) = \left\{\begin{bmatrix}
+                    1 \\
+                    0 \\
+                    0 \\
+                    0
+                \end{bmatrix}\right\}
+            \end{align*}
+            Finner så for $\lambda = 2$:
+            \begin{align*}
+                \begin{bmatrix}
+                    -1 & 2 & 3 & 4 \\
+                    0 & 0 & 3 & 4 \\
+                    0 & 0 & -7 & 0 \\
+                    0 & 0 & 0 & 75
+                \end{bmatrix} &\sim \begin{bmatrix}
+                1 & -2 & 0 & 0 \\
+                0 & 0 & 0 & 0 \\
+                0 & 0 & 1 & 0 \\
+                0 & 0 & 0 & 1
+                \end{bmatrix} 
+                \\
+                \\
+                &\implies Null(A - 2I_4) = \left\{\begin{bmatrix}
+                    2 \\
+                    1 \\
+                    0 \\
+                    0
+                \end{bmatrix}\right\}
+            \end{align*}
+            Finner så for $\lambda = -5$
+            \begin{align*}
+                \begin{bmatrix}
+                    6 & 2 & 3 & 4 \\
+                    0 & 7 & 3 & 4 \\
+                    0 & 0 & 0 & 0 \\
+                    0 & 0 & 0 & 82
+                \end{bmatrix} &\sim \begin{bmatrix}
+                6 & 2 & 3 & 4 \\
+                0 & 7 & 3 & 4 \\
+                0 & 0 & 0 & 0 \\
+                0 & 0 & 0 & 1
+                \end{bmatrix}
+                \\
+                &\sim \begin{bmatrix}
+                    6 & 2 & 3 & 0 \\
+                    0 & 7 & 3 & 0 \\
+                    0 & 0 & 0 & 0 \\
+                    0 & 0 & 0 & 1
+                \end{bmatrix}
+                \\
+                &\sim \begin{bmatrix}
+                    6 & 2 & 3 & 0 \\
+                    0 & 1 & \frac{3}{7} & 0 \\
+                    0 & 0 & 0 & 0 \\
+                    0 & 0 & 0 & 1
+                \end{bmatrix}
+                \\
+                &\sim \begin{bmatrix}
+                    6 & 0 & \frac{15}{7} & 0 \\
+                    0 & 1 & \frac{3}{7} & 0 \\
+                    0 & 0 & 0 & 0 \\
+                    0 & 0 & 0 & 1
+                \end{bmatrix}
+                \\
+                &\sim \begin{bmatrix}
+                    1 & 0 & \frac{5}{14} & 0 \\
+                    0 & 1 & \frac{3}{7} & 0 \\
+                    0 & 0 & 0 & 0 \\
+                    0 & 0 & 0 & 1
+                \end{bmatrix}
+                \\
+                \\
+                &\implies Null(A + 5I_4) = \left\{\begin{bmatrix}
+                    -\frac{5}{14} \\
+                    -\frac{3}{7} \\
+                    1 \\
+                    0
+                \end{bmatrix}\right\}
+            \end{align*}
+            Finner så for $\lambda = 77$:
+            \begin{align*}
+                \begin{bmatrix}
+                    -76 & 2 & 3 & 4 \\
+                    0 & -75 & 3 & 4 \\
+                    0 & 0 & -82 & 0 \\
+                    0 & 0 & 0 & 0
+                \end{bmatrix} &\sim \begin{bmatrix}
+                1 & -\frac{1}{38} & -\frac{3}{76} & -\frac{1}{19} \\
+                0 & 1 & -\frac{1}{25} & -\frac{4}{75} \\
+                0 & 0 & 1 & 0 \\
+                0 & 0 & 0 & 0
+                \end{bmatrix}
+                \\
+                &\sim \begin{bmatrix}
+                    1 & 0 & -\frac{77}{1900} & -\frac{77}{1425} \\
+                    0 & 1 & 0 & -\frac{4}{75} \\
+                    0 & 0 & 1 & 0 \\
+                    0 & 0 & 0 & 0
+                \end{bmatrix}
+                \\
+                &\sim \begin{bmatrix}
+                    1 & 0 & 0 & -\frac{77}{1425} \\
+                    0 & 1 & 0 & -\frac{4}{75} \\
+                    0 & 0 & 1 & 0 \\
+                    0 & 0 & 0 & 0
+                \end{bmatrix}
+                \\
+                \\
+                &\implies Null(A - 77I_4) = \left\{\begin{bmatrix}
+                    \frac{77}{1425} \\
+                    \frac{4}{75} \\
+                    0 \\
+                    1
+                \end{bmatrix}\right\}
+            \end{align*}
+        \end{punkt}
+        \begin{punkt}
+            $A$ er en $4$ x $4$-matrise. Er det alltid enkelt å finne egenverdiene til en $4$ x $4$-matrise? Mer generelt, er det alltid enkelt å finne egenverdiene til $n$ x $n$-matriser? 
+            \\
+            \\
+            Føler dette er et litt subjektivt spørsmål. Jeg selv synes det ikke er kjempe \textit{vanskelig} å finne egenverdiene (til en $4$ x $4$-matrise), det er bare tungvindt og mye jobb. Blir jo egentlig bare veldig mye mer jobb å finne for større matriser, da du må finne determinanten deres. Det er jo ''lett'' å finne determinanten, blir bare stygge og lange uttrykk etterhvert som matrisene blir større. Vi kan jo ende opp med et $n$te grads polynom, som ikke er så lett å løse for hånd, men datamaskiner klarer det jo fint. I denne oppgaven var vi heldige ( :) ) og fikk en matrise som hadde masse $0$ i seg, så mange ledd gikk vekk, men slik er det jo ikke alltid. 
+        \end{punkt}
+    \end{oppgave}
+    \begin{oppgave}
+        La $A$ være følgende matrise: $$A = \begin{bmatrix}
+            28 & 30 & -20 & -2 \\
+            6 & 40 & -10 & -4 \\
+            4 & 10 & 20 & -6 \\
+            2 & 20 & -30 & 32
+        \end{bmatrix}$$
+
+        \begin{punkt}
+            Hvilke av vetorene $$\begin{bmatrix}
+                0 \\
+                0 \\
+                0 \\
+                0
+            \end{bmatrix}, \begin{bmatrix}
+                1 \\
+                2 \\
+                3 \\
+                4
+            \end{bmatrix}, \begin{bmatrix}
+                3 \\
+                2 \\
+                2 \\
+                1
+            \end{bmatrix}, \begin{bmatrix}
+                1 \\
+                0 \\
+                0 \\
+                0
+            \end{bmatrix}, \begin{bmatrix}
+                2 \\
+                1 \\
+                2 \\
+                3
+            \end{bmatrix}, \begin{bmatrix}
+                3 \\
+                2 \\
+                1 \\
+                2
+            \end{bmatrix}, \begin{bmatrix}
+                4 \\
+                3 \\
+                2 \\
+                1
+            \end{bmatrix}$$ er egenvektorer for $A$?
+
+            En vektor $\underline{v}$ er egenvektor for en matrise $A$ dersom $A\underline{v} = \lambda\underline{v}$, der $\underline{v} \neq \underline{0}$. Jeg kan derfor utelukke $\begin{bmatrix}
+                0 \\
+                0 \\
+                0 \\
+                0
+            \end{bmatrix}$. Sjekker for resten ved å gange med $A$ og se om jeg får at $A\underline{v} = \lambda\underline{v}$.
+            \begin{align*}
+                A\begin{bmatrix}
+                    1 \\
+                    2 \\
+                    3 \\
+                    4
+                \end{bmatrix} &= \begin{bmatrix}
+                    20 \\
+                    40 \\
+                    60 \\
+                    80
+                \end{bmatrix} = 20 \cdot \begin{bmatrix}
+                    1 \\
+                    2 \\
+                    3 \\
+                    4
+            \end{bmatrix} \: \text{Ja, denne vektoren er en egenvektor for } A
+            \\
+            A\begin{bmatrix}
+                3 \\
+                2 \\
+                2 \\
+                1
+            \end{bmatrix} &= \begin{bmatrix}
+                102 \\
+                74 \\
+                66 \\
+                18
+        \end{bmatrix} \: \text{Nei, denne vektoren er ikke en egenvektor for } A                \\
+            A\begin{bmatrix}
+                1 \\
+                0 \\
+                0 \\
+                0
+            \end{bmatrix} &= \begin{bmatrix}
+                28 \\
+                6 \\
+                4 \\
+                2
+        \end{bmatrix} \: \text{Nei, denne vektoren er ikke en egenvektor for } A
+        \\
+            A\begin{bmatrix}
+                2 \\
+                1 \\
+                2 \\
+                3
+            \end{bmatrix} &= \begin{bmatrix}
+                40 \\
+                20 \\
+                40 \\
+                60
+            \end{bmatrix} = 20 \cdot \begin{bmatrix}
+                2 \\
+                1 \\
+                3 \\
+                2
+        \end{bmatrix} \: \text{Ja, denne vektoren er en egenvektor for } A
+        \\
+            A\begin{bmatrix}
+                3 \\
+                2 \\
+                1 \\
+                2
+            \end{bmatrix} &= \begin{bmatrix}
+                120 \\
+                80 \\
+                40 \\
+                80
+            \end{bmatrix} = 40 \cdot \begin{bmatrix}
+                3 \\
+                2 \\
+                1 \\
+                2
+        \end{bmatrix} \: \text{Ja, denne vektoren er en egenvektor for } A
+        \\
+            A\begin{bmatrix}
+                4 \\
+                3 \\
+                2 \\
+                1
+            \end{bmatrix} &= \begin{bmatrix}
+                160 \\
+                120 \\
+                80 \\
+                40
+            \end{bmatrix} = 40 \cdot \begin{bmatrix}
+                4 \\
+                3 \\
+                2 \\
+                1
+        \end{bmatrix} \: \text{Ja, denne vektoren er en egenvektor for } A
+            \end{align*}
+        \end{punkt}
+        \begin{punkt}
+            Finn alle egenverdiene til $A$, og de tilhørende egenrommene.
+
+            Egenverdiene fant jeg allerede i oppgave a. De er $20$, $20$, $40$ og $40$. Egenrommene finner jeg på samme måte som før, starter med $\lambda = 20$
+
+            \begin{align*}
+                \begin{bmatrix}
+                    8 & 30 & -20 & -2 \\
+                    6 & 20 & -10 & -4 \\
+                    4 & 10 & 0 & -6 \\
+                    2 & 20 & -30 & 12
+                \end{bmatrix} &\sim \begin{bmatrix}
+                1 & 10 & -15 & 6 \\
+                0 & -40 & 80 & -40 \\
+                0 & -30 & 60 & -30 \\
+                0 & -50 & 100 & -50
+                \end{bmatrix}
+                \\
+                &\sim \begin{bmatrix}
+                    1 & 10 & -15 & 6 \\
+                    0 & 1 & -2 & 1 \\
+                    0 & 1 & -2 & 1 \\
+                    0 & 1 & -2 & 1
+                \end{bmatrix}
+                \\
+                &\sim \begin{bmatrix}
+                    1 & 0 & 5 & -4 \\
+                    0 & 1 & -2 & 1 \\
+                    0 & 0 & 0 & 0 \\
+                    0 & 0 & 0 & 0
+                \end{bmatrix}
+                \\
+                \\
+                &\implies Null(A - 20I_4) = \left\{\begin{bmatrix}
+                    4 \\
+                    -1 \\
+                    0 \\
+                    1
+                \end{bmatrix}, \begin{bmatrix}
+                    -5 \\
+                    2 \\
+                    1 \\
+                    0
+                \end{bmatrix}\right\}
+            \end{align*}
+            Finner så for $\lambda = 40$
+            \begin{align*}
+                \begin{bmatrix}
+                    -12 & 30 & -20 & -2 \\
+                    6 & 0 & -10 & -4 \\
+                    4 & 10 & -20 & -6 \\
+                    2 & 20 & -30 & -8
+                \end{bmatrix} &\sim \begin{bmatrix}
+                1 & 10 & -15 & -4 \\
+                6 & 0 & -10 & -4 \\
+                4 & 10 & -20 & -6 \\
+                -12 & 30 & -20 & -2
+                \end{bmatrix}
+                \\
+                &\sim \begin{bmatrix}
+                    1 & 10 & -15 & -4 \\
+                    0 & 1 & -\frac{4}{3} & -\frac{1}{3} \\
+                    0 & 1 & -\frac{4}{3} & -\frac{1}{3} \\
+                    0 & 1 & -\frac{4}{3} & -\frac{1}{3}
+                \end{bmatrix}
+                \\
+                &\sim \begin{bmatrix}
+                    1 & 0 & -\frac{5}{3} & -\frac{2}{3} \\
+                    0 & 1 & -\frac{4}{3} & -\frac{1}{3} \\
+                    0 & 0 & 0 & 0 \\
+                    0 & 0 & 0 & 0
+                \end{bmatrix}
+                \\
+                \\
+                &\implies Null(A - 40I_4) = \left\{\begin{bmatrix}
+                    \frac{5}{3} \\
+                    \frac{4}{3} \\
+                    1 \\
+                    0
+                \end{bmatrix}, \begin{bmatrix}
+                    \frac{2}{3} \\
+                    \frac{1}{3} \\
+                    0 \\
+                    1
+                \end{bmatrix}\right\}
+            \end{align*}
+        \end{punkt}
+    \end{oppgave}
+    \begin{oppgave}
+        La $A$ være en $n$x$n$ matrise slik at $A^2 = A$. Hva kan du da si om egenverdiene til $A$?
+
+        Jeg kan da si at egenverdiene til $A$ er enten $0$ eller $1$. Bevis:
+        \begin{align*}
+           &A\underline{v} = \lambda\underline{v} = A^2\underline{v}
+           \\
+           &\implies A^2\underline{v} = A(\lambda\underline{v}) \: \: \text{(Fordi $A^2 = AA\underline{v}$ og $A\underline{v} = \lambda\underline{v}$)}
+           \\
+           &\implies \lambda A\underline{v} = \lambda^2\underline{v} \: \: \text{(Fordi $A\underline{v} = \lambda\underline{v}$)}
+        \end{align*}
+        Hvis jeg nå skal ha at $\lambda\underline{v} = \lambda^2\underline{v}$ må $\lambda = 0$ eller $\lambda = 1$ (må egt ha $\lambda = \lambda^2$ og eneste løsninger av dette er $0$ og $1$).
+    \end{oppgave}
+    \begin{oppgave}
+        Vis at dersom en matrise har egenverdien $0$, er den ikke inverterbar.
+
+        En matrise $A$ er inverterbar dersom $A\underline{v} = 0$ har en triviell løsning. Hvis vi har at $0$ er en egenverdi for $A$ har vi også $A\underline{v} = 0\underline{v}$, der $\underline{v} \neq \underline{0}$, som vil si $A\underline{v} = \underline{0}$. Men denne har ingen triviell løsning da $\underline{v}$ ikke kan være nullvektroen. Derfor er ikke $A$ inverterbar. I tillegg kan vi si at dersom $A$ er inverterbar har vi at $A^{-1}A\underline{v} = \underline{0} \implies I\underline{v} = \underline{0} \implies \underline{v} = \underline{0}$, som ikke er mulig.
+    \end{oppgave}
+
+    \section*{Oppgaver til kapittel 11}
+    
+    \begin{oppgave}
+        Finn matrisenes egenvektorer og egenverdier, og avgjør om matrisene er diagonaliserbare.
+        \begin{punkt}
+            $\begin{bmatrix}
+                3 & -1 & 2 \\
+                3 & -1 & 6 \\
+                -2 & 2 & -2
+            \end{bmatrix}$
+        
+            \begin{align*}
+                det(A - \lambda I_3) &= (3-\lambda)((-1-\lambda)(-2-\lambda) - 6\cdot 2) + 3(-2-\lambda) - 6 \cdot -2 
+                \\
+                                     &+ 2(3 \cdot 2 - (-1-\lambda)(-2)) 
+                                     \\
+                                     &= -\lambda^3 + 12\lambda - 16
+                                     \\
+                                     &\implies \lambda = \left[ -4, \  2, \ 2\right]
+            \end{align*}
+            Finner egenvekorene, starter med $\lambda = 2$
+            \begin{align*}
+                \begin{bmatrix}
+                    1 & -1 & 2 \\
+                    3 & -3 & 6 \\
+                    -2 & 2 & -4
+                \end{bmatrix} &\sim \begin{bmatrix}
+                1 & -1 & 2 \\
+                0 & 0 & 0 \\
+                0 & 0 & 0
+                \end{bmatrix}
+                \\
+                \\
+                &\implies Null(A - 2I_3) = \left\{\begin{bmatrix}
+                    1 \\
+                    1 \\
+                    0
+                \end{bmatrix}, \begin{bmatrix}
+                    -2 \\
+                    0 \\
+                    1
+                \end{bmatrix}\right\}
+            \end{align*}
+            For $\lambda = -4$:
+            \begin{align*}
+                \begin{bmatrix}
+                    7 & -1 & 2 \\
+                    3 & 3 & 6 \\
+                    -2 & 2 & 2
+                \end{bmatrix} &\sim \begin{bmatrix}
+                1 & 0 & \frac{1}{2} \\
+                0 & 1 & \frac{3}{2} \\
+                0 & 0 & 0
+                \end{bmatrix}
+                \\
+                \\
+                &\implies Null(A + 4I_3) = \left\{\begin{bmatrix}
+                    -\frac{1}{2} \\
+                    -\frac{3}{2} \\
+                    1
+                \end{bmatrix}\right\}
+            \end{align*}
+            Teorem 11.4 lyder:
+            \begin{quote}
+                En $n$ x $n$-matrise $A$ er diagonaliserbar hvis og bare hvis $A$ har $n$ egenverdier og dimensjonen til egenrommet til hver egenverdi $\lambda$ er lik den algebraiske multiplisiteten til $\lambda$.
+            \end{quote}
+            Den algebraiske multiplisiteten til $\lambda = 2$ er $2$ og dimensjonen til egenrommet er $2$. Den algebraiske multiplisiteten til $\lambda = -4$ er $1$ og dimensjonen til egenrommet er $1$. $A$ er derfor diagonaliserbar.
+        \end{punkt}
+
+        \begin{punkt}
+            $\begin{bmatrix}
+                0 & -1 & 1 & 5 \\
+                1 & 0 & 2 & 6 \\
+                0 & 0 & 3 & 0 \\
+                0 & 0 & 4 & 0
+            \end{bmatrix}$
+
+            Løser $det(A - \lambda I_4) = 0$:
+            \begin{align*}
+                det(A - \lambda I_4) &= -\lambda(-\lambda((3-\lambda) \cdot -\lambda)) + (3 - \lambda) \cdot -\lambda
+                \\
+                                     &= \lambda^4 - 3\lambda^3 + \lambda^2 - 3\lambda
+                                     \\
+                                     &\implies \lambda = \left[ 0, \  3, \  - i, \  i\right]
+            \end{align*}
+            Her brukte jeg polynomdivisjon (fant at $\lambda = 0$ er en rot) og fant at $\frac{\lambda^4 - 3\lambda^3 +\lambda^2 -3\lambda}{\lambda} = \lambda^3 - 3\lambda^2 + \lambda -3$. Prøvde meg frem og fant at $\lambda = 3$ er en rot og deretter polynomdividerte igjen: $\frac{\lambda^3 - 3\lambda^2 + \lambda -3}{\lambda-3} = \lambda^2 + 1 \implies \lambda = \pm \sqrt{-1} = \pm i$
+
+            Finner nå egenvektorene, starter med $\lambda = 0$
+            \begin{align*}
+                \begin{bmatrix}
+                    0 & -1 & 1 & 5 \\
+                    1 & 0 & 2 & 6 \\
+                    0 & 0 & 3 & 0 \\
+                    0 & 0 & 4 & 0
+                \end{bmatrix} &\sim \begin{bmatrix}
+                1 & 0 & 0 & 6 \\
+                0 & 1 & 0 & -5 \\
+                0 & 0 & 1 & 0 \\
+                0 & 0 & 0 & 0
+                \end{bmatrix}
+                \\
+                \\
+                &\implies Null(A - 0\lambda I_4) = \left\{\begin{bmatrix}
+                    -6 \\
+                    5 \\
+                    0 \\
+                    1
+            \end{bmatrix}\right\}
+            \end{align*}
+            Som og vil si geometrisk multiplisitet (dimensjon) $=1$.
+
+            Finner for $\lambda = 3$:
+            \begin{align*}
+                \begin{bmatrix}
+                    -3 & -1 & 1 & 5 \\
+                    1 & -3 & 2 & 6 \\
+                    0 & 0 & 0 & 0 \\
+                    0 & 0 & 4 & -3
+                \end{bmatrix} &\sim \begin{bmatrix}
+                1 & -3 & 2 & 6 \\
+                0 & -10 & 7 & 23 \\
+                0 & 0 & 0 & 0 \\
+                0 & 0 & 1 & -\frac{3}{4}
+                \end{bmatrix}
+                \\
+                &\sim \begin{bmatrix}
+                    1 & -3 & 2 & 6 \\
+                    0 & -10 & \frac{113}{4} \\
+                    0 & 0 & 0 & 0 \\
+                    0 & 0 & 1 & -\frac{3}{4}
+                \end{bmatrix}
+                \\
+                &\sim \begin{bmatrix}
+                    1 & 0 & 0 & -\frac{39}{40} \\
+                    0 & 1 & 0 & -\frac{113}{40} \\
+                    0 & 0 & 0 & 0 \\
+                    0 & 0 & 1 & -\frac{3}{4}
+                \end{bmatrix}
+                \\
+                \\
+                &\implies Null(A - 3\lambda I_4) = \left\{\begin{bmatrix}
+                    \frac{39}{40} \\
+                    \frac{113}{40} \\
+                    \frac{3}{4} \\
+                    1
+                \end{bmatrix}\right\}
+            \end{align*}
+            Som og vil si geometrisk multiplisitet $=1$.
+
+            Finner nå for $\lambda = i$:
+            \begin{align*}
+                \begin{bmatrix}
+                    -i & -1 & 1 & 5 \\
+                    1 & -i & 2 & 6 \\
+                    0 & 0 & 3-i & 0 \\
+                    0 & 0 & 4 & -i
+                \end{bmatrix} &\sim \begin{bmatrix}
+                1 & -i & 2 & 6 \\
+                0 & 0 & 1 & \frac{5+3i}{1+2i} \\
+                0 & 0 & 1 & 0 \\
+                0 & 0 & 0 & 0
+                \end{bmatrix}
+                \\
+                &\sim \begin{bmatrix}
+                    1 & -i & 0 & 0 \\
+                    0 & 0 & 0 & 0 \\
+                    0 & 0 & 1 & 0 \\
+                    0 & 0 & 0 & 1
+                \end{bmatrix}
+                \\
+                \\
+                &\implies Null(A - i\lambda I_4) = \left\{\begin{bmatrix}
+                    i \\
+                    1 \\
+                    0 \\
+                    0
+                \end{bmatrix}\right\}
+            \end{align*}
+            Som og vil si geometrisk multiplisitet $=1$. Jeg trenger ikke regne ut egenvektor for $\lambda = -i$, da jeg vet at denne kommer til å være den konjungerte av egenvektoren til $\lambda = i$, som er $\begin{bmatrix}
+                -i \\
+                1 \\
+                0 \\
+                0
+            \end{bmatrix}$, som og har geometrisk multiplisitet $=1$. Ser at for alle $\lambda$ er geometrisk multiplisitet lik algebraisk multiplisitet, og matrisen $A$ er diagonaliserbar.
+        \end{punkt}
+    \end{oppgave}
+
+    \begin{oppgave}
+        Finn $P$ og $D$ slik at $A = PDP^{-1}$ for $$A = \begin{bmatrix}
+            1 & 1-i \\
+            1+i & -1
+        \end{bmatrix}$$
+
+        Finner egenverdier:
+        \begin{align*}
+            det(A - \lambda I_2) &= (1-\lambda)(-1-\lambda) - ((1-i)(1+i))
+            \\
+                                 &= -1-\lambda+\lambda+\lambda^2-(1+i-i+1)
+                                 \\
+                                 &= \lambda^2 - 3 \implies \lambda = \pm \sqrt{3}
+        \end{align*}
+
+        Finner egenvektorer, starter med $\lambda = \sqrt{3}$
+        \begin{align*}
+            \begin{bmatrix}
+                1-\sqrt{3} & 1-i \\
+                1+i & -1-\sqrt{3}
+            \end{bmatrix} &\sim \begin{bmatrix}
+            1-\sqrt{3} & 1-i \\
+            0 & 0
+            \end{bmatrix}
+            \\
+            &\sim \begin{bmatrix}
+                1 & \frac{1-i}{1-\sqrt{3}} \\
+                0 & 0
+            \end{bmatrix}
+            \\
+            &\implies Null(A - \sqrt{3}I_2) = \left\{\begin{bmatrix}
+                    \frac{-1+i}{1-\sqrt{3}} \\
+                    1
+            \end{bmatrix}\right\}
+        \end{align*}
+        
+        Finner nå for $\lambda = -\sqrt{3}$
+        \begin{align*}
+            \begin{bmatrix}
+                1+\sqrt{3} & 1-i \\
+                1+i & -1-\sqrt{3}
+            \end{bmatrix} &\sim \begin{bmatrix}
+            1+\sqrt{3} & 1-i \\
+            0 & 0
+            \end{bmatrix}
+            \\
+            &\sim \begin{bmatrix}
+                1 & \frac{1-i}{1+\sqrt{3}} \\
+                0 & 0
+            \end{bmatrix}
+            \\
+            &\implies Null(A + \sqrt{3}I_2) = \left\{\begin{bmatrix}
+                    \frac{-1+i}{1+\sqrt{3}} \\
+                    1
+            \end{bmatrix}\right\}
+        \end{align*}
+        
+        Jeg har nå at $D = \begin{bmatrix}
+            -\sqrt{3} & 0 \\
+            0 & \sqrt{3}
+        \end{bmatrix}$ og $P = \begin{bmatrix}
+            \frac{-1+i}{1+\sqrt{3}} & \frac{-1+i}{1-\sqrt{3}} \\
+            1 & 1
+        \end{bmatrix}$, da gjenstår det å finne $P^{-1}$:
+        \begin{align*}
+            P^{-1} &= \frac{1}{ad-bc}\cdot \begin{bmatrix}
+                d & -b \\
+                -c & a
+            \end{bmatrix}
+            \\
+                 &= \frac{1}{\sqrt{3}i-\sqrt{3}} \cdot \begin{bmatrix}
+                     1 & \frac{1-i}{1-\sqrt{3}} \\
+                     -1 & \frac{-1+i}{1+\sqrt{3}}
+                 \end{bmatrix}
+                 \\
+                 &= \begin{bmatrix}
+                     \frac{-\frac{1}{2} - \frac{i}{2}}{\sqrt{3}} & -\frac{1}{\sqrt{3}(1-\sqrt{3})} \\
+                     \frac{\frac{1}{2} + \frac{i}{2}}{\sqrt{3}} & \frac{1}{\sqrt{3}(1+\sqrt{3})}
+                 \end{bmatrix}
+        \end{align*}        
+    \end{oppgave}
+
+    \begin{oppgave}
+        La $A = \begin{bmatrix}
+            r_1 & z \\
+            \bar{z} & r_2
+        \end{bmatrix}$ være en $2$ x $2$-matrise med $r_1, r_2 \in \mathbb{R}$ og $z \in \mathbb{C}$. Utled en formel for egenverdiene til $A$. Vis at egenverdiene er reelle.
+
+        \begin{align*}
+            det(A - \lambda I_2) &= (r_1 - \lambda)(r_2 - \lambda) - z\bar{z}
+            \\
+                                 &= r_1r_2-r_1\lambda-r_2\lambda+\lambda^2-a^2-b^2 \\
+                                 &= \lambda^2 + \lambda(-r_1-r_2) - a^2 - b^2 + r_1r_2
+        \end{align*}
+
+        Har nå $a = 1$, $b = (-r_1-r_2)$ og $c = -a^2 - b^2 - r_1r_2$ (i abc-formelen). For reelle egenverdier må jeg ha $(-r_1-r_2)^2 -4(-a^2-b^2+r_1r_2) \geq 0$:
+        \begin{align*}
+            (-r_1-r_2)^2 -4(-a^2-b^2+r_1r_2) &= r_{1}^2 + 2r_1r_2 + r_{2}^2 +4a^2 + 4b^2 - 4r_1r_2
+            \\
+                                             &= (r_1-r_2)^2 +4(a^2+b^2)
+        \end{align*}
+        
+        $(r_1-r_2)^2 +4(a^2+b^2)$ er alltid større enn eller lik $0$ og vi vil alltid få reelle egenverdier. En formel for egenverdiene blir $\frac{(r_1+r_2) \pm \sqrt{(r_1-r_2)^2 + 4(a^2+b^2)}}{2}$ 
+    \end{oppgave}
+    \begin{oppgave}
+        La $a \neq b$ være to reelle tall ulik null, og la $$A = \begin{bmatrix}
+            a & b & 0 \\
+            b & a & 0 \\
+            0 & 0 & a-b
+        \end{bmatrix}$$
+
+        Finner egenverdiene:
+        \begin{align*}
+            det(A - \lambda I_3) &= (a-b-\lambda)((a-\lambda)^2 -b^2)
+            \\
+                                 &\implies \lambda = [a-b, a-b, a+b]
+        \end{align*}
+        
+        Finner egenvektorer og ser om geometrisk multiplisitet $=$ algebraisk multiplisitet. Starter med $\lambda = a-b$ som har algebraisk multiplisitet $= 2$:
+        \begin{align*}
+            \begin{bmatrix}
+                a-(a-b) & b & 0 \\
+                b & a-(a-b) & 0 \\
+                0 & 0 & (a-b)-(a-b)
+            \end{bmatrix} &\sim \begin{bmatrix}
+            b & b & 0 \\
+            b & b & 0 \\
+            0 & 0 & 0
+            \end{bmatrix}
+            \\
+            &\sim \begin{bmatrix}
+                1 & 1 & 0 \\
+                0 & 0 & 0 \\
+                0 & 0 & 0
+            \end{bmatrix}
+            \\
+            &\implies Null(A - (a-b)I_3) = \left\{\begin{bmatrix}
+                -1 \\
+                1 \\
+                0
+            \end{bmatrix}, \begin{bmatrix}
+                0 \\
+                0 \\
+                1
+            \end{bmatrix}\right\}
+        \end{align*}
+        
+        Finner nå for $\lambda = a+b$
+        \begin{align*}
+            \begin{bmatrix}
+                a - (a+b) & b & 0 \\
+                b & a - (a + b) & 0 \\
+                0 & 0 & (a-b)-(a+b)
+            \end{bmatrix} &\sim \begin{bmatrix}
+            -b & b & 0 \\
+            b & -b & 0 \\
+            0 & 0 & 1
+            \end{bmatrix}
+            \\
+            &\sim \begin{bmatrix}
+                1 & -1 & 0 \\
+                0 & 0 & 0 \\
+                0 & 0 & 1
+            \end{bmatrix}
+            \\
+            &\implies Null(A - (a+b)I_3) = \left\{\begin{bmatrix}
+                1 \\
+                1 \\
+                0
+            \end{bmatrix}\right\}
+        \end{align*}
+        Ser at for alle $\lambda$ er geometrisk multiplisitet $=$ algebraisk multiplisitet, og $A$ er derfor diagonaliserbar.
+    \end{oppgave}
+
+    \begin{oppgave}
+        La $T : \mathcal{P}_{2} \rightarrow \mathcal{P}_{2}$ være lineærtransformasjonen mellom andregradspolynom gitt ved: $$T(f) = (x+1)f'(x)+f(x)$$
+
+        \begin{punkt}
+            Finn matrisen $A$ til $T$ med hensyn på basisen $(1, x, x^2)$
+
+            Matrisen $A$ er gitt ved $\begin{bmatrix}
+                T(1) & T(x) & T(x^2)
+            \end{bmatrix}$
+
+            Finner disse:
+            \begin{align*}
+                T(1) &= (x+1)\cdot 0 + 1 = 1 \\
+                T(x) &= (x+1) \cdot 1 + x = 2x + 1 \\
+                T(x^2) &= (x+1) \cdot 2x + x^2 = 3x^2 +2x
+                \\
+                \\
+                       &\implies A = \begin{bmatrix}
+                           1 & 1 & 0 \\
+                           0 & 2 & 2 \\
+                           0 & 0 & 3
+                       \end{bmatrix}
+            \end{align*}
+            For å sjekke at dette faktisk stemmer kan jeg teste med et andregradspolynom, f.eks $4x^2 + 2x + 1$:
+            \begin{align*}
+                T(4x^2 + 2x + 1) &= (x + 1)(8x + 2) + 4x^2 + 2x + 1
+                \\
+                                 &= 12x^2 + 12x + 3 = \begin{bmatrix}
+                                     3 \\
+                                     12 \\
+                                     12
+                                 \end{bmatrix}
+            \end{align*}
+            Prøver å gange $A$ med $\begin{bmatrix}
+                1 \\
+                2 \\
+                4
+            \end{bmatrix}$ og ser om jeg får det samme.
+            \begin{align*}
+                A \cdot \begin{bmatrix}
+                    1 \\
+                    2 \\
+                    4
+                \end{bmatrix} &= \begin{bmatrix}
+                1 & 1 & 0 \\
+                0 & 2 & 2 \\
+                0 & 0 & 3
+                \end{bmatrix} \cdot \begin{bmatrix}
+                    1 \\
+                    2 \\
+                    4
+                \end{bmatrix}
+                \\
+                &= \begin{bmatrix}
+                    3 \\
+                    12 \\
+                    12
+                \end{bmatrix}
+            \end{align*}
+        \end{punkt}
+        \begin{punkt}
+            Finn egenverdiene og egenvektorene til $A$. Er $A$ diagonaliserbar?
+
+            \begin{align*}
+                det(A - \lambda I_3) &= (1-\lambda)(2-\lambda)(3-\lambda)
+                \\
+                                     &\implies \lambda = [1, 2, 3]
+            \end{align*}
+            Finner egenvektorene, starter med $\lambda = 1$
+            \begin{align*}
+                \begin{bmatrix}
+                    0 & 1 & 0 \\
+                    0 & 1 & 2 \\
+                    0 & 0 & 2
+                \end{bmatrix} &\sim \begin{bmatrix}
+                0 & 1 & 0 \\
+                0 & 0 & 1 \\
+                0 & 0 & 0
+                \end{bmatrix}
+                \\
+                &\implies Null(A - I_3) = \left\{\begin{bmatrix}
+                    1 \\
+                    0 \\
+                    0
+                \end{bmatrix}\right\}
+            \end{align*}
+            
+            Finner for $\lambda = 2$
+            \begin{align*}
+                \begin{bmatrix}
+                    -1 & 1 & 0 \\
+                    0 & 0 & 2 \\
+                    0 & 0 & 1
+                \end{bmatrix} &\sim \begin{bmatrix}
+                1 & -1 & 0 \\
+                0 & 0 & 1 \\
+                0 & 0 & 0
+                \end{bmatrix}
+                \\
+                &\implies Null(A - 2I_3) = \left\{\begin{bmatrix}
+                    1 \\
+                    1 \\
+                    0
+                \end{bmatrix}\right\}
+            \end{align*}
+            
+            Finner for $\lambda = 3$
+            \begin{align*}
+                \begin{bmatrix}
+                    -2 & 1 & 0 \\
+                    0 & -1 & 2 \\
+                    0 & 0 & 0
+                \end{bmatrix} &\sim \begin{bmatrix}
+                1 & 0 & -1 \\
+                0 & 1 & -2 \\
+                0 & 0 & 0
+                \end{bmatrix}
+                \\
+                &\implies Null(A - 3I_3) = \left\{\begin{bmatrix}
+                    1 \\
+                    2 \\
+                    1
+                \end{bmatrix}\right\}
+            \end{align*}
+            Ser at for alle $\lambda$ er algebraisk multiplisitet $=$ geometrisk multiplisitet. Ja, $A$ er diagonaliserbar.
+        \end{punkt}
+    \end{oppgave}
+
+    \begin{oppgave}
+        Lineærtransformasjonen $T(\underline{x}) = A\underline{x}$, der $A$ er matrisen $$A = \begin{bmatrix}
+            \frac{\sqrt{3}}{2} & -\frac{1}{2} \\
+            \frac{1}{2} & \frac{\sqrt{3}}{2}
+        \end{bmatrix}$$ som roterer vektorer i $\mathbb{R}^{2}$
+
+        \begin{punkt}
+            Hva er rotasjonsvinkelen?
+
+            Jeg vet allerede at rotasjonsmatrisen er gitt ved $$\begin{bmatrix}
+                \cos{\theta} & -\sin{\theta} \\
+                \sin{\theta} & \cos{\theta}
+            \end{bmatrix}$$. Jeg kan derfor lett finne $\theta$ ved f.eks $\cos^{-1}{\frac{\sqrt{3}}{2}} = \frac{\pi}{6} = 30$ grader. 
+        \end{punkt}
+        \begin{punkt}
+            Finn egenverdiene og egenvektorene til matrisen.
+
+            Finner egenverdier:
+            \begin{align*}
+                det(A - \lambda I_{2}) &= (\frac{\sqrt{3}}{2} - \lambda)^2 - (\frac{1}{2} \cdot -\frac{1}{2}) \\
+                                       &= \lambda^2 -\sqrt{3}\lambda + 1
+            \end{align*}
+            Løser jeg denne får jeg at $\lambda_1 = \frac{\sqrt{3}}{2} + \frac{i}{2}$ og $\lambda_2 = \frac{\sqrt{3}}{2} - \frac{i}{2}$.
+
+            Finner egenvektorene:
+            \begin{align*}
+                \begin{bmatrix}
+                    -\frac{i}{2} & -\frac{1}{2} \\
+                    \frac{1}{2} & -\frac{i}{2}
+                \end{bmatrix} &\sim \begin{bmatrix}
+                -\frac{i}{2} & -\frac{1}{2} \\
+                0 & 0
+                \end{bmatrix}
+                \\
+                &\sim \begin{bmatrix}
+                    1 & -i \\
+                    0 & 0
+                \end{bmatrix}
+                \\
+                &\implies Null(A - (\frac{\sqrt{3}}{2} + \frac{i}{2})I_2) = \left\{\begin{bmatrix}
+                    i \\
+                    1
+                \end{bmatrix}\right\}
+            \end{align*}
+            Egenvektor for $\lambda_2$ blir den konjugerte av egenvektoren for $\lambda_1$ som er $\begin{bmatrix}
+                -i \\
+                1
+            \end{bmatrix}$
+        \end{punkt}
+        \begin{punkt}
+            Egenvektorene $\underline{v_1}$ og $\underline{v_2}$ danner en basis for $\mathbb{C}^{2}$. Hvilken matrise representerer $T$ med hensyn til denne basisen?
+
+            Dersom jeg forstod spørsmålet så tror jeg at jeg må finne standardmatrisen til $T(\underline{x})$ gitt $\underline{v_1}$ og $\underline{v_2}$. Isåfall gjøres dette ved $A = \begin{bmatrix}
+                T(\underline{v_1}) & T(\underline{v_2})
+            \end{bmatrix}$
+
+            \begin{align*}
+                T(\underline{v_1}) &= A\begin{bmatrix}
+                    i \\
+                    1
+                \end{bmatrix}
+                \\
+                                   &= \begin{bmatrix}
+                                       \frac{\sqrt{3}i}{2} - \frac{1}{2} \\
+                                       \frac{i}{2} + \frac{\sqrt{3}}{2}
+                                   \end{bmatrix}
+                                   \\
+                                   \\
+                    T(\underline{v_2}) &= A\begin{bmatrix}
+                        -i \\
+                        1
+                    \end{bmatrix}
+                    \\
+                                       &= \begin{bmatrix}
+                                           \frac{-\sqrt{3}i}{2} - \frac{1}{2} \\
+                                           -\frac{i}{2} + \frac{\sqrt{3}}{2}
+                                       \end{bmatrix}
+                                       \\
+                                       \\
+                                       &\implies A = \begin{bmatrix}
+                                           \frac{\sqrt{3}}{2}i - \frac{1}{2} & \frac{-\sqrt{3}}{2} - \frac{1}{2} \\
+                                           \frac{i}{2} + \frac{\sqrt{3}}{2} & -\frac{i}{2} + \frac{\sqrt{3}}{2}
+                                       \end{bmatrix}
+            \end{align*}
+            
         \end{punkt}
     \end{oppgave}
 \end{document}

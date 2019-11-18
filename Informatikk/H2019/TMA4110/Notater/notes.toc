@@ -20,3 +20,17 @@
 \contentsline {subsection}{\numberline {8.1}Oppsummering kap 10}{19}{subsection.8.1}% 
 \contentsline {subsection}{\numberline {8.2}Diagonalisering}{19}{subsection.8.2}% 
 \contentsline {section}{\numberline {9}Diagonalisering}{20}{section.9}% 
+\contentsline {section}{\numberline {10}Forelesning 24.10.19}{24}{section.10}% 
+\contentsline {section}{\numberline {11}Symmertiske matriser}{26}{section.11}% 
+\contentsline {section}{\numberline {12}Markov kjeder}{28}{section.12}% 
+\contentsline {section}{\numberline {13}System av differensiallikninger}{30}{section.13}% 
+\contentsline {subsection}{\numberline {13.1}Vektorfunksjoner}{30}{subsection.13.1}% 
+\contentsline {subsection}{\numberline {13.2}Systemer av differensiallikninger}{31}{subsection.13.2}% 
+\contentsline {subsection}{\numberline {13.3}Initialverdiproblem}{32}{subsection.13.3}% 
+\contentsline {subsection}{\numberline {13.4}Fasediagram}{33}{subsection.13.4}% 
+\contentsline {section}{\numberline {14}Forelesning 08.11.19}{33}{section.14}% 
+\contentsline {subsection}{\numberline {14.1}Litt repitisjon}{33}{subsection.14.1}% 
+\contentsline {subsection}{\numberline {14.2}En ny type likning}{34}{subsection.14.2}% 
+\contentsline {subsubsection}{\numberline {14.2.1}Variasjon av parametre}{35}{subsubsection.14.2.1}% 
+\contentsline {section}{\numberline {15}Repitisjon ig?}{36}{section.15}% 
+\contentsline {subsection}{\numberline {15.1}Kont 2019}{36}{subsection.15.1}% 
