@@ -1,1 +1,0 @@
-SELECT DISTINCT COUNT(navn) as 'Antall_navn_c' FROM skuespiller WHERE navn LIKE "C%";

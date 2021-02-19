@@ -1,0 +1,6 @@
+En synlighetsmodifikator deklarerer hvilke navn innenfor en klasse som skal være offentlige og private. (Public, Protected og Private)
+
+Forskjellen på Private og Public er at de som er markert med private kan en kun få tak i innenfor den klassen de er deklarert.
+DE som er markert Public vil alle kunne få tak i. Atributter er private, mens utvalgte operasjioner,
+som er en del av innkapslingen, er offentlige.
+

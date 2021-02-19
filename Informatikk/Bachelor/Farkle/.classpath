@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry exported="true" kind="con" path="org.eclipse.fx.ide.jdt.core.JAVAFX_CONTAINER"/>
+	<classpathentry kind="lib" path="/Users/sanderlindberg/tdt4100-2018-master/git/tdt4100-2018/ovinger/libs/no.hal.javafx.fxmlapp.lib_0.0.1.201701160851.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/sanderlindberg/tdt4100-2018-master/ws/Farkle/libs/no.hal.javafx.fxmlapp.lib_0.0.1.201701160851.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/sanderlindberg/tdt4100-2018-master/ws/Farkle/libs/jexercise-runtime.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-9">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

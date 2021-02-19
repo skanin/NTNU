@@ -1,0 +1,8 @@
+ul{
+    list-style-type: square;
+}
+.different>li:nth-last-child(1){
+    list-style-type: circle;
+    color: red;
+    font-family: "Courier New", "Times New Roman", "sans-serif";
+}

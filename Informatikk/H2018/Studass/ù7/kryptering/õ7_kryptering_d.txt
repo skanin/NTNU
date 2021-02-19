@@ -1,5 +1,0 @@
-d)
-
-Når en da har de to kodene som er kryptert med sammenøkkel,
-kan en lete etter en felles nøkkel som gjør at begge kodene kommer fra ord som er i "ordboka".
-Sjangsen for at disse da er de orginale meldingene øker betraktelig.

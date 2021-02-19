@@ -1,0 +1,29 @@
+a) Hva er et intranett?
+
+    Et intranett er et internt nettverk kun noen personer har tilgang til. For eksempel for en bedrift, der kun de ansatte har tilgang
+
+b) Hva er forskjellen på en ruter og en vert (host)?
+
+    En host er startpunktet (der ting kommer fra), en ruter videreformidler informasjon
+
+c) Beskriv hva en protokoll er innen nettverk. (to/tre setninger)
+
+    En protokoll er et sett med regler for overlevering av data. Disse reglene er for hvert steg som foregår når to eller flere
+    datamaskiner kommuniserer og overfører data. Hvis nettverket ikke følger disse reglene, får de ikke overført data.
+    Finnes mange forskjellige protokoller, f.eks HTTP, HTTPs, TCP, FTP
+
+d) Hva er en IP-adresse?
+
+    En IP-adresse er et sett av tall(ipv4) og bokstaver(ipv6), separert med punktumer eller kolon.
+    En IP kan f.eks være 192.168.1.152. (lokal IP ipv4) eller 2001:700:300:400b:d060:aa0e:965e:1e53 (ipen min på skolenettet, ipv6)
+    IP-adressen brukes for å gjenkjenne en pc på et nettverk.
+
+e) Hva er forskjellen på IPv4 og IPv6, og hvorfor har vi behov for IPv6?
+
+    Forskjellen på IPv4 og IPv6 er at IPv4 kun bruker tall, mens IPv6 også bruker bokstaver. IPv6 kan også være lengere enn IPv4.
+    Vi har behov for IPv6 fordi vi trenger fler IP-adresser.
+
+f) Forklar enkelt hvordan IP-protokollen fungerer
+
+   Ip protokollen (TCP/Ip) fungerer ved at TCP laget fordeler data i pakker, og sender dataen. IPen er 'GPSen' til dataene.
+   Den sier hvor pakkene skal.

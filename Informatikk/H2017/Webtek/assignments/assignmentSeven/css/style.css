@@ -1,6 +1,0 @@
-li {
-   list-style: none ;
-}
-input:checked + label{
-   text-decoration: line-through;
-}

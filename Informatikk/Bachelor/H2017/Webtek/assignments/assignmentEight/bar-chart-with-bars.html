@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tax forms: Bar chart with lines</title>
+    <meta charset="UTF-8">
+    <script src="scripts/taxForms.js"></script>
+</head>
+<body>
+
+<canvas id="chart" width="700" height="500"></canvas>
+
+<script>
+    const canvas = document.getElementById('chart');
+    const context = canvas.getContext('2d');
+
+    /* Draw a line from (fromX, fromY) to (toX, toY) */
+    function drawLine(fromX, fromY, toX, toY) {
+        context.beginPath();
+        context.moveTo(toX, toY);
+        context.lineTo(fromX, fromY);
+        context.stroke();
+    }
+
+    /* Draw a text (string) on (x, y) */
+    function drawText(text, x, y) {
+        context.fillText(text, x, y);
+    }
+
+    /* Draw a text and with a line to its right */
+    function drawLineWithText(text, fromX, fromY, toX, toY) {
+        drawText(text, fromX - 50, fromY + 3);
+        drawLine(fromX, fromY, toX, toY);
+    }
+
+    /* Insert your code here. */
+
+    //Draw lines
+    for(let i = 0; i < 10; i++){
+        let income = 1000000;
+        let fromY = 10;
+        if(i === 0){
+            toY = fromY;
+            drawLineWithText(income, 100, fromY, 578, toY);
+        }
+        income = income - (i*100000);
+        fromY = fromY + (i*50);
+        toY = fromY;
+        drawLineWithText(income, 100, fromY, 578, toY);
+    }
+
+    //Function to draw rectangles
+    function rectangle (x, y, width, height, color){
+        context.fillStyle = color;
+        context.fillRect(x, y, width, height);
+    }
+
+    //Draw income and wealth text
+    drawText("Income", 668, 25);
+    drawText("Wealth", 668, 60);
+
+    //Draw the red and blue rectangles beside income and wealth
+    rectangle(598, 10, 60, 25, "#ff2323");
+    rectangle(598, 45, 60, 25, "#3620f9");
+
+
+    //X and y values for the bars, also colors and a counter to use in the for-loop
+    let xValues = [120, 175, 280, 335, 440, 496];
+    let yValues = [140, 360, 290, 90, 188, 295];
+    let colors = ["#ff2323", "#3620f9"];
+    let countColor = 0;
+
+    //Draw the bars
+    for(let i = 0; i < yValues.length; i++){
+        if(countColor > 1){
+            countColor = 0;
+        }
+        rectangle(xValues[i], yValues[i], 50, 700, colors[countColor]);
+        countColor += 1
+    }
+</script>
+</body>
+</html>

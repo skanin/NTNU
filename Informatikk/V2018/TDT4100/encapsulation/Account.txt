@@ -1,5 +1,0 @@
-1. 
-Metodene kan ises å være en komplett innkapsling av tilstanden fordi ingen utenforstående kode kan endre tilstanden til objektet. Den må endres med metodene.
-
-2.
-Denne klassen er data-orientert, da den kun tilbyr operasjoner for å lese og endre attributter.

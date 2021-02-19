@@ -1,6 +1,0 @@
-Del 1:
-
-a) Private og final. Skal kun settes en gang, derav final. Skal kun være tilgjengelig fra denne klassen, derav private.
-
-b) Printer ut enten "male" eller "female"
-

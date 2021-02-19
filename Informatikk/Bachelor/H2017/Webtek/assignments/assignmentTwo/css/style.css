@@ -1,0 +1,11 @@
+header {
+    font-family: "Verdana", "Times New Roman", "sans-serif";
+}
+body {
+    background-color: antiquewhite;
+    font-family: "Times New Roman", "sans-serif";
+}
+#imgOfMe {
+    width: 150px;
+    border: 2px solid black;
+}

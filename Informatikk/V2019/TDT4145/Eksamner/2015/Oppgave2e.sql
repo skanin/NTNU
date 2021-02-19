@@ -1,1 +1,0 @@
-INSERT INTO Exam VALUES(999, 100, 4, 6, 1026, 4, 'Written');

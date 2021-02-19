@@ -1,0 +1,2 @@
+SELECT film.title, skuespillerifilm.rolle FROM film JOIN skuespillerifilm ON film.filmID = skuespillerifilm.filmID 
+JOIN skuespiller ON skuespiller.skuespillerID = skuespillerifIlm.skuespillerID WHERE navn = "Morgan Freeman";

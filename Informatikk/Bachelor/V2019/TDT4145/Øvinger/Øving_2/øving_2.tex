@@ -1,0 +1,91 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{tabularx}
+\usepackage{mainpackage}
+\usepackage{enumerate}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\begin{document}
+
+\begin{titlepage}
+    \centering
+    \vspace*{\fill}
+
+    \vspace*{0.5cm}
+
+    \huge
+    TDT4145 - Øving 2
+
+    \vspace*{0.5cm}
+
+    \large Sander Lindberg
+
+    \vspace*{\fill}
+    \end{titlepage}
+
+	\newpage
+	
+	\section{Oppgave 1}
+	\subsection{A}
+		Total spesialisering vil si at en instans av klassen \textit{må} mappe til minst en subklasse, mens disjunkte subklasser vil si at instanser mapper til en og bare en.
+		
+	\subsection{B}
+		\begin{enumerate}[i]
+			\item Student $\rightarrow$ Master-student, Bachelor-student, Årsstudium
+			\item Person $\rightarrow$ Mann, Kvinne (kan velge å være ingen kjønn om vi er politisk korrekte)
+			\item Pasient $\rightarrow$ Akutt pasient, Liste pasient
+			\item Person $\rightarrow$ Fotgjenger, Syklist, Bilist
+		\end{enumerate}
+		
+	\subsection{C}
+		Figur 4 er feil. Den mangler en superklasse. Figur 1 er også feil, relasjonen ''foretrekker'' skulle ikke vært imellom der. I tillegg mangler alle relasjonene restriksjoner, men det er vel kanskje ikke en syntaktisk feil.
+		
+	\section{Oppgave 2}
+		\begin{figure}[!ht]
+			\centering
+			\includegraphics[width=15cm]{oppgave_2.png}
+			\caption{ER-diagram for oppgave 2}
+			\label{fig:oppgave_2}
+		\end{figure}		
+	
+	Jeg tenker at hver dyrehage må ha en ID for å identifiseres og et navn. En dyrehage har mange avdelinger, tolker dette som at den må ha minst en, altså en (1, n) relasjon, med (1, 1) fra avdeling til dyrehage, da en avdeling kun er i en dyrehage. Når en avdeling har ID \textit{internt} i dyrehagen, tenker jeg det passer med en svak klasse. Tenker også at dyr kan være en svak klasse, da disse ikke kan eksistere uten en avdeling, samtidig skal de bli tildelt et unikt nummer, men tenker det er best om de identifiseres med både avdelingsIDen pluss dette nummeret. En avdeling \textit{kan} ha mange forskjellige dyr, så jeg lar muligheten for å ha ingen ligge åpen med en (0, n) relasjon. Fra dyr til avdeling setter jeg en (1, 1), da et dyr er avhengig av en avdeling, og ikke kan ha mer enn en avdeling. Setter også notis som en svak klasse, da denne ikke har noen naturlig nøkkel. Notiset kan kobles til flere dyr, så her blir det en (n, m) relasjon, mens en (0, n) andre veien. Hver avdeling har en eller flere ansatte, så det blir en (1, n) relasjon mellom disse. Ansatt er videre superklasse for subklassene ''Leder'' og ''Assistent''. Dette blir en total disjunk restriksjon, da du må være en av de, men kan ikke være begge. Møtet mellom de har jeg opprettet som en svak klasse, da den skulle identifiseres med lederen, assistenten og møtetiden (satt i relasjonen). Tenker at siden det er regelmessige møter mellom leder og assistent, er det en (1, n) relasjon for begge, mens møte-entiteten bare kan og må være relatert til en. Dyr har en art, så setter dyr som superklasse for subklassen art. Arten skulle ha ''poeng'' for hvor like de er, så satt en relasjon til seg selv med restriksjoner (0, n), da jeg tenker det ikke er \textit{nødvendig} med en poeng. Satt tilsyn som en egen entitet, som er i relasjon med assistent og dyr. 
+	
+	\section{Oppgave 3}
+		Entitetsintegritet sikrer at det ikke er noen duplikater i tabellen og at nøkkelen som identifiserer entiteten er unik og ikke NULL. Sammenhengen mellom primærnøkkel og entitetsintegritet er at primærnøkkelen er unik for alle entiteter og er den som identifiserer identiteten. Denne kan heller ikke være NULL. Referanseintegritet sikrer at fremmednøkkelen eksisterer. En fremmednøkkel er bare en nøkkel som peker på primærnøkkelen til en annen entitet, så referanseintegritet sørger altså for at denne eksisterer. F.eks hvis entiteten som holder primærnøkkelen fremmednøkkelen peker på blir slettet, blir også entiteten med fremmednøkkelen slettet (eller satt til NULL, avhengig av hva en har spesifisert at skal skje).
+	
+	\section{Oppgave 4}
+	\subsection{A}
+		\textbf{Eksamenslokale}(\underline{RomNr}, Navn, Kapasitet)\\
+		\textbf{Bord}(\underline{BordNr}, Type, \underline{RomNr}) $\rightarrow$ ''RomNr'' er fremmednøkkel mot eksamenslokale\\
+		\textbf{Stol}(\underline{StolNr}, Type, \underline{RomNr}) $\rightarrow$  ''RomNr'' er fremmednøkkel mot eksamenslokale\\
+		\textbf{Eksamen}(\underline{EksamenNr}, Fagkode, Hjelpemiddelkode)\\
+		\textbf{Student}(\underline{StudentNr}, Navn)
+		
+	\subsection{B}
+			\begin{multline}
+				\Pi_{HotellNr, navn}(\sigma(Hotell))
+			\end{multline}
+			\begin{multline}
+				\Pi_{HotellNr, navn}(\sigma_{Omraade = ''Barcelona''}(Hotell))
+			\end{multline}
+			(LaTex klager på ''Å'', så bruker aa)		
+			\begin{multline}
+				\Pi_{Hotellrom.RomNr, Hotell.navn}(Hotell \\ 
+				\Join_{(Hotell.HotellNr = Hotellrom.HotellNr) \cap (Hotell.Kvadratmeterstorrelse > 100)} Hotellrom)
+			\end{multline}
+			\begin{multline}
+				\zeta_{count(Bestillingsnr) AS AntallBestillinger}(\sigma_{Rombestilling.varighet > 7 \cap Hotellrom.kvadratmererstorrelse > 8}\\
+				(Hotellrom \Join_{Hotellrom.Romnr = Rombestilling.RomNr} Rombestilling))
+			\end{multline}
+			\begin{multline}
+				\Pi_{Kunde.Fornavn, Kunde.Etternavn, Kunde.Telefonnummer} \\
+				(\sigma(Rombestilling AS best \Join_{best.Romnr = rom.Romnr} Hotellrom AS rom) \\
+				\Join_{Hotell.Hotellnr = rom.Hotellnr} Hotell \Join_{best.Kundenr = Kunde.Kundenr AND Hotell.Omraade = 'Madrid'} Kunde)
+			\end{multline}
+			\begin{multline}
+				\Pi_{Rombestilling.Varighet, Kunde.Fornavn, Kunde.Etternavn}\\
+				(\sigma_{Kunde.Fornavn = ''Ole'' AND Kunde.Etternavn = ''Hansen''}\\
+				(Kunde \Join_{Kunde.Kundenr = Rombestilling.Kundenr} Rombestilling) ORDER ASC)
+			\end{multline}
+
+\end{document} 

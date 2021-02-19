@@ -1,1 +1,0 @@
-SELECT navn FROM skuespiller where faar > 1960;

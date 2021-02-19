@@ -1,0 +1,4 @@
+Apples:20-5
+Oranges:15-3
+Bananas:12-5
+Weed:420-1

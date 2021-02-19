@@ -1,0 +1,36 @@
+a) Hvor mange forskjellige heltall kan representeres ved å bruke 4 bytes?
+
+   2^32 heltall.
+
+b) Hva er en DAC? Nevn et bruksområde for for disse enhetene.
+
+    En DAC er en "Digital to Analog Converter". Brukes for eksempel for å gjøre om digital lyd til analog lyd. Pcer lagrer lyd i digital
+    form, og vi hører analog lyd.
+
+c) Hva er 18 i totallssystemet? Hva er 18 i 16 tallssystemet?
+
+    Totallssystemet: 10010
+    16 tallssystemet: 12
+
+d) Skriv OLE ved hjelp av ASCII.
+
+    O = 0100 1111
+    L = 0100 1100
+    E = 0100 0101
+
+    OLE = 0100 1111 0100 1100 0100 0101
+
+e) Hva er en piksel, og hva er dens funksjon i datamaskinens sammenheng?
+
+    En piksel er et bittelite fargepunkt på for eksempel bilder eller en skjerm. Jo flere og mindre piksler, jo skarpere bilder.
+    Har du en skjerm på oppløsning 1366x768, vil det si at du ser 1366 piksler horisontalt og 768 vertikalt. Til sammen 1049088 piksler
+    på skjemen.
+
+f) Hva er forskjellen på analog og digital lyd? Hvordan kan vi gå fra den ene til den andre?
+
+    Analog lyd er lydbølger, mens digital lyd er "samplete" lydbølger i form av bytes. For å gå fra analog til digital, brukes en ADC,
+    for eksempel en mikrofon. Deretter blir lydbølgene samplet, som vil si å utføre målinger på lydbølgene og lagre de som bytes.
+    For å gå fra digital til analog brukes en DAC.
+
+g) Hva er metadata?
+    Metadata er data som beskriver annen data, for eksempel datoen en fil er oprettet/endret.

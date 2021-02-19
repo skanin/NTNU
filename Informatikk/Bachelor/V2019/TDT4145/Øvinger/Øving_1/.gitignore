@@ -1,0 +1,12 @@
+*.aux
+
+*.log
+
+*.out
+
+*.gz
+
+*.syntex.gz
+
+*.png
+

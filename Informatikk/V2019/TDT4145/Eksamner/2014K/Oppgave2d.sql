@@ -1,4 +1,0 @@
-SELECT DISTINCT SubjectNo, Name
-FROM Subject NATURAL JOIN Exam
-WHERE Year = 2014
-ORDER BY SubjectNo ASC;

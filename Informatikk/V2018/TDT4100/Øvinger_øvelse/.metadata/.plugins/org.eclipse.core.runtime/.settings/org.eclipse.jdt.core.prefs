@@ -1,5 +1,0 @@
-eclipse.preferences.version=1
-org.eclipse.jdt.core.compiler.codegen.targetPlatform=1.8
-org.eclipse.jdt.core.compiler.compliance=1.8
-org.eclipse.jdt.core.compiler.source=1.8
-org.eclipse.jdt.core.userLibrary.apacheCommons=<?xml version\="1.0" encoding\="UTF-8"?>\n<userlibrary systemlibrary\="false" version\="2">\n\t<archive path\="/Users/sanderlindberg/Downloads/commons-lang3-3.7/commons-lang3-3.7.jar" sourceattachment\="/Users/sanderlindberg/Downloads/commons-lang3-3.7/commons-lang3-3.7-sources.jar">\n\t\t<attributes>\n\t\t\t<attribute name\="javadoc_location" value\="jar\:file\:/Users/sanderlindberg/Downloads/commons-lang3-3.7/commons-lang3-3.7-javadoc.jar\!/"/>\n\t\t</attributes>\n\t</archive>\n</userlibrary>\n

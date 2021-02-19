@@ -75,3 +75,11 @@ Icon\r
 __pycache__
 
 Icon[]
+
+##############################
+#        Temp ignores        #
+##############################
+
+**/.vscode
+**/.DS_Store
+Informatikk/Master/V2021/metoderiai/ovinger/oving2/*

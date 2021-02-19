@@ -1,1 +1,0 @@
-DELETE FROM regissør where regissørID = 2;

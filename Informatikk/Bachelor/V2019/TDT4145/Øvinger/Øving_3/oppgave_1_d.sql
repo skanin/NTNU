@@ -1,0 +1,1 @@
+UPDATE skuespiller SET navn = "James Eugene Carrey" WHERE skuespillerID = 1;

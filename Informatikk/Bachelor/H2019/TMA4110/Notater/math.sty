@@ -1,0 +1,123 @@
+\usepackage{amssymb}
+\usepackage[most]{tcolorbox}
+\newtcbtheorem[number within=section]{Theorem}{Theorem}{
+  enhanced,
+  sharp corners,
+  attach boxed title to top left={
+    yshifttext=-1mm
+  },
+  colback=white,
+  colframe=black!75!black,
+  fonttitle=\bfseries,
+  boxed title style={
+    sharp corners,
+    size=small,
+    colback=black!75!black,
+    colframe=black!75!black,
+  } 
+}{thm}
+
+\newtcbtheorem[number within=section]{Definition}{Definition}{
+  enhanced,
+  sharp corners,
+  attach boxed title to top left={
+    yshifttext=-1mm
+  },
+  colback=white,
+  colframe=red!75!black,
+  fonttitle=\bfseries,
+  boxed title style={
+    sharp corners,
+    size=small,
+    colback=red!75!black,
+    colframe=red!75!black,
+  } 
+}{def}
+
+\newtcbtheorem[number within=section]{Proof}{Proof}{
+  enhanced,
+  sharp corners,
+  attach boxed title to top left={
+    yshifttext=-1mm
+  },
+  colback=white,
+  colframe=blue!25,
+  fonttitle=\bfseries,
+  coltitle=black,
+  boxed title style={
+    sharp corners,
+    size=small,
+    colback=blue!25,
+    colframe=blue!25,
+  } 
+}{prf}
+\newtcbtheorem[number within=section]{Example}{Example}{
+  enhanced,
+  sharp corners,
+  attach boxed title to top left={
+    yshifttext=-1mm
+  },
+  colback=green!25,
+  colframe=green!50,
+  fonttitle=\bfseries,
+  coltitle=black,
+  boxed title style={
+    sharp corners,
+    size=small,
+    colback=green!50,
+    colframe=green!50,
+  } 
+}{ex}
+\newtcbtheorem[number within=section]{Formel}{Formel}{
+  enhanced,
+  sharp corners,
+  attach boxed title to top left={
+    yshifttext=-1mm
+  },
+  colback=white,
+  colframe=blue!25,
+  fonttitle=\bfseries,
+  coltitle=black,
+  boxed title style={
+    sharp corners,
+    size=small,
+    colback=blue!25,
+    colframe=blue!25,
+  } 
+}{ex}
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+\usepackage[usenames, dvipsnames]{color}
+\usepackage{fourier}
+\pagestyle{headings}
+\usepackage{marvosym}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{rotating}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{url}
+\usepackage{wrapfig}
+\usepackage[export]{adjustbox}
+\usepackage{pdfpages}
+\usepackage{listings}
+\usepackage{appendix}
+\usepackage{natbib} %Refereringstil (citet, citep osv)
+\usepackage{booktabs,tabularx} %for lange tabeller
+
+
+\usepackage{setspace}
+\usepackage{parskip}
+
+% Definerer farge på innholdsfortegnelse, referanser osv via mycolor, som nå er satt til sort. 
+\definecolor{mycolor}{RGB}{0, 0, 0}
+\definecolor{mygreen}{RGB}{28,172,0}
+\definecolor{mylilas}{RGB}{170,55,241}
+\newenvironment{remark}{\par\mbox{}\par\noindent{\bfseries \emph{Remark}\/}:\normalfont}{\par}
+\newenvironment{defin}{\par\mbox{}\par\noindent\bfseries \emph{\Pointinghand\ }\normalfont}{\par}
+\setcounter{tocdepth}{3} 
+\usepackage[colorlinks=true, a4paper=true, pdfstartview=FitV, linkcolor=mycolor, citecolor=mycolor, urlcolor=mycolor]{hyperref}
+\pdfcompresslevel=9

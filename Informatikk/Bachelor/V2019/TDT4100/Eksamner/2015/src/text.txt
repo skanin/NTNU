@@ -1,0 +1,35 @@
+Del 1
+
+a)
+    1. String. String + String gir string
+    2. Error? Kan ikke sammenligne strings på denne måten, ellers boolean.
+    3. int. Int/int = int
+    4. String. String + char = String.
+    5. Int
+
+b)
+    Venstresiden er et interface, som har en del metoder, mens høyresiden er en "spesiallisering" av interfacet, som har ekstra metoder.
+    Med <String> sier vi at ArrayListen kun kan inneholde Strings.
+
+c)
+    Et funksjonelt grensesnitt er et grensesnitt med én abstrakt metode, som alltid returnerer samme svar ved bruk av
+    samme verdier. F.eks f(x) = 2x vil alltid returnere 4 ved x = 2.
+
+
+getMatchingPersons(Collection<Person> persons, Predicate<Person> test){
+    Collection<Persons> result = new ArrayList<Person>();
+    for(Person p : persons){
+        if(test.test(p)){
+            result.add(p);
+         }
+     }
+     return result;
+}
+
+Evt.
+
+getMatchingPersons(Collection<Person> persons, Predicate<Person> pred){
+    return persons.stream().filter(pred).collect(Collectors.toList());
+}
+
+getMatchingPersons(persons, p -> p.getGender() == 'M' && p.getAge() == 18);

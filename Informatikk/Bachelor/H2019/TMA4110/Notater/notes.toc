@@ -1,0 +1,36 @@
+\contentsline {section}{\numberline {1}Komplekse tall}{2}{section.1}% 
+\contentsline {subsection}{\numberline {1.1}Polar form}{3}{subsection.1.1}% 
+\contentsline {subsection}{\numberline {1.2}Hvorfor komplekse tall?}{3}{subsection.1.2}% 
+\contentsline {section}{\numberline {2}Line\IeC {\ae }re systemer og gausseliminasjon}{5}{section.2}% 
+\contentsline {subsection}{\numberline {2.1}Vektorer}{5}{subsection.2.1}% 
+\contentsline {subsubsection}{\numberline {2.1.1}Line\IeC {\ae }rkombinasjon}{6}{subsubsection.2.1.1}% 
+\contentsline {section}{\numberline {3}Vektorlikninger}{7}{section.3}% 
+\contentsline {subsection}{\numberline {3.1}Lin\IeC {\ae }re spenn}{7}{subsection.3.1}% 
+\contentsline {subsection}{\numberline {3.2}Linkningssett}{7}{subsection.3.2}% 
+\contentsline {subsection}{\numberline {3.3}Enhetsvektorer}{9}{subsection.3.3}% 
+\contentsline {subsection}{\numberline {3.4}Vektorlikninger}{10}{subsection.3.4}% 
+\contentsline {section}{\numberline {4}Forelesning 16.10.19}{10}{section.4}% 
+\contentsline {subsection}{\numberline {4.1}Fourier-analyse(Anvendelse)}{10}{subsection.4.1}% 
+\contentsline {section}{\numberline {5}Egenverdier og egenvektorer}{10}{section.5}% 
+\contentsline {subsection}{\numberline {5.1}Metode for \IeC {\r a} finne egenverdi og egenvektor}{12}{subsection.5.1}% 
+\contentsline {section}{\numberline {6}Forelesning 17.10.19}{14}{section.6}% 
+\contentsline {subsection}{\numberline {6.1}Egenverdier og egenvektorer}{14}{subsection.6.1}% 
+\contentsline {section}{\numberline {7}Eksistens av egenverdier og egenvektorer}{15}{section.7}% 
+\contentsline {section}{\numberline {8}Forelesning 21.10.19}{19}{section.8}% 
+\contentsline {subsection}{\numberline {8.1}Oppsummering kap 10}{19}{subsection.8.1}% 
+\contentsline {subsection}{\numberline {8.2}Diagonalisering}{19}{subsection.8.2}% 
+\contentsline {section}{\numberline {9}Diagonalisering}{20}{section.9}% 
+\contentsline {section}{\numberline {10}Forelesning 24.10.19}{24}{section.10}% 
+\contentsline {section}{\numberline {11}Symmertiske matriser}{26}{section.11}% 
+\contentsline {section}{\numberline {12}Markov kjeder}{28}{section.12}% 
+\contentsline {section}{\numberline {13}System av differensiallikninger}{30}{section.13}% 
+\contentsline {subsection}{\numberline {13.1}Vektorfunksjoner}{30}{subsection.13.1}% 
+\contentsline {subsection}{\numberline {13.2}Systemer av differensiallikninger}{31}{subsection.13.2}% 
+\contentsline {subsection}{\numberline {13.3}Initialverdiproblem}{32}{subsection.13.3}% 
+\contentsline {subsection}{\numberline {13.4}Fasediagram}{33}{subsection.13.4}% 
+\contentsline {section}{\numberline {14}Forelesning 08.11.19}{33}{section.14}% 
+\contentsline {subsection}{\numberline {14.1}Litt repitisjon}{33}{subsection.14.1}% 
+\contentsline {subsection}{\numberline {14.2}En ny type likning}{34}{subsection.14.2}% 
+\contentsline {subsubsection}{\numberline {14.2.1}Variasjon av parametre}{35}{subsubsection.14.2.1}% 
+\contentsline {section}{\numberline {15}Repitisjon ig?}{36}{section.15}% 
+\contentsline {subsection}{\numberline {15.1}Kont 2019}{36}{subsection.15.1}% 
