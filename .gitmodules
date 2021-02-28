@@ -10,3 +10,6 @@
 [submodule "Informatikk/Master/V2021/AIprog"]
 	path = Informatikk/Master/V2021/AIprog
 	url = https://github.com/skanin/AIprog.git
+[submodule "Informatikk/Master/V2021/anbefalingssystemer/KL4US"]
+	path = Informatikk/Master/V2021/anbefalingssystemer/KL4US
+	url = https://github.com/tartaruz/KL4US.git
