@@ -18,3 +18,7 @@
 	path = Informatikk/Master/V2021/anbefalingssystemer/KL4US
 	url = https://github.com/tartaruz/KL4US.git
 	ignore = dirty
+[submodule "Informatikk/Master/master_project/thesis"]
+	path = Informatikk/Master/master_project/thesis
+	url = git@github.com:skanin/thesis.git
+	ignore = dirty
