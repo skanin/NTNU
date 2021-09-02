@@ -1,15 +1,20 @@
 [submodule "Informatikk/Master/H2020/storedist/ovinger/TDT4225-oving2"]
 	path = Informatikk/Master/H2020/storedist/ovinger/TDT4225-oving2
 	url = https://github.com/skanin/TDT4225-oving2.git
+	ignore = dirty
 [submodule "Informatikk/Master/H2020/storedist/ovinger/TDT4225-oving3"]
 	path = Informatikk/Master/H2020/storedist/ovinger/TDT4225-oving3
 	url = https://github.com/skanin/TDT4225-oving3.git
+	ignore = dirty
 [submodule "Informatikk/Master/H2020/maskinlæring/project/CheeZam"]
 	path = Informatikk/Master/H2020/maskinlæring/project/CheeZam
 	url = https://github.com/tartaruz/CheeZam.git
+	ignore = dirty
 [submodule "Informatikk/Master/V2021/AIprog"]
 	path = Informatikk/Master/V2021/AIprog
 	url = https://github.com/skanin/AIprog.git
+	ignore = dirty
 [submodule "Informatikk/Master/V2021/anbefalingssystemer/KL4US"]
 	path = Informatikk/Master/V2021/anbefalingssystemer/KL4US
 	url = https://github.com/tartaruz/KL4US.git
+	ignore = dirty
