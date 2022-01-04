@@ -1,0 +1,5 @@
+"0","ggplot(text_test_only, aes(x=Posttest.Score)) + geom_histogram() + xlab"
+"2","Error: Can't add `xlab` to a ggplot object.
+Did you forget to add parentheses, as in `xlab()`?
+[90mRun `rlang::last_error()` to see where the error occurred.[39m
+"

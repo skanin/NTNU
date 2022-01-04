@@ -1,0 +1,2 @@
+"0",""
+"0","ggplot(text_aoi_mean_duration[text_aoi_mean_duration$Pretest.Type == 'T',], aes(x=mean)) + geom_density() + xlab(""Mean aoi duration for text elements text priming"")"

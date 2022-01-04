@@ -1,0 +1,6 @@
+"0","ggplot(schema_aoi_mean_duration[schema_aoi_mean_duration$Pretest.Type == 'S',], aes(x=mean)) + geom_density() + xlab(""Mean aoi duration for schema elements schema priming"")
+
+ggplot(schema_aoi_mean_duration[schema_aoi_mean_duration$Pretest.Type == 'T',], aes(x=mean)) + geom_density() + xlab(""Mean aoi duration for schema elements text priming"")
+"
+"0",""
+"0","ggplot(text_aoi_mean_duration[text_aoi_mean_duration$Pretest.Type == 'S',], aes(x=mean)) + geom_density() + xlab(""Mean aoi duration for text elements schema priming"")"

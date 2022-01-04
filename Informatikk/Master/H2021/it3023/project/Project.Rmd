@@ -1,0 +1,176 @@
+---
+title: "Project"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Reading dataset
+
+```{r}
+df = read.csv('Eye_tracking.csv')
+```
+
+# Schema and text dfs
+
+```{r}
+schema_aoi_hits = df[ , grepl( "((k|formula|cl|channel|graph)_[0-9]|membrane_(top|bottom|left|right)|K..ions|electrical.gradient|Na.channel|chemical.gradient|Resting.membrane.potential|Na.K.Pump|k.channel|cl.channel|Cl..ions|permeability|axon|na.ions|neuron|diffusion).Hit|Participant|Pretest.Type|Motivation.Score|Strategy.Score|Pretest.Score|Posttest.Score|Avg.PupilSize" , names( df ) ) ]
+
+text_aoi_hits = df[ , grepl( "((t|T)ext)_[0-9].Hit|((t|T)able).Hit|Participant|Pretest.Type|Motivation.Score|Strategy.Score|Pretest.Score|Posttest.Score|Avg.PupilSize" , names( df ) ) ]
+
+schema_aoi_duration = df[ , grepl( "((k|formula|cl|channel|graph)_[0-9]|membrane_(top|bottom|left|right)|K..ions|electrical.gradient|Na.channel|chemical.gradient|Resting.membrane.potential|Na.K.Pump|k.channel|cl.channel|Cl..ions|permeability|axon|na.ions|neuron|diffusion).Duration|Participant|Pretest.Type|Motivation.Score|Strategy.Score|Pretest.Score|Posttest.Score|Avg.PupilSize" , names( df ) ) ]
+
+
+text_aoi_duration = df[ , grepl( "((t|T)ext)_[0-9].Duration|((t|T)able).Duration|Participant|Pretest.Type|Motivation.Score|Strategy.Score|Pretest.Score|Posttest.Score|Avg.PupilSize" , names( df ) ) ]
+
+all_schema = merge(x = schema_aoi_hits, y = schema_aoi_duration, by = c("Participant", "Pretest.Type", "Motivation.Score", "Strategy.Score", "Pretest.Score", "Posttest.Score", "Avg.PupilSize"), all = TRUE)
+
+all_text = merge(x = text_aoi_hits, y = text_aoi_duration, by = c("Participant", "Pretest.Type", "Motivation.Score", "Strategy.Score", "Pretest.Score", "Posttest.Score", "Avg.PupilSize"), all = TRUE)
+
+schema_test_only = df[df$Pretest.Type == 'S', ]
+text_test_only = df[df$Pretest.Type == 'T', ]
+
+schema_aoi_mean_duration = data.frame(participant = all_schema$Participant, mean = rowMeans(all_schema[, grepl(".Duration$", names(all_schema))]), Pretest.Type = all_schema$Pretest.Type)
+
+text_aoi_mean_duration = data.frame(participant = all_text$Participant, mean = rowMeans(all_text[, grepl(".Duration$", names(all_text))]), Pretest.Type = all_text$Pretest.Type)
+
+schema_test_only_mean_aoi_duration = data.frame(participant = schema_test_only$Participant, mean = rowMeans(schema_test_only[, grepl(".Duration$", names(schema_test_only))]))
+
+text_test_only_mean_aoi_duration = data.frame(participant = text_test_only$Participant, mean = rowMeans(text_test_only[, grepl(".Duration$", names(text_test_only))]))
+
+df$mean_duration = rowMeans(df[, grepl(".Duration$", names(df))])
+
+library(dplyr)
+
+df <- mutate(df, Motivation.Group = case_when(Motivation.Score > 29.5 ~ "High", Motivation.Score <= 29.5 ~ "Low"))
+
+```
+
+# Plots
+## Histogram plots pretest and posttest scores
+
+```{r}
+library(ggplot2)
+
+
+ggplot(schema_test_only, aes(x=Pretest.Score)) + geom_histogram() + xlab("Pretest score for Schema type test")
+ggplot(text_test_only, aes(x=Pretest.Score)) + geom_histogram() + xlab("Pretest score for Text type test")
+
+ggplot(schema_test_only, aes(x=Posttest.Score)) + geom_histogram() + xlab("Posttest score for Schema type test")
+ggplot(text_test_only, aes(x=Posttest.Score)) + geom_histogram() + xlab
+```
+
+## Density plots pretest and posttest scores
+
+```{r}
+ggplot(schema_test_only, aes(x=Pretest.Score)) + geom_density() + xlab("Pretest score for Schema type test")
+ggplot(text_test_only, aes(x=Pretest.Score)) + geom_density() + xlab("Pretest score for Text type test")
+
+ggplot(schema_test_only, aes(x=Posttest.Score)) + geom_density() + xlab("Posttest score for Schema type test")
+ggplot(text_test_only, aes(x=Posttest.Score)) + geom_density() + xlab("Posttest score for Text type test")
+
+```
+
+## Boxplots pretest and posttest scores
+
+```{r}
+newDf = data.frame(
+  value=c(schema_test_only$Pretest.Score, schema_test_only$Posttest.Score, text_test_only$Pretest.Score, text_test_only$Posttest.Score),
+  variable=rep(c("Schema.Pretest", "Schema.Posttest", "Text.Pretest", "Text.Posttest"))
+)
+
+ggplot(newDf, aes(x=variable, y=value)) + geom_boxplot()
+```
+
+## Pretest vs Posttest for Schema and Text
+
+```{r}
+newDf = data.frame(
+  value=c(schema_test_only$Pretest.Score, schema_test_only$Posttest.Score, text_test_only$Pretest.Score, text_test_only$Posttest.Score),
+  variable=rep(c("Schema.Pretest", "Schema.Posttest", "Text.Pretest", "Text.Posttest"))
+)
+
+ggplot(df, aes(x = Pretest.Score, y = Posttest.Score, color=Pretest.Type)) + geom_point() + theme_minimal() + stat_smooth(method = "lm", se=F) # + facet_wrap(.~Pretest.Type)
+
+```
+
+## Histogram motivation score for text and schema
+
+```{r}
+ggplot(schema_test_only, aes(x=Motivation.Score)) + geom_histogram() + xlab("Motivation score schema")
+ggplot(text_test_only, aes(x=Motivation.Score)) + geom_histogram()+ xlab("Motivation score text")
+```
+
+## Histogram mean duration for text and shcema
+
+```{r}
+ggplot(schema_aoi_mean_duration[schema_aoi_mean_duration$Pretest.Type == 'S',], aes(x=mean)) + geom_density() + xlab("Mean aoi duration for schema elements schema priming")
+
+ggplot(schema_aoi_mean_duration[schema_aoi_mean_duration$Pretest.Type == 'T',], aes(x=mean)) + geom_density() + xlab("Mean aoi duration for schema elements text priming")
+
+ggplot(text_aoi_mean_duration[text_aoi_mean_duration$Pretest.Type == 'S',], aes(x=mean)) + geom_density() + xlab("Mean aoi duration for text elements schema priming")
+
+ggplot(text_aoi_mean_duration[text_aoi_mean_duration$Pretest.Type == 'T',], aes(x=mean)) + geom_density() + xlab("Mean aoi duration for text elements text priming")
+
+ggplot(text_aoi_mean_duration, aes(x=mean))  + geom_density() + xlab("Mean aoi duration for text priming")
+```
+## Motivation score plots
+```{r}
+ggplot(df, aes(Motivation.Score)) + geom_histogram(aes(y=..density..), fill="darkgray") + geom_density()
+
+ggplot(df, aes(x=Motivation.Score, y=mean_duration)) + geom_point() + theme_minimal() + stat_smooth(method="lm",se=F) + xlab("Motivation score") + ylab("Mean Area of Interest duration")
+
+newDataFrame<-data.frame(
+value=c(df[df$Motivation.Group == 'Low', ]$mean_duration, df[df$Motivation.Group == 'High', ]$mean_duration), variable=rep(c("Low","High"))) 
+
+ggplot(newDataFrame,aes(x=variable, y=value)) + geom_boxplot() + theme_minimal() + xlab("") + ylab("") # + theme(axis.text = element_text(size = 14))
+```
+
+
+## Normality test
+
+```{r}
+with(schema_aoi_mean_duration, shapiro.test(mean[Pretest.Type == 'S']))
+with(schema_aoi_mean_duration, shapiro.test(mean[Pretest.Type == 'T']))
+
+with(text_aoi_mean_duration, shapiro.test(mean[Pretest.Type == 'S']))
+with(text_aoi_mean_duration, shapiro.test(mean[Pretest.Type == 'T']))
+# shapiro.test(schema_aoi_mean_duration$mean)
+```
+Both with p > 0.05. Assume normality.
+
+## Variance test
+```{r}
+library(lmtest)
+bptest(schema_aoi_mean_duration$mean ~ schema_aoi_mean_duration$Pretest.Type)
+```
+p-value > 0.05, we assume equal variances.
+
+```{r}
+new_df = data.frame(mean_schema = schema_aoi_mean_duration$mean, mean_text = text_aoi_mean_duration$mean)
+t.test(mean ~ Pretest.Type, data = schema_aoi_mean_duration, var.equal=TRUE)
+```
+Cannot reject H0, the groups are same.
+
+```{r}
+wilcox.test(mean ~ Pretest.Type, data = schema_aoi_mean_duration)
+```
+```{r}
+with(df, shapiro.test(mean_duration[Motivation.Group == 'High']))
+with(df, shapiro.test(mean_duration[Motivation.Group == 'Low']))
+```
+
+```{r}
+library(lmtest)
+bptest(df[df$Motivation.Group == 'High', ]$mean_duration ~ df[df$Motivation.Group == 'Low', ]$mean_duration)
+```
+
+```{r}
+t.test(mean_duration ~ Motivation.Group, data = df, var.equal=TRUE)
+
+var(df[df$Motivation.Group == 'High', ]$mean_duration)
+var(df[df$Motivation.Group == 'Low', ]$mean_duration)
+```
+

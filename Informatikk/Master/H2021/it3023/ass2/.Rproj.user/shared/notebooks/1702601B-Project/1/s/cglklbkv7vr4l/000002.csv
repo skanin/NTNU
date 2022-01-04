@@ -1,0 +1,8 @@
+"0","newDf = data.frame("
+"0","  value=c(schema_test_only$Pretest.Score, schema_test_only$Posttest.Score, text_test_only$Pretest.Score, text_test_only$Posttest.Score),"
+"0","  variable=rep(c(""Schema.Pretest"", ""Schema.Posttest"", ""Text.Pretest"", ""Text.Posttest""))"
+"0",")"
+"0",""
+"0","ggplot(df, aes(x = Pretest.Score, y = Posttest.Score, color=Pretest.Type)) + geom_point() + theme_minimal() + stat_smooth(method = ""lm"", se=F) # + facet_wrap(.~Pretest.Type)"
+"2","`geom_smooth()` using formula 'y ~ x'
+"

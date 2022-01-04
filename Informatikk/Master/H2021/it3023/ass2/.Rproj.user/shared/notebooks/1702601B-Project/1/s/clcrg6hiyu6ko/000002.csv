@@ -1,0 +1,11 @@
+"0","var(df[df$Motivation.Group == 'High', ]$mean_duration)
+"
+"1","[1]"
+"1"," 18025952"
+"1","
+"
+"0","var(df[df$Motivation.Group == 'Low', ]$mean_duration)"
+"1","[1]"
+"1"," 21413659"
+"1","
+"

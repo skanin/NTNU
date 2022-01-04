@@ -22,3 +22,15 @@
 	path = Informatikk/Master/master_project/thesis
 	url = git@github.com:skanin/thesis.git
 	ignore = dirty
+[submodule "Informatikk/Master/H2021/TDT05"]
+	path = Informatikk/Master/H2021/TDT05
+	url = git@github.com:skanin/TDT05.git
+[submodule "Informatikk/Master/master_project/master-study-system-backend"]
+	path = Informatikk/Master/master_project/master-study-system-backend
+	url = git@github.com:skanin/master-study-system-backend.git
+[submodule "Informatikk/Master/master_project/master-study-system"]
+	path = Informatikk/Master/master_project/master-study-system
+	url = git@github.com:skanin/master-study-system.git
+[submodule "Informatikk/Master/H2021/TDT13"]
+	path = Informatikk/Master/H2021/TDT13
+	url = git@github.com:skanin/TDT13-submission.git
