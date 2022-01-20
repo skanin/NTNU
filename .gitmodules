@@ -1,36 +1,40 @@
 [submodule "Informatikk/Master/H2020/storedist/ovinger/TDT4225-oving2"]
 	path = Informatikk/Master/H2020/storedist/ovinger/TDT4225-oving2
 	url = https://github.com/skanin/TDT4225-oving2.git
-	ignore = dirty
+	ignore = untracked
 [submodule "Informatikk/Master/H2020/storedist/ovinger/TDT4225-oving3"]
 	path = Informatikk/Master/H2020/storedist/ovinger/TDT4225-oving3
 	url = https://github.com/skanin/TDT4225-oving3.git
-	ignore = dirty
+	ignore = untracked
 [submodule "Informatikk/Master/H2020/maskinlæring/project/CheeZam"]
 	path = Informatikk/Master/H2020/maskinlæring/project/CheeZam
 	url = https://github.com/tartaruz/CheeZam.git
-	ignore = dirty
-[submodule "Informatikk/Master/V2021/AIprog"]
-	path = Informatikk/Master/V2021/AIprog
-	url = https://github.com/skanin/AIprog.git
-	ignore = dirty
+	ignore = untracked
 [submodule "Informatikk/Master/V2021/anbefalingssystemer/KL4US"]
 	path = Informatikk/Master/V2021/anbefalingssystemer/KL4US
 	url = https://github.com/tartaruz/KL4US.git
-	ignore = dirty
+	ignore = untracked
 [submodule "Informatikk/Master/master_project/thesis"]
 	path = Informatikk/Master/master_project/thesis
 	url = git@github.com:skanin/thesis.git
-	ignore = dirty
+	ignore = untracked
 [submodule "Informatikk/Master/H2021/TDT05"]
 	path = Informatikk/Master/H2021/TDT05
 	url = git@github.com:skanin/TDT05.git
+	ignore = untracked
 [submodule "Informatikk/Master/master_project/master-study-system-backend"]
 	path = Informatikk/Master/master_project/master-study-system-backend
 	url = git@github.com:skanin/master-study-system-backend.git
+	ignore = untracked
 [submodule "Informatikk/Master/master_project/master-study-system"]
 	path = Informatikk/Master/master_project/master-study-system
 	url = git@github.com:skanin/master-study-system.git
+	ignore = untracked
 [submodule "Informatikk/Master/H2021/TDT13"]
 	path = Informatikk/Master/H2021/TDT13
 	url = git@github.com:skanin/TDT13-submission.git
+	ignore = untracked
+[submodule "Informatikk/Master/V2021/AIprog"]
+	path = Informatikk/Master/V2021/AIprog
+	url = git@github.com:skanin/aiprog.git
+	ignore = untracked
